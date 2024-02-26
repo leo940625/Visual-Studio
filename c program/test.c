@@ -1,7 +1,10 @@
 #include <stdio.h>
-
+#include <math.h>
 int main()
 {
-    printf("hell world");
+    double x;
+    scanf("%lf", &x);
+    int y = round(x);
+    printf("%d\n",y);
     return 0;
 }
