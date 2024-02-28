@@ -2,9 +2,11 @@
 #include <math.h>
 int main()
 {
-    double x;
-    scanf("%lf", &x);
-    int y = round(x);
-    printf("%d\n",y);
+    printf("       *\n");
+    printf("      *\n");
+    printf("     *\n");
+    printf("*   * \n");
+    printf(" * *  \n");
+    printf("  *   \n");
     return 0;
 }
