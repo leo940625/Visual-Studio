@@ -2,11 +2,13 @@
 #include <math.h>
 int main()
 {
-    int r;
-    const float PI = 3.14;
-    printf("input your radius:");
-    scanf("%d",&r);
-    float volume = 4*PI*pow(r,3)/3;
-    printf("%5.5f",volume);
+    int a,b,c,d,e,f;
+    printf("first input:");
+    scanf("%d/%d",&a,&b);
+    printf("second input:");
+    scanf("%d/%d",&c,&d);
+    e = c*b+a*d;
+    f = d*b;
+    printf("%d/%d",e,f);
     return 0;
 }
