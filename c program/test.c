@@ -2,11 +2,7 @@
 #include <math.h>
 int main()
 {
-    printf("       *\n");
-    printf("      *\n");
-    printf("     *\n");
-    printf("*   * \n");
-    printf(" * *  \n");
-    printf("  *   \n");
+    int i = 10;
+    printf("%d",i);
     return 0;
 }
