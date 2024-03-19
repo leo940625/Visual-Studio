@@ -13,4 +13,5 @@ int main()
         a = a-b*pow(8,i);
     }
     return 0;
+    
 }
