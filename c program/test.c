@@ -3,13 +3,12 @@
 int main() {
     printf("Enter integers:");
     int a,b;
+    a = 0;
     b = 0;
-    scanf("%d",&a);
-    while (a!=0)
+    do
     {
-        b += a;
         scanf("%d",&a);
-    }
+        b += a;
+    } while (a!=0);
     printf("the sum is %d",b);
-   
 }
