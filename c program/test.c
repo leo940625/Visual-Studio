@@ -1,14 +1,20 @@
 #include <stdio.h>
 
 int main() {
+    int a,b,c;
     printf("Enter integers:");
-    int a,b;
-    a = 0;
-    b = 0;
-    do
+    scanf("%d %d",&a,&b);
+    while (a!=0 && b!=0)
     {
-        scanf("%d",&a);
-        b += a;
-    } while (a!=0);
-    printf("the sum is %d",b);
+       if (a>=b)
+       {
+        a = a%b;
+       }
+       else if (a<b)
+       {
+        b = b%a;
+       }
+    }
+    c = a == 0 ? b : a;
+    printf("%d",c);
 }
