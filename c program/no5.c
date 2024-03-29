@@ -7,7 +7,7 @@ int main()
     scanf("%d/%d",&a,&b);
     c = a;
     d = b;
-     while (a!=0 && b!=0)
+    while (a!=0 && b!=0)
     {
        if (abs(a)>=abs(b))
        {
@@ -18,7 +18,7 @@ int main()
         b = b%a;
        }
     }
-    g = a==0? b : a;
+    g = a==0 ? b : a;
     e = c/g;
     f = d/g;
     printf("in lowest terms:");
