@@ -21,6 +21,6 @@ int main()
     g = a==0 ? b : a;
     e = c/g;
     f = d/g;
-    printf("in lowest terms:");
+    printf("In lowest terms:");
     printf("%d/%d",e,f);
 }
