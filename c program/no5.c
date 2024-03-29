@@ -1,12 +1,8 @@
 #include <stdio.h>
 #include <math.h>
-int main()
-{
-    int a,b,c,d,e,f,g;
-    printf("enter a fraction:");
-    scanf("%d/%d",&a,&b);
-    c = a;
-    d = b;
+int a,b;
+int hcf(int a,int b){
+    int x;
     while (a!=0 && b!=0)
     {
        if (abs(a)>=abs(b))
@@ -16,11 +12,18 @@ int main()
        else if (abs(a)<abs(b))
        {
         b = b%a;
-       }
-    }
-    g = a==0 ? b : a;
-    e = c/g;
-    f = d/g;
+       } 
+    } 
+    x = a==0 ? b : a;
+    return x;
+}
+int main(){
+    int e,f,g;
+    printf("enter a fraction:");
+    scanf("%d/%d",&a,&b);
+    g = hcf(a,b);
+    e = a/g;
+    f = b/g;
     printf("In lowest terms:");
     printf("%d/%d",e,f);
 }
