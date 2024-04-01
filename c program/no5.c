@@ -26,4 +26,5 @@ int main(){
     f = b/g;
     printf("In lowest terms:");
     printf("%d/%d",e,f);
+    
 }

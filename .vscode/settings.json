@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "stdio.h": "c",
-        "numbers": "c"
+        "numbers": "c",
+        "string_view": "cpp"
     }
 }
