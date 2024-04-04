@@ -10,7 +10,7 @@ int main()
     {
         b = a / pow(8, i);
         printf("%d", b);
-        a = a - b * pow(8, i);
+        a -= b * pow(8, i);
     }
     return 0;
 }
