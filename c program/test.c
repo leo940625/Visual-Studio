@@ -1,22 +1,22 @@
 #include <stdio.h>
-#include <stdlib.h>
+int is_prime(int a){
+    for (int i = 2; i < a ; i++)
+    {
+        if (a % i == 0)
+        {
+            return 1;
+        }
+    }
+    return 2;
+}
 int main()
 {
-    int i, k;
+    int i;
     printf("Please enter the number:");
     scanf("%d", &i);
-    for (k = i; k > 1; k = k - 1)
-    {
-        int flag = 1, n;
-        for (n = 2; n <= k / 2; n++)
-        {
-            if (k % n == 0)
-            {
-                flag = 0;
-                break;
-            }
-        }
-        if (flag == 1)
+    for (int k = 2; k <= i; k++)
+    {   
+        if (is_prime(k) == 2)
         {
             printf("%d is a prime under %d \n", k, i);
         }
