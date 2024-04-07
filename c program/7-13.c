@@ -3,7 +3,7 @@
 int main()
 {
     char a;
-    float i,j,g;
+    float i,j;
     i = j = 0;
     printf("Enter a sentence:");
     do
@@ -11,7 +11,6 @@ int main()
         scanf("%c",&a);
         a != ' ' ? i++ : j++;
     } while (a != '.');
-    g = i/(j+1);
-    printf("Average word length:%.1f",g);
+    printf("Average word length:%.1f",i/(j+1));
     return 0;
 }
