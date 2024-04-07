@@ -3,23 +3,16 @@
 int main()
 {
     char a;
-    int i = 0;
-    int j = 0;
-    int g;
-    printf("enter a sentence:")
-    scanf("%c",&a);
-    while (a != '.')
+    float i = 0;
+    float j = 0;
+    double g;
+    printf("enter a sentence:");
+    do
     {
-        if (a != ' ')
-        {
-            i++;
-        }
-        else
-        {
-            j++;
-        }
-    }
+        scanf("%c",&a);
+        a != ' ' ? i++ : j++;
+    } while (a != '.');
     g = i/(j+1);
-    printf("averrage word length:%d",g)
+    printf("average word length:%.1lf",g);
     return 0;
 }

@@ -3,6 +3,8 @@
         "stdio.h": "c",
         "numbers": "c",
         "string_view": "cpp",
-        "algorithm": "c"
-    }
+        "algorithm": "c",
+        "random": "c"
+    },
+    "C_Cpp.errorSquiggles": "enabled"
 }
