@@ -3,9 +3,8 @@
 int main()
 {
     char a;
-    float i = 0;
-    float j = 0;
-    double g;
+    float i,j,g;
+    i = j = 0;
     printf("Enter a sentence:");
     do
     {
@@ -13,6 +12,6 @@ int main()
         a != ' ' ? i++ : j++;
     } while (a != '.');
     g = i/(j+1);
-    printf("Average word length:%.1lf",g);
+    printf("Average word length:%.1f",g);
     return 0;
 }
