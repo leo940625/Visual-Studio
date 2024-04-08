@@ -20,12 +20,9 @@ int gcd(int a, int b)
 }
 int main()
 {
-    int a, b, e, f, g;
+    int a, b;
     printf("enter a fraction:");
     scanf("%d/%d", &a, &b);
-    g = gcd(a, b);
-    e = a / g;
-    f = b / g;
     printf("In lowest terms:");
-    printf("%d/%d", e, f);
+    printf("%d/%d",a/gcd(a, b),b/gcd(a, b));
 }
