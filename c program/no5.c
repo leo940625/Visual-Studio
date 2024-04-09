@@ -25,4 +25,5 @@ int main()
     scanf("%d/%d", &a, &b);
     printf("In lowest terms:");
     printf("%d/%d",a/gcd(a, b),b/gcd(a, b));
+    return 0;
 }
