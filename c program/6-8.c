@@ -19,7 +19,7 @@ int main()
         flag++;
         /*if (i < 10)
         {
-            printf(" %d ",i)
+            printf(" %d ",i);
             flag++;
         }
         else
