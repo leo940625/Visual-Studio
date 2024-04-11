@@ -7,7 +7,7 @@ int main()
     scanf("%f", &a);
     while (1)
     {
-        scanf("%c",&b);
+        scanf("%c", &b);
         if ((int)b == 10)
         {
             break;
@@ -29,6 +29,6 @@ int main()
             break;
         }
     }
-    printf("Value of expression:%.1f",a);
+    printf("Value of expression:%.1f", a);
     return 0;
 }
