@@ -6,12 +6,13 @@ int main()
     printf("Enter a message:");
     while (scanf("%c", &a[i])){
         if (a[i] == '\n'){
+            i -= 1;
             break;
         }
         i++;
     }
     printf("Reversal is:");
-    for (int j = i - 1; j >= 0; j--)
+    for (int j = i ; j >= 0; j--)
     {
         printf("%c", a[j]);
     }

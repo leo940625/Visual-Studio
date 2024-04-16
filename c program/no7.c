@@ -9,10 +9,9 @@ int main()
             break;
         }
         p++;
-    }
-    p = p-1;
+    } 
     printf("Reversal is:");
-    for (int i = 0; p >= &a[0];p--)
+    for (p -= 1;p >= &a[0];p--)
     {
         printf("%c", *p);
     }
