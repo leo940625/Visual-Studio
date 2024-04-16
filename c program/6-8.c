@@ -17,16 +17,6 @@ int main()
     {
         i < 10 ?  printf(" %d ",i):printf("%d ",i);
         flag++;
-        /*if (i < 10)
-        {
-            printf(" %d ",i);
-            flag++;
-        }
-        else
-        {
-            printf("%d ",i);    
-            flag++;
-        }*/
         if (flag % 7 == 0)
         {
            printf("\n");
