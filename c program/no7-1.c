@@ -2,19 +2,18 @@
 int main()
 {
     char a[10000];
-    char *p = &a[0];
+    int i = 0;
     printf("Enter a message:");
-    while (scanf("%c",p)){
-        if (*p == '\n'){
+    while (scanf("%c", &a[i])){
+        if (a[i] == '\n'){
             break;
         }
-        p++;
+        i++;
     }
-    p = p-1;
     printf("Reversal is:");
-    for (int i = 0; p >= &a[0];p--)
+    for (int j = i - 1; j >= 0; j--)
     {
-        printf("%c", *p);
+        printf("%c", a[j]);
     }
     return 0;
 }
