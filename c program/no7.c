@@ -4,8 +4,10 @@ int main()
     char a[10000];
     char *p = &a[0];
     printf("Enter a message:");
-    while (scanf("%c",p)){
-        if (*p == '\n'){
+    while (scanf("%c",p))
+    {
+        if (*p == '\n')
+        {
             break;
         }
         p++;
