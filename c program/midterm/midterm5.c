@@ -10,7 +10,7 @@ int main()
     while (1)
     {
         scanf("%c",&a[i]);
-        if ((int)a[i] == 10)
+        if (a[i] == '\n')
         {
             break;
         }
