@@ -1,33 +1,29 @@
 #include <stdio.h>
-int main(){
-    char ch;
-    float a, ans;
-    ans = 0.0f;
-    printf("Print an expression: ");
-    scanf("%f", &ans);
-    scanf("%c", &ch);
-    while(ch != '\n'){
-        scanf("%f", &a);
-        switch(ch){
-            case '+': {
-                ans = ans + a;
-                break;
-            }
-            case '-': {
-                ans = ans - a;
-                break;
-            }
-            case '*': {
-                ans = ans * a;
-                break;
-            }
-            case '/':{
-                ans = ans / a;
-                break;
-            }
+void max_min(int a[], int n, int *max, int *min){
+    *max = *min = a[0];
+    for (int i = 1; i < n; i++)
+    {
+        if (a[i] > *max)
+        {
+            *max = a[i];
         }
-        scanf("%c", &ch);
+        if (a[i] < *min)
+        {
+            *min = a[i];
+        }
     }
-    printf("The answer is %.2f", ans);
+}
+int main()
+{
+    int big,small;
+    int a[10];
+    int n = 10;
+    for (int i = 0; i < n; i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    max_min(a,n,&big,&small);
+    printf("Largest:%d\n",big);
+    printf("Smallest:%d\n",small);
     return 0;
 }
