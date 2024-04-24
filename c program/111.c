@@ -17,12 +17,8 @@ int main()
     {
         scanf("%d", &a[i]);
     }
-    for (int j = 0; j < n; j++)
+    for (int j = 0; j < n-1; j++)
     {
-        if (j == n - 1)
-        {
-            break;
-        }
         if (a[j] > a[j + 1])
         {
             swap(&a[j],&a[j+1]);
