@@ -22,7 +22,7 @@ int main()
         if (a[j] > a[j + 1])
         {
             swap(&a[j],&a[j+1]);
-            j = 0;
+            j = -1;
         }
     }
     /*
