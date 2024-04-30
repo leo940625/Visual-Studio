@@ -3,10 +3,31 @@
 
 int main()
 {
-    char a[100],c[100];
+    char a[20];
+    char max[20],min[20];
+    int i = 0;
+    printf("Enter word: ");
     scanf("%s",a);
-    int b = strlen(a);
-    printf("%d",b);
-    strcpy(c,a);
-    printf("%s",c);
+    strcpy(min,a);
+    strcpy(max,a);
+    while (1)
+    {
+        printf("Enter word: ");
+        scanf("%s",a);
+        if (strlen(a) == 4)
+        {
+            break;
+        }
+        if (strcmp(a,min) < 0)
+        {
+            strcpy(min,a);
+        }
+        if (strcmp(a,max) > 0)
+        {
+            strcpy(max,a);
+        }
+    }
+    printf("The smallest word:%s\n",min);
+    printf("The largest word:%s",max);
+    return 0;
 }
