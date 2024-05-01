@@ -3,9 +3,7 @@
 
 int main()
 {
-    char a[20];
-    char max[20],min[20];
-    int i = 0;
+    char a[20],max[20],min[20];
     printf("Enter word: ");
     scanf("%s",a);
     strcpy(min,a);
