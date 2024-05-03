@@ -8,19 +8,15 @@ int main()
     scanf("%s",a);
     strcpy(min,a);
     strcpy(max,a);
-    while (1)
+    while (strlen(a) != 4)
     {
         printf("Enter word: ");
         scanf("%s",a);
-        if (strlen(a) == 4)
-        {
-            break;
-        }
         if (strcmp(a,min) < 0)
         {
             strcpy(min,a);
         }
-        if (strcmp(a,max) > 0)
+        else if (strcmp(a,max) > 0)
         {
             strcpy(max,a);
         }

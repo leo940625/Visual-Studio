@@ -6,19 +6,14 @@ int main()
     char a[20][20];
     char max[20],min[20];
     int i = 0;
-    while (1)
+    for (;strlen(a[i-1]) != 4;i++)
     {
         printf("Enter word: ");
         scanf("%s",a[i]);
-        if (strlen(a[i]) == 4)
-        {
-            break;
-        }
-        i++;
     }
     strcpy(min,a[0]);
     strcpy(max,a[0]);
-    for (int j = 0; j <= i; j++)
+    for (int j = 0; j < i; j++)
     {
         if (strcmp(a[j],min) < 0)
         {
