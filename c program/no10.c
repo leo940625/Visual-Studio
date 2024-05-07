@@ -10,13 +10,22 @@ int main()
         printf("Enter time%d:",i+1);
         scanf("%d:%d:%d", &x[i].hour, &x[i].minute, &x[i].sec);
     }
-    last.hour = x[0].hour > x[1].hour ? x[1].hour - x[0].hour + 24 : x[1].hour - x[0].hour;  
-    last.minute = x[0].minute > x[1].minute ? x[1].minute - x[0].minute + 60,last.hour -= 1: x[1].minute - x[0].minute;
-    last.sec = x[0].sec > x[1].sec ? x[1].sec - x[0].sec + 60,last.minute -= 1 : x[1].sec - x[0].sec;
-    if (last.minute < 0)
+    if (x[0].sec > x[1].sec)
     {
-        last.hour -= 1;
-        last.minute += 60;
+        x[1].sec += 60;
+        x[1].minute -= 1;
     }
+    last.sec = x[1].sec - x[0].sec;
+    if (x[0].minute > x[1].minute)
+    {
+        x[1].minute += 60;
+        x[1].hour -= 1;
+    }
+    last.minute = x[1].minute - x[0].minute;
+    if (x[0].hour > x[1].hour)
+    {
+        x[1].hour += 24;
+    }
+    last.hour = x[1].hour - x[0].hour;
     printf("%d:%d:%d",last.hour,last.minute,last.sec);
 }
