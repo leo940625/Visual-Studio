@@ -15,17 +15,17 @@ int main()
         x[1].sec += 60;
         x[1].minute -= 1;
     }
-    last.sec = x[1].sec - x[0].sec;
     if (x[0].minute > x[1].minute)
     {
         x[1].minute += 60;
         x[1].hour -= 1;
     }
-    last.minute = x[1].minute - x[0].minute;
     if (x[0].hour > x[1].hour)
     {
         x[1].hour += 24;
     }
+    last.sec = x[1].sec - x[0].sec;
+    last.minute = x[1].minute - x[0].minute;
     last.hour = x[1].hour - x[0].hour;
     printf("%d:%d:%d",last.hour,last.minute,last.sec);
 }
