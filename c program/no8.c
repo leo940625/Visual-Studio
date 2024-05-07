@@ -26,5 +26,3 @@ int main()
     sort3(&a,&b,&c);
     printf("%d,%d,%d",a,b,c);
 }
-
-//謝五兆有多少照
