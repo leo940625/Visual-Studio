@@ -20,10 +20,10 @@ async def on_ready():
 async def Hello(ctx):
     # 回覆Hello, world!
     await ctx.send("Hello, world!")
-bot.run("機器人的TOKEN")
+bot.run("MTIzOTI2Mjk2Njg1NjAyNDE3NQ.GRCt18.jgNPY29H79uh749Aubb_sBQEPGNfV3gEL1rdTo")
 async def eat(ctx):
     # 回覆Hello, world!
     food = {"男一","大一女","台科大","活大","女九","118","公館"}
     b = random.randint(0,6)
     await ctx.send(food[b])
-bot.run("機器人的TOKEN")
+bot.run("MTIzOTI2Mjk2Njg1NjAyNDE3NQ.GRCt18.jgNPY29H79uh749Aubb_sBQEPGNfV3gEL1rdTo")
