@@ -7,6 +7,7 @@ struct node{
 };
 void printList(struct node *a);
 void push(int b,struct node **first);
+void reverseList(struct node **first);
 int main(){
     int a;
     struct node *head = NULL;
@@ -27,9 +28,23 @@ void printList(struct node *a){
     }
 }
 void push(int b,struct node **first){
-    struct node *new;
-    new = malloc(sizeof (struct node)); // 重新取一個空間
+    struct node *new = malloc(sizeof (struct node)); // 重新取一個空間
+    if (new == NULL) {
+        printf("Memory allocation failed");
+        exit(1); // 退出程序
+    }
     new->value = b;
     new -> next = *first; //原本指的next空間變成first原本指向的Null
     *first = new; // new head 指到a1
+}
+void reverseList(struct node **first){
+    struct node *buffer = NULL,*now = *first,*nextnode;
+    while (now != NULL)
+    {
+        nextnode = now->next;
+        now->next = buffer;
+        buffer = now;
+        now = nextnode;    
+    }
+    *first = buffer;
 }
