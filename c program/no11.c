@@ -17,6 +17,7 @@ int main(){
         scanf("%d",&a);
         push(a,&head);
     }
+    insert_node(&head,4,12);
     printf("Reversed Linked list:");
     printList(head);
     return 0;
