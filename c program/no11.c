@@ -8,6 +8,7 @@ struct node{
 void printList(struct node *a);
 void push(int b,struct node **first);
 void reverseList(struct node **first);
+void insert_node(struct node **start, int insert_after_value, int value);
 int main(){
     int a;
     struct node *head = NULL;
@@ -47,4 +48,17 @@ void reverseList(struct node **first){
         now = nextnode;
     }
     *first = buffer;
+}
+void insert_node(struct node **start, int insert_after_value, int value){
+	struct node *current = *start; 
+	while(current != NULL) {
+		if(insert_after_value == current->value) {
+			struct node *new_node = malloc(sizeof(struct node));	
+			new_node->value = value;
+			new_node->next = current->next;
+			current->next = new_node;
+            break;
+		}
+		current = current->next;
+	}
 }
