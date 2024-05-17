@@ -27,4 +27,14 @@ async def eat(ctx):
     random_food = random.choice(food_options)
     await ctx.send(random_food)
 
+@bot.command()
+async def Raga(ctx):
+    await ctx.send("呂睿宏我真的很羨慕你")
+
+#@bot.command()
+#async def Leo1103(ctx):
+#    await ctx.send("謝珷兆是我>/////<寶")
+
+
+
 bot.run("MTIzOTI2Mjk2Njg1NjAyNDE3NQ.GRCt18.jgNPY29H79uh749Aubb_sBQEPGNfV3gEL1rdTo")
