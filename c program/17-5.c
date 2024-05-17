@@ -5,6 +5,7 @@ struct node{
     char value[10];
     struct node *next;
 };
+void swap (struct node **a,struct node **b);
 void printList(struct node *a);
 void push(char a[],struct node **first);
 void reverseList(struct node **first);
@@ -17,16 +18,13 @@ int main(){
         scanf("%s",b);
         push(b,&head);
     }
-    struct node *bus = head,*busnext;
+    struct node *bus = head,*busnext = NULL;
     while (bus->next != NULL)
     {
         busnext = bus->next;
         if (strcmp(bus->value,busnext->value)>0)
         {
-            char c[10];
-            strcpy(c,bus->value);
-            strcpy(bus->value,busnext->value);
-            strcpy(busnext->value,c);
+            swap(&bus,&busnext);
             bus = head;
             continue;
         }
@@ -62,4 +60,10 @@ void reverseList(struct node **first){
         now = nextnode;
     }
     *first = buffer;
+}
+void swap (struct node **a,struct node **b){
+    char c[10];
+    strcpy(c,(*a)->value);
+    strcpy((*a)->value,(*b)->value);
+    strcpy((*b)->value,c);
 }
