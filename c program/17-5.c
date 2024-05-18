@@ -66,5 +66,4 @@ void sortList (struct node **first){
         }
         bus = busnext;
     }
-    
 }
