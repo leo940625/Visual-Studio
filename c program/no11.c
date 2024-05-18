@@ -36,7 +36,7 @@ void push(int b,struct node **first){
         exit(1); // 退出程序
     }
     new->value = b;
-    new -> next = *first; //原本指的next空間變成first原本指向的Null
+    new->next = *first; //原本指的next空間變成first原本指向的Null
     *first = new; // new head 指到a1
 }
 void reverseList(struct node **first){
