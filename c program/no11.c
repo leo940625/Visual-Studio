@@ -18,6 +18,7 @@ int main(){
         push(a,&head);
     }
     printf("Reversed Linked list:");
+    reverseList(&head);
     insert_node(&head,8,14);
     printList(head);
     return 0;
