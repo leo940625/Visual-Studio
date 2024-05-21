@@ -8,6 +8,7 @@ struct node{
 void printList(struct node *a);
 void push(int b,struct node **first);
 void reverseList(struct node **first);
+void insert_node(struct node **first, int insert_after_value, int value);
 int main(){
     int a;
     struct node *head = NULL;
@@ -17,6 +18,7 @@ int main(){
         push(a,&head);
     }
     printf("Reversed Linked list:");
+    insert_node(&head,8,14);
     printList(head);
     return 0;
 }
@@ -34,7 +36,7 @@ void push(int b,struct node **first){
         exit(1); // 退出程序
     }
     new->value = b;
-    new -> next = *first; //原本指的next空間變成first原本指向的Null
+    new->next = *first; //原本指的next空間變成first原本指向的Null
     *first = new; // new head 指到a1
 }
 void reverseList(struct node **first){
@@ -47,4 +49,17 @@ void reverseList(struct node **first){
         now = nextnode;
     }
     *first = buffer;
+}
+void insert_node(struct node **first, int insert_after_value, int value){
+	struct node *current = *first; 
+	while(current != NULL) {
+		if(insert_after_value == current->value) {
+			struct node *new_node = malloc(sizeof(struct node));	
+			new_node->value = value;
+			new_node->next = current->next;
+			current->next = new_node;
+            break;
+		}
+		current = current->next;
+	}
 }
