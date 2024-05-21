@@ -13,7 +13,7 @@ void insert_node(struct node **first, int insert_after_value, int value);
 int main()
 {
     struct node *head = NULL;
-    int n, step;
+    int n, step, sum;
     scanf("%d", &n);
     scanf("%d", &step);
     for (int i = 1; i <= n; i++)
@@ -41,6 +41,7 @@ int main()
             break;
         }
     }
+    sum = printList(&head);
     return 0;
 }
 int printList(struct node *a)
@@ -97,4 +98,22 @@ void insert_node(struct node **first, int insert_after_value, int value)
         }
         current = current->next;
     }
+}
+void moveLeftNode(struct node **first, int x, int y){
+    struct node *now1 = NULL, *now2 = NULL, *current = *first;
+    while (current != NULL){
+        if (current->next->value == x)
+        {
+            now1 = current;
+        }
+        else if (current->next->value == y)
+        {
+            now2 = current;
+        }
+        current = current->next;
+    }
+    struct node *node1 = now1, *node2 = NULL;
+    now1->next = now1->next->next;
+    now1->next->next = now2->next;
+    now2->next = node1->next;
 }
