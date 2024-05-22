@@ -6,14 +6,17 @@ struct node
     int value;
     struct node *next;
 };
-int printList(struct node *a);
+long long printList(struct node *a);
 void push(int b, struct node **first);
 void reverseList(struct node **first);
 void insert_node(struct node **first, int insert_after_value, int value);
+void moveLeftNode(struct node **first, int x, int y);
+void moveRightNode(struct node **first, int x, int y);
 int main()
 {
     struct node *head = NULL;
-    int n, step, sum;
+    int n, step;
+    long long sum;
     scanf("%d", &n);
     scanf("%d", &step);
     for (int i = 1; i <= n; i++)
@@ -28,10 +31,14 @@ int main()
         switch (a)
         {
         case 1:
-            /* code */
+            scanf("%d", &b);
+            scanf("%d", &c);
+            moveLeftNode(&head,b,c);
             break;
         case 2:
-            /* code */
+            scanf("%d", &b);
+            scanf("%d", &c);
+            moveRightNode(&head,b,c);
             break;
         case 3:
             /* code */
@@ -41,12 +48,13 @@ int main()
             break;
         }
     }
-    sum = printList(&head);
+    sum = printList(head);
+    printf("%lld",sum);
     return 0;
 }
-int printList(struct node *a)
+long long printList(struct node *a)
 {
-    int sum = 0;
+    long long sum = 0;
     int i = 1;
     while (a != NULL)
     {
@@ -117,4 +125,23 @@ void moveLeftNode(struct node **first, int x, int y){
     now1->next = now1->next->next;
     node1->next = now2->next;
     now2->next = node1;
+}
+void moveRightNode(struct node **first, int x, int y){
+    struct node *now1 = NULL, *now2 = NULL, *current = *first;
+    while (current->next != NULL){
+        if (current->next->value == x)
+        {
+            now1 = current;
+        }
+        else if (current->next->value == y)
+        {
+            now2 = current;
+        }
+        current = current->next;
+    }
+    struct node *node1;
+    node1 = now1->next;
+    now1->next = now1->next->next;
+    node1->next = now2->next->next;
+    now2->next->next = node1;
 }
