@@ -10,6 +10,25 @@ void printList(struct node *a);
 void push(int b, struct node **first);
 void reverseList(struct node **first);
 void insert_node(struct node **first, int insert_after_value, int value);
+void moveLeftNode(struct node **first, int x, int y){
+    struct node *now1 = NULL, *now2 = NULL, *current = *first;
+    while (current->next != NULL){
+        if (current->next->value == x)
+        {
+            now1 = current;
+        }
+        else if (current->next->value == y)
+        {
+            now2 = current;
+        }
+        current = current->next;
+    }
+    struct node *node1;
+    node1 = now1->next;
+    now1->next = now1->next->next;
+    node1->next = now2->next;
+    now2->next = node1;
+}
 int main()
 {
     int a;
