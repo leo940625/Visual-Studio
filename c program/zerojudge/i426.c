@@ -109,39 +109,131 @@ void insert_node(struct node **first, int insert_after_value, int value)
 }
 void moveLeftNode(struct node **first, int x, int y){
     struct node *now1 = NULL, *now2 = NULL, *current = *first;
-    while (current->next != NULL){
-        if (current->next->value == x)
-        {
-            now1 = current;
+    if (current->value == x)
+    {
+        now1 = current;
+        *first = current->next;
+        while (current->next != NULL){
+            if (current->next->value == y)
+            {
+                now2 = current;
+                break;
+            }
+            current = current->next;
         }
-        else if (current->next->value == y)
-        {
-            now2 = current;
-        }
-        current = current->next;
+        now1->next = now2->next;
+        now2->next = now1;
     }
-    struct node *node1;
-    node1 = now1->next;
-    now1->next = now1->next->next;
-    node1->next = now2->next;
-    now2->next = node1;
+    else if (current->value == y)
+    {
+        now1 = current;
+        while (current->next != NULL){
+            if (current->next->value == x)
+            {
+                now2 = current;
+                break;
+            }
+            current = current->next;
+        }
+        *first = now2->next;
+        now2->next = now2->next->next;
+        (*first)->next = now1;
+
+    }
+    else{
+        while (current->next != NULL){
+            if (current->next->value == x)
+            {
+                now1 = current;
+            }
+            else if (current->next->value == y)
+            {
+                now2 = current;
+            }
+            current = current->next;
+        }
+        struct node *node1;
+        node1 = now1->next;
+        now1->next = now1->next->next;
+        node1->next = now2->next;
+        now2->next = node1;
+    }
+    
 }
 void moveRightNode(struct node **first, int x, int y){
     struct node *now1 = NULL, *now2 = NULL, *current = *first;
-    while (current->next != NULL){
-        if (current->next->value == x)
-        {
-            now1 = current;
+    if (current->value == x)
+    {
+        now1 = current;
+        *first = current->next;
+        while (current->next != NULL){
+            if (current->next->value == y)
+            {
+                now2 = current;
+                break;
+            }
+            current = current->next;
         }
-        else if (current->next->value == y)
-        {
-            now2 = current;
-        }
-        current = current->next;
+        now1->next = now2->next->next;
+        now2->next->next = now1;
     }
-    struct node *node1;
-    node1 = now1->next;
-    now1->next = now1->next->next;
-    node1->next = now2->next->next;
-    now2->next->next = node1;
+    else if (current->value == y)
+    {
+        now1 = current;
+        while (current->next != NULL){
+            if (current->next->value == x)
+            {
+                now2 = current;
+                break;
+            }
+            current = current->next;
+        }
+        struct node *node2 = now2->next; 
+        now2->next = now2->next->next;
+        node2->next = now1->next;
+        now1->next = node2;
+    }
+    else{
+        while (current->next != NULL){
+            if (current->next->value == x)
+            {
+                now1 = current;
+            }
+            else if (current->next->value == y)
+            {
+                now2 = current;
+            }
+            current = current->next;
+        }
+        struct node *node1;
+        node1 = now1->next;
+        now1->next = now1->next->next;
+        node1->next = now2->next->next;
+        now2->next->next = node1;
+    }
+}
+void switchNode (struct node **first, int x, int y){
+    struct node *now1 = NULL, *now2 = NULL, *current = *first;
+    if (current->value == x)
+    {
+     
+    }
+    else if (current->value == y)
+    {
+
+    }
+    else{
+        while (current->next != NULL){
+            if (current->next->value == x)
+            {
+                now1 = current;
+            }
+            else if (current->next->value == y)
+            {
+                now2 = current;
+            }
+            current = current->next;
+        }
+        struct node *node1 = now1->next,*node2 = now2->next;
+    }
 }
