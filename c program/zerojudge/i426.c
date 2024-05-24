@@ -225,6 +225,11 @@ void switchNode (struct node **first, int x, int y){
             }
             current = current->next;
         }
+        struct node *node2 = now2->next->next;
+        *first = now2->next;
+        now2->next->next = now1->next;
+        now2->next = now1;
+        now1->next = node2;
     }
     else{
         while (current->next != NULL){
