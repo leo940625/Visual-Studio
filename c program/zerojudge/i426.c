@@ -12,6 +12,7 @@ void reverseList(struct node **first);
 void insert_node(struct node **first, int insert_after_value, int value);
 void moveLeftNode(struct node **first, int x, int y);
 void moveRightNode(struct node **first, int x, int y);
+void switchNode (struct node **first, int x, int y);
 int main()
 {
     struct node *head = NULL;
