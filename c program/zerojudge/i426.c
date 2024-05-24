@@ -9,7 +9,6 @@ struct node
 long long printList(struct node *a);
 void push(int b, struct node **first);
 void reverseList(struct node **first);
-void insert_node(struct node **first, int insert_after_value, int value);
 void moveLeftNode(struct node **first, int x, int y);
 void moveRightNode(struct node **first, int x, int y);
 void switchNode (struct node **first, int x, int y);
@@ -93,22 +92,6 @@ void reverseList(struct node **first)
         now = nextnode;
     }
     *first = buffer;
-}
-void insert_node(struct node **first, int insert_after_value, int value)
-{
-    struct node *current = *first;
-    while (current != NULL)
-    {
-        if (insert_after_value == current->value)
-        {
-            struct node *new_node = malloc(sizeof(struct node));
-            new_node->value = value;
-            new_node->next = current->next;
-            current->next = new_node;
-            break;
-        }
-        current = current->next;
-    }
 }
 void moveLeftNode(struct node **first, int x, int y){
     struct node *now1 = NULL, *now2 = NULL, *current = *first;
