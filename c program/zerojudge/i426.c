@@ -41,7 +41,9 @@ int main()
             moveRightNode(&head,b,c);
             break;
         case 3:
-            /* code */
+            scanf("%d", &b);
+            scanf("%d", &c);
+            switchNode(&head,b,c);
             break;
         case 4:
             reverseList(&head);
