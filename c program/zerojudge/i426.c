@@ -12,24 +12,20 @@ void reverseList(struct node **first);
 void moveLeftNode(struct node **first, int x, int y);
 void moveRightNode(struct node **first, int x, int y);
 void switchNode (struct node **first, int x, int y);
-int main()
-{
+int main(){
     struct node *head = NULL;
     int n, step;
     long long sum;
     scanf("%d", &n);
     scanf("%d", &step);
-    for (int i = 1; i <= n; i++)
-    {
+    for (int i = 1; i <= n; i++){
         push(i, &head);
     }
     reverseList(&head);
     int a, b, c;
-    for (int j = 0; j < step; j++)
-    {
+    for (int j = 0; j < step; j++){
         scanf("%d", &a);
-        switch (a)
-        {
+        switch (a){
         case 1:
             scanf("%d", &b);
             scanf("%d", &c);
