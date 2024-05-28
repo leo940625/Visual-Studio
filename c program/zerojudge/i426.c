@@ -120,7 +120,6 @@ void moveLeftNode(struct node **first, int x, int y){
         *first = now2->next;
         now2->next = now2->next->next;
         (*first)->next = now1;
-
     }
     else{
         while (current->next != NULL){
@@ -140,7 +139,6 @@ void moveLeftNode(struct node **first, int x, int y){
         node1->next = now2->next;
         now2->next = node1;
     }
-    
 }
 void moveRightNode(struct node **first, int x, int y){
     struct node *now1 = NULL, *now2 = NULL, *current = *first;
