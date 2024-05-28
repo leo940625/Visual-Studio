@@ -90,7 +90,7 @@ void reverseList(struct node **first)
     *first = buffer;
 }
 void moveLeftNode(struct node **first, int x, int y){
-    struct node *now1 = NULL, *now2 = NULL, *current = *first;
+    struct node *now1 = NULL, *now2 = NULL, *current = *first,*temp;
     if (current->value == x)
     {
         now1 = current;

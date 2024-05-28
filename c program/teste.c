@@ -1,33 +1,163 @@
 #include <stdio.h>
-#include <string.h> // strcpy()  
+#include <string.h>
 #include <stdlib.h>
-struct node{
+struct node
+{
     int value;
     struct node *next;
-}*a[10];
-char *concat(const char *s1, const char *s2){
-    char *result;
-    result = malloc(strlen(s1) + strlen(s2) + 1);
-    if (result == NULL) {
-        printf("Error: malloc failed in concat\n");
-    }
-    strcpy(result, s1);
-    strcat(result, s2);
-    return result;
-}
+};
+long long printList(struct node *a);
+void push(int b, struct node **first);
+void reverseList(struct node **first);
+void moveLeftNode(struct node **first, int x, int y);
+void moveRightNode(struct node **first, int x, int y);
+void switchNode (struct node **first, int x, int y);
 int main(){
-    int *p;
-    p = calloc(10,sizeof(int));
-    if(p == NULL){
-        free(p);
+    struct node *head = NULL;
+    int n, step;
+    long long sum;
+    scanf("%d", &n);
+    scanf("%d", &step);
+    for (int i = 1; i <= n; i++){
+        push(i, &head);
     }
-    for (int i = 0; i < 10; i++)
+    reverseList(&head);
+    int a, b, c;
+    for (int j = 0; j < step; j++){
+        scanf("%d", &a);
+        switch (a){
+        case 1:
+            scanf("%d", &b);
+            scanf("%d", &c);
+            moveLeftNode(&head,b,c);
+            break;
+        case 2:
+            scanf("%d", &b);
+            scanf("%d", &c);
+            moveRightNode(&head,b,c);
+            break;
+        case 3:
+            scanf("%d", &b);
+            scanf("%d", &c);
+            switchNode(&head,b,c);
+            break;
+        case 4:
+            reverseList(&head);
+            break;
+        }
+    }
+    sum = printList(head);
+    printf("%lld",sum);
+    return 0;
+}
+long long printList(struct node *a)
+{
+    long long sum = 0;
+    int i = 1;
+    while (a != NULL)
     {
-        scanf("%d",&p[i]);
+        if (i % 2 != 0)
+        {
+            sum += a->value;
+        }
+        i++;
+        a = a->next;
     }
-    printf("%d\n",p[5]);
-    char *ptr;
-    ptr = (char*)malloc(10*sizeof(char));
-    scanf("%s",ptr);
-    printf("%s",ptr);
+    return sum;
+}
+void push(int b, struct node **first)
+{
+    struct node *new = malloc(sizeof(struct node)); // 重新取一個空間
+    if (new == NULL)
+    {
+        printf("Memory allocation failed");
+        exit(1); // 退出程序
+    }
+    new->value = b;
+    new->next = *first; // 原本指的next空間變成first原本指向的Null
+    *first = new;       // new head 指到a1
+}
+void reverseList(struct node **first)
+{
+    struct node *buffer = NULL, *now = *first, *nextnode;
+    while (now != NULL)
+    {
+        nextnode = now->next;
+        now->next = buffer;
+        buffer = now;
+        now = nextnode;
+    }
+    *first = buffer;
+}
+void moveLeftNode(struct node **first, int x, int y){
+    struct node *now1 = NULL, *now2 = NULL,*temp;
+    push(0,first);
+    struct node *current = *first;
+    while (current->next != NULL){
+        if (current->next->value == x)
+        {
+            now1 = current;
+        }
+        else if (current->next->value == y)
+        {
+            now2 = current;
+        }
+        current = current->next;
+    }
+    struct node *node1;
+    node1 = now1->next;
+    now1->next = now1->next->next;
+    node1->next = now2->next;
+    now2->next = node1;
+    temp = (*first);
+    (*first) = (*first)->next;
+    free(temp);
+}
+void moveRightNode(struct node **first, int x, int y){
+    struct node *now1 = NULL, *now2 = NULL,*temp;
+    push(0,first);
+    struct node *current = *first;
+    while (current->next != NULL){
+        if (current->next->value == x)
+        {
+            now1 = current;
+        }
+        else if (current->next->value == y)
+        {
+            now2 = current;
+        }
+        current = current->next;
+    }
+    struct node *node1;
+    node1 = now1->next;
+    now1->next = now1->next->next;
+    node1->next = now2->next->next;
+    now2->next->next = node1;
+    temp = (*first);
+    (*first) = (*first)->next;
+    free(temp);
+}
+void switchNode (struct node **first, int x, int y){
+    struct node *now1 = NULL, *now2 = NULL,*temp;
+    push(0,first);
+    struct node *current = *first;
+    while (current->next != NULL){
+        if (current->next->value == x)
+        {
+            now1 = current;
+        }
+        else if (current->next->value == y)
+        {
+            now2 = current;
+        }
+        current = current->next;
+    }
+    struct node *node1 = now1->next,*node2 = now2->next,*node3 = node2->next;
+    now1->next = node2;
+    node2->next = node1->next;
+    now2->next = node1;
+    node1->next = node3;
+    temp = (*first);
+    (*first) = (*first)->next;
+    free(temp);
 }
