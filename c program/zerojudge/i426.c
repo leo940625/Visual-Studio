@@ -90,143 +90,74 @@ void reverseList(struct node **first)
     *first = buffer;
 }
 void moveLeftNode(struct node **first, int x, int y){
-    struct node *now1 = NULL, *now2 = NULL, *current = *first,*temp;
-    if (current->value == x)
-    {
-        now1 = current;
-        *first = current->next;
-        while (current->next != NULL){
-            if (current->next->value == y)
-            {
-                now2 = current;
-                break;
-            }
-            current = current->next;
+    struct node *now1 = NULL, *now2 = NULL,*temp;
+    push(0,first);
+    struct node *current = *first;
+    while (current->next != NULL){
+        if (current->next->value == x)
+        {
+            now1 = current;
         }
-        now1->next = now2->next;
-        now2->next = now1;
-    }
-    else if (current->value == y)
-    {
-        now1 = current;
-        while (current->next != NULL){
-            if (current->next->value == x)
-            {
-                now2 = current;
-                break;
-            }
-            current = current->next;
+        else if (current->next->value == y)
+        {
+            now2 = current;
         }
-        *first = now2->next;
-        now2->next = now2->next->next;
-        (*first)->next = now1;
+        current = current->next;
     }
-    else{
-        while (current->next != NULL){
-            if (current->next->value == x)
-            {
-                now1 = current;
-            }
-            else if (current->next->value == y)
-            {
-                now2 = current;
-            }
-            current = current->next;
-        }
-        struct node *node1;
-        node1 = now1->next;
-        now1->next = now1->next->next;
-        node1->next = now2->next;
-        now2->next = node1;
-    }
+    struct node *node1;
+    node1 = now1->next;
+    now1->next = now1->next->next;
+    node1->next = now2->next;
+    now2->next = node1;
+    temp = (*first);
+    (*first) = (*first)->next;
+    free(temp);
 }
 void moveRightNode(struct node **first, int x, int y){
-    struct node *now1 = NULL, *now2 = NULL, *current = *first;
-    if (current->value == x)
-    {
-        now1 = current;
-        *first = current->next;
-        while (current->next != NULL){
-            if (current->next->value == y)
-            {
-                now2 = current;
-                break;
-            }
-            current = current->next;
+    struct node *now1 = NULL, *now2 = NULL,*temp;
+    push(0,first);
+    struct node *current = *first;
+    while (current->next != NULL){
+        if (current->next->value == x)
+        {
+            now1 = current;
         }
-        now1->next = now2->next->next;
-        now2->next->next = now1;
-    }
-    else if (current->value == y)
-    {
-        now1 = current;
-        while (current->next != NULL){
-            if (current->next->value == x)
-            {
-                now2 = current;
-                break;
-            }
-            current = current->next;
+        else if (current->next->value == y)
+        {
+            now2 = current;
         }
-        struct node *node2 = now2->next; 
-        now2->next = now2->next->next;
-        node2->next = now1->next;
-        now1->next = node2;
+        current = current->next;
     }
-    else{
-        while (current->next != NULL){
-            if (current->next->value == x)
-            {
-                now1 = current;
-            }
-            else if (current->next->value == y)
-            {
-                now2 = current;
-            }
-            current = current->next;
-        }
-        struct node *node1;
-        node1 = now1->next;
-        now1->next = now1->next->next;
-        node1->next = now2->next->next;
-        now2->next->next = node1;
-    }
+    struct node *node1;
+    node1 = now1->next;
+    now1->next = now1->next->next;
+    node1->next = now2->next->next;
+    now2->next->next = node1;
+    temp = (*first);
+    (*first) = (*first)->next;
+    free(temp);
 }
 void switchNode (struct node **first, int x, int y){
-    struct node *now1 = NULL, *now2 = NULL, *current = *first;
-    if (current->value == x || current->value == y )
-    {
-        now1 = current;
-        while (current->next != NULL){
-            if (current->value == x || current->value == y)
-            {
-                now2 = current;
-                break;
-            }
-            current = current->next;
+    struct node *now1 = NULL, *now2 = NULL,*temp;
+    push(0,first);
+    struct node *current = *first;
+    while (current->next != NULL){
+        if (current->next->value == x)
+        {
+            now1 = current;
         }
-        struct node *node2 = now2->next->next;
-        *first = now2->next;
-        now2->next->next = now1->next;
-        now2->next = now1;
-        now1->next = node2;
-    }
-    else{
-        while (current->next != NULL){
-            if (current->next->value == x)
-            {
-                now1 = current;
-            }
-            else if (current->next->value == y)
-            {
-                now2 = current;
-            }
-            current = current->next;
+        else if (current->next->value == y)
+        {
+            now2 = current;
         }
-        struct node *node1 = now1->next,*node2 = now2->next,*node3 = node2->next;
-        now1->next = node2;
-        node2->next = node1->next;
-        now2->next = node1;
-        node1->next = node3;
+        current = current->next;
     }
+    struct node *node1 = now1->next,*node2 = now2->next,*node3 = node2->next;
+    now1->next = node2;
+    node2->next = node1->next;
+    now2->next = node1;
+    node1->next = node3;
+    temp = (*first);
+    (*first) = (*first)->next;
+    free(temp);
 }
