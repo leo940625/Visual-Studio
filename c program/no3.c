@@ -6,7 +6,7 @@ int main()
     printf("enter a number between 0 and 32767:");
     scanf("%d", &a);
     printf("In octal,your number is:0");
-    for (int i = 3; i >= 0; i--)
+    for (int i = 4; i >= 0; i--)
     {
         b = a / pow(8, i);
         printf("%d", b);
