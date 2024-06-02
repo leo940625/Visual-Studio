@@ -138,7 +138,7 @@ void moveRightNode(struct node **first, int x, int y){
     free(temp);
 }
 void switchNode (struct node **first, int x, int y){
-    struct node *now1 = NULL, *now2 = NULL,*temp,*current = *first;
+    struct node *now1 = NULL, *now2 = NULL,*current = *first;
     int a,flag = 0;
     while(current != NULL && flag != 2){
         if(current->value == x){
