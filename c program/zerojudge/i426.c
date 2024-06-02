@@ -138,26 +138,20 @@ void moveRightNode(struct node **first, int x, int y){
     free(temp);
 }
 void switchNode (struct node **first, int x, int y){
-    struct node *now1 = NULL, *now2 = NULL,*temp;
-    push(0,first);
-    struct node *current = *first;
-    while (current->next != NULL){
-        if (current->next->value == x)
-        {
+    struct node *now1 = NULL, *now2 = NULL,*temp,*current = *first;
+    int a,flag = 0;
+    while(current != NULL && flag != 2){
+        if(current->value == x){
             now1 = current;
+            flag++;
         }
-        else if (current->next->value == y)
-        {
+        else if(current->value == y){
             now2 = current;
+            flag++;
         }
         current = current->next;
     }
-    struct node *node1 = now1->next,*node2 = now2->next,*node3 = node2->next;
-    now1->next = node2;
-    node2->next = node1->next;
-    now2->next = node1;
-    node1->next = node3;
-    temp = (*first);
-    (*first) = (*first)->next;
-    free(temp);
+    a = now1->value;
+    now1->value = now2->value;
+    now2->value = a;
 }
