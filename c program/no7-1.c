@@ -1,14 +1,11 @@
 #include <stdio.h>
 int main()
 {
-    char a[10000];
+    char a[10000],k;
     int i = 0;
     printf("Enter a message:");
-    while (scanf("%c", &a[i])){
-        if (a[i] == '\n'){
-            i -= 1;
-            break;
-        }
+    while (scanf("%c", &k) == 1 && k != '\n') {
+        a[i] = k;
         i++;
     }
     printf("Reversal is:");
