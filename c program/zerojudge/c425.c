@@ -10,10 +10,10 @@ int main()
         char *a,*b,*c,*temp;
         a = malloc(100000*sizeof(char));
         scanf("%s",a);
-        temp = realloc(a,(strlen(a))*sizeof(char));
+        temp = realloc(a,(strlen(a)+1)*sizeof(char));
         a = temp; 
         scanf("%d",&len);
-        b = malloc(len*sizeof(char));
+        b = malloc((len+1)*sizeof(char));
         strncpy(b,a,len);
         b[len] = '\0';
         c = malloc((strlen(a)+1)*sizeof(char));
