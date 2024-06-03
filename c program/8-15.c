@@ -4,13 +4,10 @@
 int main()
 {
     int b,j;
-    char a[100],c[100];
+    char a[100],c[100],k;
     printf("Enter a sentence:");
-    while (scanf("%c", &a[j])){
-        if (a[j] == '\n'){
-            j -= 1;
-            break;
-        }
+    while (scanf("%c", &k) == 1 && k != '\n') {
+        a[j] = k;
         j++;
     }
     scanf("%d",&b);
