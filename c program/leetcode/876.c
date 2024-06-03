@@ -4,7 +4,7 @@ struct node
     int value;
     struct node *next;
 };
-struct node* middleNode(struct ListNode* head) {
+struct node* middleNode(struct node* head) {
     struct node *current=head;
     int i;
     float j;
