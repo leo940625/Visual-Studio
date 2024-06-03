@@ -19,6 +19,6 @@ int main()
         c = malloc((strlen(a)+1)*sizeof(char));
         strcpy(c,a+(len));
         strcat(c,b);
-        printf("%s\n",c); /* code */
+        printf("%s\n",c);
     }
 }
