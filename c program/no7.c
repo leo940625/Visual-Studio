@@ -11,7 +11,7 @@ int main()
             break;
         }
         p++;
-    } 
+    }
     printf("Reversal is:");
     for (p -= 1;p >= &a[0];p--)
     {
