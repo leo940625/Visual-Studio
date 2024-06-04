@@ -44,18 +44,16 @@ void printList(struct node *a)
 int main()
 {
     struct node *head = NULL;
-    int k,n;
-    char m,b;
-    printf("If the initial linked list is:");
-    while(scanf("%c",&b) && b != '\n'){
-        k = (int)b-48;
-        push(k,&head);
+    int k[] = {1,2,3,4,5,6,3,8,5,4,9};
+    int size,n;
+    size = sizeof(k)/sizeof(int);
+    for (int i = 0; i < size; i++){
+        push(k[i],&head);
     }
     reverseList(&head);
     printf("And the sepecific value n is:");
     scanf("%d",&n);
-    while (head->value == n)
-    {
+    while (head->value == n){
         head = head->next;
     }
     struct node *current = head;
