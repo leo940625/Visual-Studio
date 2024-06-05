@@ -34,10 +34,7 @@ void printList(struct node *a)
 {
     while (a != NULL)
     {
-        if (a->value != -16)
-        {
-            printf("%d ",a->value);
-        }
+        printf("%d ",a->value);
         a = a->next;
     }
 }
