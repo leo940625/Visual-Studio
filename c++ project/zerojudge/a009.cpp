@@ -4,19 +4,15 @@ using std::string;
 
 int main()
 {
-    string first;
-    while (getline(cin,first))
+  string first;
+  while (getline(cin, first))
+  {
+    string second;
+    for (int i = 0; i < first.length(); i++)
     {
-       string second;
-
-       for (int i = 0; i < first.length(); i++)
-     {
-       second += char(int(first[i])-7);    
-     }
-
-     cout << second <<endl;
+      second += char(int(first[i]) - 7);
     }
-    
-    return 0;
-    
+    cout << second << endl;
+  }
+  return 0;
 }
