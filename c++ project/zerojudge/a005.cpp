@@ -7,7 +7,7 @@ int main()
     int n;
     float r, d;
     cin >> n;
-    for (int time = 0; time< n; time++)
+    for (int time = 0;time< n; time++)
     {
         for (int i = 0; i < 4; i++)
         {
@@ -26,6 +26,5 @@ int main()
           h[4] =  h[3]*r;
           cout << h[4] << endl;
         }
-        
     }
     }

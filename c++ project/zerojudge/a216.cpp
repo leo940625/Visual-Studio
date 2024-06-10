@@ -17,6 +17,6 @@ int main()
     }
     if (cin.eof())
     {
-       return 0;
+      return 0;
     } 
 }
