@@ -3,20 +3,15 @@ using namespace std;
 
 int main()
 {
-    long n,r,sum;
-    while (cin >> n >> r)
-    {
-      for (int i = 1; sum < r; i++)
-      {
-        sum = i*n + ((0+i-1)*i)/2;
-        if (sum > r)
-        {
-          cout << i <<'\n';
-        }
-      }
+  long long i,n,r,sum;
+  while (!cin.eof())
+  {
+    cin >> n >> r;
+    sum = 0;
+    for ( i = 1; sum < r; i++){
+      sum += n+i-1;
     }
-    if (cin.eof())
-    {
-       return 0;
-    }
+    cout << i-1 <<'\n';
+  }
+  return 0;
 }
