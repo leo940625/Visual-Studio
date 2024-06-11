@@ -1,10 +1,9 @@
 #include <iostream>
 using namespace std;
-
 int main()
 {
   long long i,n,r,sum;
-  while ( cin >> n >> r)
+  while (cin >> n >> r)
   {
     sum = 0;
     for ( i = 1;; i++){
@@ -14,9 +13,8 @@ int main()
       }
     }
     cout << i <<'\n';
+    if (cin.eof()){
+      return 0;
+    } 
   }
-  if (cin.eof()) {
-    return 0;
-  } 
-  return 0;
 }
