@@ -11,23 +11,21 @@ int main()
     k = a/b;
     if (n == 0)
     {
-      cout << k ;
+      cout << k << '\n';
+      continue;
     }
-    else
+    cout << k << '.';
+    a-=(k*b);
+    for (int i = 0; i < n; i++)
     {
-      cout << k << '.';
-      a-=(k*b);
-      for (int i = 0; i < n; i++)
-      {
-        a *= 10;
-        q = a/b;
-        a -= (q*b);
-        cout << q;
-      }
+      a *= 10;
+      q = a/b;
+      a -= (q*b);
+      cout << q;
     }
     cout << '\n';
   }
-  if (cin.eof()) {
+  if (cin.eof()){
       return 0;
   } 
 }
