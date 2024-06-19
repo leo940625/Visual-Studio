@@ -10,7 +10,6 @@ int main()
         if (a/d == c/f)
         {
             cout << "Too many" <<'\n';
-            continue;
         }
         cout << "No answer" <<'\n';
     }
