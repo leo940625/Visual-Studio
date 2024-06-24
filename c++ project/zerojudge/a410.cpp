@@ -7,11 +7,12 @@ int main()
     cin >> a >> b >> c >> d >> e >> f;
     if (a/d == b/e)
     {
-        if (a/d == c/f)
-        {
+        if (a/d == c/f){
             cout << "Too many" <<'\n';
         }
-        cout << "No answer" <<'\n';
+        else{
+            cout << "No answer" <<'\n';
+        }
     }
     else{
         
