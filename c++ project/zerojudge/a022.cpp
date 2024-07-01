@@ -16,4 +16,4 @@ int main()
     }
     cout << "yes" << endl;
     return 0;
-}
+}                       
