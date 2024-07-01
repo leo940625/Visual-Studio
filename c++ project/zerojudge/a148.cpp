@@ -2,7 +2,7 @@
 using namespace std;
 int main()
 {
-    int n,k,sum;
+    int n, k, sum;
     float j;
     while (cin >> n)
     {
@@ -12,9 +12,10 @@ int main()
             cin >> k;
             sum += k;
         }
-        j = (float)sum/(float)n;
-        j > 59 ? cout << "no" << '\n': cout << "yes" << '\n';
-        if(cin.eof()){
+        j = (float)sum / (float)n;
+        j > 59 ? cout << "no" << '\n' : cout << "yes" << '\n';
+        if (cin.eof())
+        {
             return 0;
         }
     }

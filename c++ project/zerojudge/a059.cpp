@@ -13,12 +13,12 @@ int main()
         cin >> star >> finish;
         for (int j = 1; j <= sqrt(finish); j++)
         {
-           if (pow(j,2)>=star && pow(j,2)<=finish )
-           {
-             out += pow(j,2);
-           }
+            if (pow(j, 2) >= star && pow(j, 2) <= finish)
+            {
+                out += pow(j, 2);
+            }
         }
-        cout << "Case " << i << ": " << out <<'\n';
+        cout << "Case " << i << ": " << out << '\n';
     }
     return 0;
 }
