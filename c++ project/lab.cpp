@@ -7,5 +7,9 @@ struct node
 };
 int main()
 {
+    struct node *head = NULL;
     return 0;
+}
+void push(int a, struct node **head)
+{
 }
