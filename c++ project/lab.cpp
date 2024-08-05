@@ -6,11 +6,6 @@ struct node
     int value;
     struct node *next;
 };
-int main()
-{
-    node *head = NULL;
-    return 0;
-}
 void push(int a, struct node **first)
 {
     node *other = new node();
@@ -20,6 +15,22 @@ void push(int a, struct node **first)
         exit(1); // 退出程序
     }
     other->value = a;
-    other->next = *first; // 原本指的next空間變成first原本指向的Null
-    *first = other;       // new head 指到a1
+    other->next = *first;//原本指的next空間變成first原本指向的Null
+    *first = other;// new head 指到 a
+}
+void reverseList(struct node **first){
+    node *current = *first,*nextNode,*buffer = NULL;
+    while (current != NULL)
+    {
+        nextNode = current->next;
+        current->next = buffer;
+        buffer = current;
+        current = nextNode;
+    }
+    *first = buffer;
+}
+int main()
+{
+    node *head = NULL;
+    return 0;
 }
