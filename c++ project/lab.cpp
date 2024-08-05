@@ -29,8 +29,21 @@ void reverseList(struct node **first){
     }
     *first = buffer;
 }
+void printList(struct node *first){
+    while (first != NULL)
+    {
+        cout << first->value << ' ';
+        first = first->next;
+    }
+}
 int main()
 {
     node *head = NULL;
+    for (int i = 0; i < 5; i++)
+    {
+        push(i,&head);
+    }
+    reverseList(&head);
+    printList(head);
     return 0;
 }
