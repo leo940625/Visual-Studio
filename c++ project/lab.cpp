@@ -43,7 +43,7 @@ int main()
     {
         push(i,&head);
     }
-    //reverseList(&head);
+    reverseList(&head);
     printList(head);
     return 0;
 }
