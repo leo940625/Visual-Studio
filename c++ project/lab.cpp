@@ -9,7 +9,7 @@ struct node
 void push(int a, struct node **first)
 {
     node *other = new node();
-    if (other == NULL)
+    if (other == nullptr)
     {
         exit(1);
     }
@@ -19,8 +19,8 @@ void push(int a, struct node **first)
 }
 void reverseList(struct node **first)
 {
-    node *current = *first, *nextNode, *buffer = NULL;
-    while (current != NULL)
+    node *current = *first, *nextNode, *buffer = nullptr;
+    while (current != nullptr)
     {
         nextNode = current->next;
         current->next = buffer;
@@ -31,7 +31,7 @@ void reverseList(struct node **first)
 }
 void printList(struct node *first)
 {
-    while (first != NULL)
+    while (first != nullptr)
     {
         cout << first->value << ' ';
         first = first->next;
@@ -39,7 +39,7 @@ void printList(struct node *first)
 }
 int main()
 {
-    node *head = NULL;
+    node *head = nullptr;
     for (int i = 0; i < 5; i++)
     {
         push(i, &head);
@@ -47,4 +47,5 @@ int main()
     reverseList(&head);
     printList(head);
     return 0;
+     
 }
