@@ -44,7 +44,7 @@ int main(){
         case 4:
             reverseList(&head);
             break;
-        }
+        } 
     }
     sum = printList(head);
     printf("%lld",sum);
