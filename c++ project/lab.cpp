@@ -1,5 +1,5 @@
 #include <iostream>
-
+using namespace std;
 class Node {
 public:
     int value;
@@ -43,10 +43,10 @@ public:
     void printList() const {
         Node* node = head;
         while (node != nullptr) {
-            std::cout << node->value << " ";
+            cout << node->value << " ";
             node = node->next;
         }
-        std::cout << std::endl;
+        cout << endl;
     }
     void reverseList(){
         Node *buffer = nullptr, *now = head, *nextnode;
