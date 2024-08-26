@@ -25,7 +25,6 @@ public:
             current = nextNode;
         }
     }
-
     // Method to append a new node at the end
     void append(int new_data) {
         Node* new_node = new Node(new_data);
@@ -50,6 +49,7 @@ public:
         }
         std::cout << std::endl;
     }
+    //class盢跑计籔ㄧ计Ω杆碞琌Ω盢linklist夹繷﹚竡nullptr杆push单单ㄧ计
 };
 
 int main() {
