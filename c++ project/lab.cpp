@@ -50,7 +50,7 @@ public:
     }
     void reverseList(){
         Node *buffer = nullptr, *now = head, *nextnode;
-        while (now != NULL)
+        while (now != nullptr)
         {
             nextnode = now->next;
             now->next = buffer;
@@ -61,12 +61,12 @@ public:
     }
     //class盢跑计籔ㄧ计Ω杆碞琌Ω盢linklist夹繷﹚竡nullptr杆push单单ㄧ计
 };
-int main() {
+int main(){
     LinkedList list;
     list.push(1);
     list.push(2);
     list.push(3);
+    list.reverseList();
     list.printList();  // Output: 1 2 3
-
     return 0;
 }
