@@ -6,6 +6,7 @@ public:
     Node* next;
 
     // Constructor
+    //算是一種函式(建構函式)
     Node(int data) : value(data), next(nullptr) {}
 };
 
@@ -26,7 +27,7 @@ public:
         }
     }
     // Method to append a new node at the end
-    void append(int value) {
+    void push(int value) {
         Node* new_node = new Node(value);
         if (head == nullptr) {
             head = new_node;
@@ -52,9 +53,9 @@ public:
 
 int main() {
     LinkedList list;
-    list.append(1);
-    list.append(2);
-    list.append(3);
+    list.push(1);
+    list.push(2);
+    list.push(3);
     list.printList();  // Output: 1 2 3
 
     return 0;
