@@ -26,8 +26,8 @@ public:
         }
     }
     // Method to append a new node at the end
-    void append(int new_data) {
-        Node* new_node = new Node(new_data);
+    void append(int value) {
+        Node* new_node = new Node(value);
         if (head == nullptr) {
             head = new_node;
             return;
