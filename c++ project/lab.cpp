@@ -50,7 +50,6 @@ public:
     }
     //class盢跑计籔ㄧ计Ω杆碞琌Ω盢linklist夹繷﹚竡nullptr杆push单单ㄧ计
 };
-
 int main() {
     LinkedList list;
     list.push(1);
