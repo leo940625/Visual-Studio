@@ -16,7 +16,6 @@ private:
 public:
     // Constructor
     LinkedList() : head(nullptr) {}
-
     // Destructor
     ~LinkedList() {
         Node* current = head;
