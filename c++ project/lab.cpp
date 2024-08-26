@@ -2,11 +2,11 @@
 
 class Node {
 public:
-    int data;
+    int value;
     Node* next;
 
     // Constructor
-    Node(int data) : data(data), next(nullptr) {}
+    Node(int data) : value(data), next(nullptr) {}
 };
 
 class LinkedList {
@@ -44,7 +44,7 @@ public:
     void printList() const {
         Node* node = head;
         while (node != nullptr) {
-            std::cout << node->data << " ";
+            std::cout << node->value << " ";
             node = node->next;
         }
         std::cout << std::endl;
