@@ -32,14 +32,12 @@ public:
             head = new_node;
             return;
         }
-
         Node* last = head;
         while (last->next != nullptr) {
             last = last->next;
         }
         last->next = new_node;
     }
-
     // Method to print the linked list
     void printList() const {
         Node* node = head;
