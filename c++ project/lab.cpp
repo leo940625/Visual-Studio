@@ -9,7 +9,6 @@ public:
     //算是一種函式(建構函式)
     Node(int data) : value(data), next(nullptr) {}
 };
-
 class LinkedList {
 private:
     Node* head;
