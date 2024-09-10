@@ -14,14 +14,14 @@ int *showPrime(int p)
     int *k = new int[2];
     int lower = p, upper = p;
     if (isPrime(p)){
-        *k = p;
-        *(k + 1) = 0;
+        k[0] = p;
+        k[1] = 0;
     }
     else{
         while (!isPrime(lower))lower--;
-        *k = lower;
+        k[0] = lower;
         while (!isPrime(upper))upper++;
-        *(k + 1) = upper;
+        k[1] = upper;
     }
     return k;
 }
