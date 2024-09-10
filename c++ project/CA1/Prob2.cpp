@@ -1,27 +1,37 @@
 #include <iostream>
 using namespace std;
-int isPrime(int a)
+bool isPrime(int a)
 {
-    for (int i = 2; i < a; i++)
-    {
-        if (a & i == 0)
-        {
-            return 1;
+    if (a <= 1) return false;
+    for (int i = 2; i < a; i++){
+        if (a % i == 0){
+            return 0;
             break;
         }
     }
-    return 2;
+    return 1;
 }
 int *showPrime(int p)
 {
-    int *k;
-    if (isPrime(p) == 2)
-    {
+    int *k = new int[2];
+    int a = p, b = p;
+    if (isPrime(p)){
         *k = p;
-        *(k+1) = 0;
+        *(k + 1) = 0;
     }
     else{
-        
+        while (!isPrime(a)){
+            a--;
+        }
+        *k = a;
+        while (!isPrime(b)){
+            b++;
+        }
+        *(k + 1) = b;
     }
-    
+    return k;
+}
+int main(){
+    int *c = showPrime(6);
+    cout << *c << ',' <<  *(c+1) << '\n'; 
 }
