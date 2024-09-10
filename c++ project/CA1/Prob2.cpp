@@ -35,3 +35,7 @@ int *showPrime(int p)
     }
     return k;
 }
+int main(){
+    int *a = showPrime(1);
+    cout << a[0] << ',' << a[1] << '\n';
+}
