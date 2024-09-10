@@ -9,8 +9,3 @@ int dotProduct(int a[],int b[],int n){
     }
     return sum;
 }
-int main(){
-    int a[] = {1,5,4,2};
-    int b[] = {2,5,4,6};
-    cout << dotProduct(a,b,4) << '\n';
-}

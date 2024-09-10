@@ -31,7 +31,3 @@ int *showPrime(int p)
     }
     return k;
 }
-int main(){
-    int *c = showPrime(6);
-    cout << *c << ',' <<  *(c+1) << '\n'; 
-}
