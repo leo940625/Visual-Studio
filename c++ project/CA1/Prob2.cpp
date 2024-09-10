@@ -17,7 +17,7 @@ bool isPrime(int a)
     for (int i = 2; i < sqrt(a); i++){
         if (a % i == 0)return false;
     }
-    return 1;
+    return true;
 }
 int *showPrime(int p)
 {
