@@ -41,6 +41,7 @@ public:
             exit(1);
         }
         Month = month;
+        Year = year;
         
     };
   
