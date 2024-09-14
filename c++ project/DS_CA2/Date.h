@@ -38,7 +38,7 @@ public:
    */
     Date(int month, int day, int year){
         if (month < 1 || month > 12){
-            
+            exit(1);
         }
         
     };
