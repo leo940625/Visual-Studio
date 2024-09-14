@@ -36,9 +36,12 @@ public:
    *
    *  Grade: 15%
    */
-  Date(int month, int day, int year){
-    
-  };
+    Date(int month, int day, int year){
+        if (month < 1 || month > 12){
+            
+        }
+        
+    };
   
 
   /** 
