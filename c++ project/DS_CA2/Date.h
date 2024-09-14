@@ -81,12 +81,10 @@ public:
      *  Grade: 10%
      */
     int daysInMonth(int month, int year){
-        if (find(big,big+7,month))
-        {
+        if (find(big,big+6,month)){
             return 31;
         }
-        else if (find(small,small+4,month))
-        {
+        else if (find(small,small+3,month)){
             return 30;
         }
         else{
