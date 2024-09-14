@@ -56,9 +56,7 @@ class rectangle {
         };
         // True, if width = length.
         bool isSquare (){
-            int a;
-            a = width == length ? 1 : 0;
-            return a;
+            return (width == length ? true : false);
         };
 };
 int main(){

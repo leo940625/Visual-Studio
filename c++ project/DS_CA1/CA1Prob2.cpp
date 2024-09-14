@@ -11,7 +11,7 @@
 #include <math.h>
 using namespace std;
 
-bool isPrime(int a)
+bool isPrime(int a)// check whether a is a prime
 {
     if (a <= 1) return false;
     for (int i = 2; i < sqrt(a); i++){
@@ -23,11 +23,11 @@ int *showPrime(int p)
 {
     int *k = new int[2];
     int lower = p, upper = p;
-    if (isPrime(p)){
+    if (isPrime(p)){ // if p is prime let k = {p,0}
         k[0] = p;
         k[1] = 0;
     }
-    else{
+    else{// if p is not prime let k = {lower,upper}
         while (!isPrime(lower))lower--;
         k[0] = lower;
         while (!isPrime(upper))upper++;
