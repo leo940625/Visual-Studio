@@ -122,7 +122,8 @@ string Date::toString(){
   s << '/';
   s << Day;
   s << '/';
-  s << Year;               // replace this line with your solution
+  s << Year;
+  return s.str();
 }
 
 /** 
@@ -184,13 +185,5 @@ return 0;                           // replace this line with your solution
 
 int main(){
     Date bo(6,25,2005);
-    cout << bo.daysInMonth(2,2005) << endl;
-    if (bo.isValidDate(7,31,2005))
-    {
-        cout << "good" << '\n';
-    }
-    else{
-        cout << "bad" << '\n';
-    }
-   
+    cout << bo.toString() << endl;
 }
