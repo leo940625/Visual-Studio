@@ -21,9 +21,9 @@ using namespace std;
 
 class Date {
 private:
-    int month;
-    int day;
-    int year;
+    int Month;
+    int Day;
+    int Year;
   
 public:
 
@@ -40,6 +40,7 @@ public:
         if (month < 1 || month > 12){
             exit(1);
         }
+        Month = month;
         
     };
   
