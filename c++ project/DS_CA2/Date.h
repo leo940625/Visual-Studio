@@ -72,8 +72,6 @@ public:
         }
         return false;
     };
-
-
     /** 
      *  Returns the number of days in a given month.
      *  @param month is a month, numbered in the range 1...12.
@@ -89,10 +87,12 @@ public:
         }
         else if (find(small,small+4,month))
         {
-            /* code */
+            return 30;
         }
-        
-        
+        else{
+            int a = isLeapYear(year) ? 29 : 28;
+            return a;
+        }
     };
 
 
