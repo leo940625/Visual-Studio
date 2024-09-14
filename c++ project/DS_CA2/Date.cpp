@@ -9,8 +9,6 @@
  * Date.cpp
  * version 1.0
  */
-
-
 #include "Date.h"
 #include <cstdio>
 #include <cstdlib>
