@@ -21,9 +21,10 @@ using namespace std;
 
 class Date {
 private:
-
-  /* Put your private data fields here. */
-
+    int month;
+    int day;
+    int year;
+  
 public:
 
   /** 
@@ -35,7 +36,9 @@ public:
    *
    *  Grade: 15%
    */
-  Date(int month, int day, int year);
+  Date(int month, int day, int year){
+    
+  };
   
 
   /** 
