@@ -25,7 +25,6 @@ private:
     int Month;
     int Day;
     int Year;
-  
 public:
     /** 
      *  Constructs a Date with the given month, day and year.   If the date is

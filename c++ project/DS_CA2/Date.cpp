@@ -22,7 +22,7 @@
  *  Grade: 15%
  */
 Date::Date(int month, int day, int year) {  
-    if (isValidDate){
+    if (isValidDate(month,day,year)){
         Month = month;
         Year = year;
         Day = day;
@@ -70,10 +70,10 @@ bool Date::isLeapYear(int year) {
 int Date::daysInMonth(int month, int year){
     int big[7] = {1,3,5,7,8,10,12};
     int small[4] = {4,6,9,11};
-    if (find(big,big+6,month)){
+    if (find(big,big+6,month) != big+6){
         return 31;
     }
-    else if (find(small,small+3,month)){
+    else if (find(small,small+3,month) != small+3){
         return 30;
     }
     else{
@@ -96,7 +96,7 @@ bool Date::isValidDate(int month, int day, int year) {
         return true;
     }
     return false;*/
-    return(month >= 1 && month <= 12 && year >= 1 && daysInMonth(month,day) ? true:false);                         
+    return((month >= 1 && month <= 12) && year >= 1 && (day <= daysInMonth(month,year) && day > 0)  ? true:false);                         
 }
 
 
@@ -170,3 +170,15 @@ int Date::difference(const Date& d) {
 return 0;                           // replace this line with your solution
 }
 
+int main(){
+    Date bo(6,25,2005);
+    cout << bo.daysInMonth(2,2005) << endl;
+    if (bo.isValidDate(7,31,2005))
+    {
+        cout << "good" << '\n';
+    }
+    else{
+        cout << "bad" << '\n';
+    }
+   
+}
