@@ -27,6 +27,9 @@ Date::Date(int month, int day, int year) {
         Year = year;
         Day = day;
     }
+    else{
+        exit;
+    }
 }
 
 
@@ -40,7 +43,8 @@ Date::Date(int month, int day, int year) {
  *  Grade: 30%
  */
 Date::Date(const string& s) {
-
+    int a,b,c;
+    scanf(%d/%d/%d,&a,&b,&c);
 }
 
 
