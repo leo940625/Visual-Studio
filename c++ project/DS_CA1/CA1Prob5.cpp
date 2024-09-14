@@ -61,3 +61,11 @@ class rectangle {
             return a;
         };
 };
+int main(){
+    rectangle bo(20,10);
+    cout << bo.getArea() << bo.getLength() << bo.getPerimeter() << bo.getWidth() <<'\n';
+    int a = bo.isSquare() ? 2 : 3;
+    cout << a << '\n';
+    bo.setDimension(40,40);
+    cout << bo.getArea() << bo.getLength() << bo.getPerimeter() << bo.getWidth() <<'\n';
+}
