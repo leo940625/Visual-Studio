@@ -137,5 +137,4 @@ public:
     int difference(const Date& d);
 
 };
-
 #endif

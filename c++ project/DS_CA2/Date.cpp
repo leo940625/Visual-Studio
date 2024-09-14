@@ -12,6 +12,11 @@
 
 
 #include "Date.h"
+#include <cstdio>
+#include <cstdlib>
+#include <sstream>
+#include <stdexcept>
+
 /** 
  *  Constructs a Date with the given month, day and year.   If the date is
  *  not valid, the entire program will halt with an error message.
@@ -43,7 +48,7 @@ Date::Date(int month, int day, int year) {
  *  Grade: 30%
  */
 Date::Date(const string& s) {
-    
+
 }
 
 
@@ -111,10 +116,14 @@ bool Date::isValidDate(int month, int day, int year) {
  *
  *  Grade: 20%
  */
-string Date::toString() {
-return "stuff";                     // replace this line with your solution
+string Date::toString(){
+  stringstream s;
+  s << Month; // put month at the end of the string
+  s << '/';
+  s << Day;
+  s << '/';
+  s << Year;               // replace this line with your solution
 }
-
 
 /** 
  *  Determines whether this Date is before the Date d.
