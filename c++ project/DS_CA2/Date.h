@@ -27,8 +27,6 @@ private:
     int Year;
   
 public:
-    int big[7] = {1,3,5,7,8,10,12};
-    int small[4] = {4,6,9,11};
     /** 
      *  Constructs a Date with the given month, day and year.   If the date is
      *  not valid, the entire program will halt with an error message.
@@ -38,15 +36,7 @@ public:
      *
      *  Grade: 15%
      */
-    Date(int month, int day, int year){
-        if (month < 1 || month > 12){
-            exit(1);
-        }
-        Month = month;
-        Year = year;
-
-    };
-
+    Date(int month, int day, int year);
 
     /** 
      *  Constructs a Date object corresponding to the given string.
@@ -66,12 +56,7 @@ public:
      *
      *  Grade: 10%
      */
-    bool isLeapYear(int year){
-        if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0 ){
-            return true;
-        }
-        return false;
-    };
+    bool isLeapYear(int year);
     /** 
      *  Returns the number of days in a given month.
      *  @param month is a month, numbered in the range 1...12.
@@ -80,18 +65,7 @@ public:
      *
      *  Grade: 10%
      */
-    int daysInMonth(int month, int year){
-        if (find(big,big+6,month)){
-            return 31;
-        }
-        else if (find(small,small+3,month)){
-            return 30;
-        }
-        else{
-            int a = isLeapYear(year) ? 29 : 28;
-            return a;
-        }
-    };
+    int daysInMonth(int month, int year);
 
 
     /** 
