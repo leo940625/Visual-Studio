@@ -151,12 +151,16 @@ string Date::toString(){
  *  Grade: 10%
  */
 bool Date::isBefore(const Date& d) {
-    if (Year  )
+    if (Year < d.Year){
+        return true;
+    }
+    else if (Year == d.Year)
     {
         /* code */
     }
-    
-    return true;                        // replace this line with your solution
+    else{
+        return false;
+    }
 }
 
 
