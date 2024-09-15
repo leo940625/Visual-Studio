@@ -204,12 +204,7 @@ bool Date::isAfter(const Date& d) {
  *  Grade: 10%
  */
 bool Date::isEqual(const Date& d) {
-    if (Year == d.Year && Month == d.Month && Day == d.Day){
-        return true;
-    }
-    else{
-        return false;
-    }                                
+    return(!isBefore(d) && !isAfter(d)) ? true : false;       
 }
 
 
@@ -239,7 +234,7 @@ return 0;                           // replace this line with your solution
 
 int main(){
     Date bo(6,25,2005);
-    Date bot("6/25/2024");
-    string a = bot.isBefore(bo) ? "yes" : "no";
+    Date bot("6/25/2006");
+    string a = bot.isEqual(bo) ? "yes" : "no";
     cout << a <<'\n';
 }
