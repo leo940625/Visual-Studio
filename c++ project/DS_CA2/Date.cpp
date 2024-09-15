@@ -67,8 +67,6 @@ Date::Date(const string& s) {
     else{
         exit(1);
     }
-    
-
 }
 
 
