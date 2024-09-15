@@ -13,7 +13,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <sstream>
-#include <stdexcept>
+using namespace std;
 
 /** 
  *  Constructs a Date with the given month, day and year.   If the date is
