@@ -205,7 +205,12 @@ bool Date::isAfter(const Date& d) {
  *  Grade: 10%
  */
 bool Date::isEqual(const Date& d) {
-return true;                        // replace this line with your solution
+    if (Year == d.Year && Month == d.Month && Day == d.Day){
+        return true;
+    }
+    else{
+        return false;
+    }                                
 }
 
 
