@@ -151,7 +151,7 @@ string Date::toString(){
  *  Grade: 10%
  */
 bool Date::isBefore(const Date& d) {
-    if (Year )
+    if (Year  )
     {
         /* code */
     }
