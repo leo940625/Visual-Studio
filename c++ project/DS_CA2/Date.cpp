@@ -33,7 +33,7 @@ Date::Date(int month, int day, int year) {
         Day = day;
     }
     else{
-        exit;
+        exit(1);
     }
 }
 
