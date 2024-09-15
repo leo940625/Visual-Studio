@@ -56,7 +56,19 @@ Date::Date(const string& s) {
         str = str.substr(str.find("/")+1,str.length());
     }
     v.push_back(str);
+    int month = stoi(v[0]);
+    int day = stoi(v[1]);
+    int year = stoi(v[2]);
+    if (isValidDate(month,day,year)){
+        Month = month;
+        Day = day;
+        Year = year;
+    }
+    else{
+        exit(1);
+    }
     
+
 }
 
 
