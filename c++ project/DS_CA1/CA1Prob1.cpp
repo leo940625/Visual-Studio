@@ -13,7 +13,7 @@ int dotProduct(int a[],int b[],int n){
     int sum = 0;
     for (int i = 0; i < n; i++)
     {
-        sum += a[i]*b[i];
+        sum += a[i]*b[i];//將各項相乘並加總
     }
     return sum;
 }
