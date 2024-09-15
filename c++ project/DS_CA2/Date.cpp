@@ -205,4 +205,5 @@ int main(){
     Date bo(6,25,2005);
     cout << bo.toString() << endl;
     Date bot("6/25/2024");
+    cout << bot.toString() <<'\n';
 }
