@@ -197,7 +197,6 @@ bool Date::isAfter(const Date& d) {
     }                     // replace this line with your solution
 }
 
-
 /** 
  *  Determines whether this Date is equal to the Date d.
  *  @return true if and only if this Date is the same as d.
