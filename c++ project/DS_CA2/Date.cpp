@@ -154,9 +154,21 @@ bool Date::isBefore(const Date& d) {
     if (Year < d.Year){
         return true;
     }
-    else if (Year == d.Year)
-    {
-        /* code */
+    else if (Year == d.Year){
+        if (Month < d.Month){
+            return true;
+        }
+        else if (Month == d.Month){
+            if (Day < d.Day){
+                return true;
+            }
+            else{
+                return false;
+            }   
+        }
+        else{
+            return false;
+        }   
     }
     else{
         return false;
