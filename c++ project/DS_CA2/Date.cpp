@@ -151,7 +151,7 @@ string Date::toString(){
  *  Grade: 10%
  */
 bool Date::isBefore(const Date& d) {
-    if (Year < d.Year){
+    /*if (Year < d.Year){
         return true;
     }
     else if (Year == d.Year){
@@ -172,6 +172,12 @@ bool Date::isBefore(const Date& d) {
     }
     else{
         return false;
+    }*/
+    if (Year < d.Year || (Year == d.Year && Month < d.Month) || (Year == d.Year && Month == d.Month && Day < d.Day)){
+        return true;
+    }
+    else{
+        return false;
     }
 }
 
@@ -183,7 +189,12 @@ bool Date::isBefore(const Date& d) {
  *  Grade: 10%
  */
 bool Date::isAfter(const Date& d) {
-return true;                        // replace this line with your solution
+    if (Year > d.Year || (Year == d.Year && Month > d.Month) || (Year == d.Year && Month == d.Month && Day > d.Day)){
+        return true;
+    }
+    else{
+        return false;
+    }                     // replace this line with your solution
 }
 
 
@@ -224,7 +235,7 @@ return 0;                           // replace this line with your solution
 
 int main(){
     Date bo(6,25,2005);
-    cout << bo.toString() << endl;
     Date bot("6/25/2024");
-    cout << bot.toString() <<'\n';
+    string a = bot.isBefore(bo) ? "yes" : "no";
+    cout << a <<'\n';
 }
