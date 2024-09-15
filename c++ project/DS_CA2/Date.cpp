@@ -13,6 +13,8 @@
 #include <cstdio>
 #include <cstdlib>
 #include <sstream>
+#include <vector>
+#include <string>
 using namespace std;
 
 /** 
@@ -46,7 +48,15 @@ Date::Date(int month, int day, int year) {
  *  Grade: 30%
  */
 Date::Date(const string& s) {
-
+    string str = s;
+    vector<string> v;
+    for (int i = 0; i < 2; i++)
+    {
+        v.push_back(str.substr(0, str.find("/")));
+        str = str.substr(str.find("/")+1,str.length());
+    }
+    v.push_back(str);
+    
 }
 
 
@@ -184,4 +194,5 @@ return 0;                           // replace this line with your solution
 int main(){
     Date bo(6,25,2005);
     cout << bo.toString() << endl;
+    Date bot("6/25/2024");
 }
