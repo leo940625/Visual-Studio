@@ -122,7 +122,7 @@ bool Date::isValidDate(int month, int day, int year) {
         return true;
     }
     return false;*/
-    return((month >= 1 && month <= 12) && year >= 1 && (day <= daysInMonth(month,year) && day > 0)  ? true:false);                         
+    return((month >= 1 && month <= 12) && year >= 1 && (day <= daysInMonth(month,year) && day > 0) ? true:false);                         
 }
 
 
@@ -135,13 +135,13 @@ bool Date::isValidDate(int month, int day, int year) {
  *  Grade: 20%
  */
 string Date::toString(){
-  stringstream s;
-  s << Month; // put month at the end of the string
-  s << '/';
-  s << Day;
-  s << '/';
-  s << Year;
-  return s.str();
+    stringstream s;
+    s << Month; // put month at the end of the string
+    s << '/';
+    s << Day;
+    s << '/';
+    s << Year;
+    return s.str();
 }
 
 /** 
@@ -151,7 +151,12 @@ string Date::toString(){
  *  Grade: 10%
  */
 bool Date::isBefore(const Date& d) {
-return true;                        // replace this line with your solution
+    if (Year )
+    {
+        /* code */
+    }
+    
+    return true;                        // replace this line with your solution
 }
 
 
