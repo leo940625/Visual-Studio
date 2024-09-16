@@ -94,7 +94,6 @@ bool Date::isLeapYear(int year) {
  *  Grade: 10%
  */
 int Date::daysInMonth(int month, int year){
-    int data[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
     if (month != 2){
         return data[month-1];
     }
@@ -147,28 +146,6 @@ string Date::toString(){
  *  Grade: 10%
  */
 bool Date::isBefore(const Date& d) {
-    /*if (Year < d.Year){
-        return true;
-    }
-    else if (Year == d.Year){
-        if (Month < d.Month){
-            return true;
-        }
-        else if (Month == d.Month){
-            if (Day < d.Day){
-                return true;
-            }
-            else{
-                return false;
-            }   
-        }
-        else{
-            return false;
-        }   
-    }
-    else{
-        return false;
-    }*/
     if (Year < d.Year || (Year == d.Year && Month < d.Month) || (Year == d.Year && Month == d.Month && Day < d.Day)){
         return true;
     }
@@ -213,7 +190,14 @@ bool Date::isEqual(const Date& d) {
  *  Grade: 15%
  */
 int Date::dayInYear() {
-return 0;                           // replace this line with your solution
+    int sum = 0;
+    for (int i = 0; i < Month-1; i++)
+    {
+        sum += data[i];
+    }
+    sum += Day;
+    if (isLeapYear(Year) && Month > 2) sum+=1;
+    return sum;                           // replace this line with your solution
 }
 
 
@@ -229,8 +213,8 @@ return 0;                           // replace this line with your solution
 }
 
 int main(){
-    Date bo(6,25,2005);
+    Date bo(12,31,2004);
     Date bot("6/25/2006");
     string a = bot.isEqual(bo) ? "yes" : "no";
-    cout << a <<'\n';
+    cout << bo.dayInYear() <<'\n';
 }

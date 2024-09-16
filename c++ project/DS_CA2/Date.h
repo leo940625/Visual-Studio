@@ -26,6 +26,7 @@ private:
     int Day;
     int Year;
 public:
+    int data[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
     /** 
      *  Constructs a Date with the given month, day and year.   If the date is
      *  not valid, the entire program will halt with an error message.
