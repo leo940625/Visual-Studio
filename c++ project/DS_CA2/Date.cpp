@@ -94,13 +94,9 @@ bool Date::isLeapYear(int year) {
  *  Grade: 10%
  */
 int Date::daysInMonth(int month, int year){
-    int big[7] = {1,3,5,7,8,10,12};
-    int small[4] = {4,6,9,11};
-    if (find(big,big+6,month) != big+6){
-        return 31;
-    }
-    else if (find(small,small+3,month) != small+3){
-        return 30;
+    int data[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
+    if (month != 2){
+        return data[month-1];
     }
     else{
         int a = isLeapYear(year) ? 29 : 28;
