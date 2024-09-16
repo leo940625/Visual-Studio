@@ -17,7 +17,7 @@
 #include <string>
 using namespace std;
 
-/** 
+/**
  *  Constructs a Date with the given month, day and year.   If the date is
  *  not valid, the entire program will halt with an error message.
  *  @param month is a month, numbered in the range 1...12.
@@ -26,19 +26,21 @@ using namespace std;
  *
  *  Grade: 15%
  */
-Date::Date(int month, int day, int year) {  
-    if (isValidDate(month,day,year)){
+Date::Date(int month, int day, int year)
+{
+    if (isValidDate(month, day, year))
+    {
         Month = month;
         Year = year;
         Day = day;
     }
-    else{
+    else
+    {
         exit(1);
     }
 }
 
-
-/** 
+/**
  *  Constructs a Date object corresponding to the given string.
  *  @param s should be a string of the form "month/day/year" where month must
  *  be one or two digits, day must be one or two digits, and year must be
@@ -47,45 +49,43 @@ Date::Date(int month, int day, int year) {
  *
  *  Grade: 30%
  */
-Date::Date(const string& s) {
+Date::Date(const string &s)
+{
     string str = s;
     vector<string> v;
     for (int i = 0; i < 2; i++)
     {
         v.push_back(str.substr(0, str.find("/")));
-        str = str.substr(str.find("/")+1,str.length());
+        str = str.substr(str.find("/") + 1, str.length());
     }
     v.push_back(str);
     int month = stoi(v[0]);
     int day = stoi(v[1]);
     int year = stoi(v[2]);
-    if (isValidDate(month,day,year)){
+    if (isValidDate(month, day, year))
+    {
         Month = month;
         Day = day;
         Year = year;
     }
-    else{
+    else
+    {
         exit(1);
     }
 }
 
-
-/** 
+/**
  *  Checks whether the given year is a leap year.
  *  @return true if and only if the input year is a leap year.
  *
  *  Grade: 10%
  */
-bool Date::isLeapYear(int year) {
-    /*if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0 ){
-        return true;
-    }
-    return false;*/
-    return((year % 4 == 0 && year % 100 != 0) || year % 400 == 0 ? true:false); 
+bool Date::isLeapYear(int year)
+{
+    return ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0 ? true : false);
 }
 
-
-/** 
+/**
  *  Returns the number of days in a given month.
  *  @param month is a month, numbered in the range 1...12.
  *  @param year is the year in question, with no digits omitted.
@@ -93,17 +93,20 @@ bool Date::isLeapYear(int year) {
  *
  *  Grade: 10%
  */
-int Date::daysInMonth(int month, int year){
-    if (month != 2){
-        return data[month-1];
+int Date::daysInMonth(int month, int year)
+{
+    if (month != 2)
+    {
+        return data[month - 1];
     }
-    else{
+    else
+    {
         int a = isLeapYear(year) ? 29 : 28;
         return a;
     }
 }
-                    
-/** 
+
+/**
  *  Checks whether the given date is valid.
  *  @return true if and only if month/day/year constitute a valid date.
  *
@@ -111,17 +114,12 @@ int Date::daysInMonth(int month, int year){
  *
  *  Grade: 20%
  */
-bool Date::isValidDate(int month, int day, int year) {
-    /*if (month >= 1 && month <= 12 && year >= 1 && daysInMonth(month,day))
-    {
-        return true;
-    }
-    return false;*/
-    return((month >= 1 && month <= 12) && year >= 1 && (day <= daysInMonth(month,year) && day > 0) ? true:false);                         
+bool Date::isValidDate(int month, int day, int year)
+{
+    return ((month >= 1 && month <= 12) && year >= 1 && (day <= daysInMonth(month, year) && day > 0) ? true : false);
 }
 
-
-/** 
+/**
  *  Returns a string representation of this Date in the form month/day/year.
  *  The month, day, and year are expressed in full as integers; for example,
  *  10/17/2010 or 5/11/258.
@@ -129,7 +127,8 @@ bool Date::isValidDate(int month, int day, int year) {
  *
  *  Grade: 20%
  */
-string Date::toString(){
+string Date::toString()
+{
     stringstream s;
     s << Month; // put month at the end of the string
     s << '/';
@@ -139,49 +138,54 @@ string Date::toString(){
     return s.str();
 }
 
-/** 
+/**
  *  Determines whether this Date is before the Date d.
  *  @return true if and only if this Date is before d.
  *
  *  Grade: 10%
  */
-bool Date::isBefore(const Date& d) {
-    if (Year < d.Year || (Year == d.Year && Month < d.Month) || (Year == d.Year && Month == d.Month && Day < d.Day)){
+bool Date::isBefore(const Date &d)
+{
+    if (Year < d.Year || (Year == d.Year && Month < d.Month) || (Year == d.Year && Month == d.Month && Day < d.Day))
+    {
         return true;
     }
-    else{
+    else
+    {
         return false;
     }
 }
 
-
-/** 
+/**
  *  Determines whether this Date is after the Date d.
  *  @return true if and only if this Date is after d.
  *
  *  Grade: 10%
  */
-bool Date::isAfter(const Date& d) {
-    if (Year > d.Year || (Year == d.Year && Month > d.Month) || (Year == d.Year && Month == d.Month && Day > d.Day)){
+bool Date::isAfter(const Date &d)
+{
+    if (Year > d.Year || (Year == d.Year && Month > d.Month) || (Year == d.Year && Month == d.Month && Day > d.Day))
+    {
         return true;
     }
-    else{
+    else
+    {
         return false;
-    }                     // replace this line with your solution
+    }
 }
 
-/** 
+/**
  *  Determines whether this Date is equal to the Date d.
  *  @return true if and only if this Date is the same as d.
  *
  *  Grade: 10%
  */
-bool Date::isEqual(const Date& d) {
-    return(!isBefore(d) && !isAfter(d)) ? true : false;       
+bool Date::isEqual(const Date &d)
+{
+    return (!isBefore(d) && !isAfter(d)) ? true : false;
 }
 
-
-/** 
+/**
  *  Returns the number of this Date in the year.
  *  @return a number n in the range 1...366, inclusive, such that this Date
  *  is the nth day of its year.  (366 is only used for December 31 in a leap
@@ -189,17 +193,18 @@ bool Date::isEqual(const Date& d) {
  *
  *  Grade: 15%
  */
-int Date::dayInYear() {
+int Date::dayInYear()
+{
     int sum = 0;
-    for (int i = 0; i < Month-1; i++)
+    for (int i = 0; i < Month - 1; i++)
     {
         sum += data[i];
     }
     sum += Day;
-    if (isLeapYear(Year) && Month > 2) sum+=1;
-    return sum;                           // replace this line with your solution
+    if (isLeapYear(Year) && Month > 2)
+        sum += 1;
+    return sum; // replace this line with your solution
 }
-
 
 /** Determines the difference in days between d and this Date.  For example,
  *  if this Date is 6/16/2006 and d is 6/15/2006, the difference is 1.
@@ -208,13 +213,15 @@ int Date::dayInYear() {
  *
  *  Grade: 10%
  */
-int Date::difference(const Date& d) {
-return 0;                           // replace this line with your solution
+int Date::difference(const Date &d)
+{
+    return 0; // replace this line with your solution
 }
 
-int main(){
-    Date bo(12,31,2004);
+int main()
+{
+    Date bo(12, 31, 2004);
     Date bot("6/25/2006");
     string a = bot.isEqual(bo) ? "yes" : "no";
-    cout << bo.dayInYear() <<'\n';
+    cout << bo.dayInYear() << '\n';
 }
