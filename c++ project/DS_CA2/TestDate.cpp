@@ -12,7 +12,7 @@
 
 
 #include "Date.h"
-
+using namespace std;
 
   int main() {
     cout << "\nTesting constructors->";
@@ -66,5 +66,4 @@
     cout << "\n" << d3->toString() << " - " << d1->toString() << " should be 2: " << d3->difference(*d1);
     cout << "\n" << d3->toString() << " - " << d4->toString() << " should be -422: " << d3->difference(*d4);
     cout << "\n" << d5->toString() << " - " << d4->toString() << " should be 48762: " << d5->difference(*d4);
-    cout << "\n";
   }

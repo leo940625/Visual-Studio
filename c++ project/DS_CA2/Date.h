@@ -22,9 +22,7 @@ using namespace std;
 
 class Date {
 private:
-    int Month;
-    int Day;
-    int Year;
+    int Month,Day,Year;
 public:
     int data[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
     /** 
