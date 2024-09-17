@@ -213,12 +213,10 @@ int Date::dayInYear()
  *
  *  Grade: 10%
  */
-int Date::difference(const Date &d)
-{
+int Date::difference(const Date &d){
     Date temp(d.Month,d.Day,d.Year);
-    int sum;
-    if (Year == temp.Year)
-    {
+    int sum = 0;
+    if (Year == temp.Year){
         return (dayInYear() - temp.dayInYear());
     }
     else if (isAfter(temp)){
@@ -226,8 +224,14 @@ int Date::difference(const Date &d)
         for (int i = temp.Year + 1; i < Year; i++){
             sum += leap(i);
         }  
+    }
+    else{
+        sum = (leap(Year) - dayInYear()) + temp.dayInYear();
+        for (int i = Year + 1; i < temp.Year; i++){
+            sum += leap(i);
+        }  
     } 
-    return sum;
+    return -(sum);
 }
 
 int Date::leap(int year){
@@ -236,7 +240,7 @@ int Date::leap(int year){
 
 int main()
 {
-    Date bo(3, 1, 2007);
+    Date bo(3, 1, 2006);
     Date bot("2/28/2006");
     string a = bot.isEqual(bo) ? "yes" : "no";
     cout << bo.difference(bot) << '\n';
