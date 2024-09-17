@@ -217,7 +217,11 @@ int Date::difference(const Date &d)
 {
     Date temp(d.Month,d.Day,d.Year);
     int sum;
-    if (isAfter(temp)){
+    if (Year == temp.Year)
+    {
+        return (dayInYear() - temp.dayInYear());
+    }
+    else if (isAfter(temp)){
         sum = (leap(temp.Year) - temp.dayInYear()) + dayInYear();
         for (int i = temp.Year + 1; i < Year; i++){
             sum += leap(i);
