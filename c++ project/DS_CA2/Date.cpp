@@ -219,8 +219,7 @@ int Date::difference(const Date &d)
     if (isAfter(temp))
     {
         /* code */
-    }
-    
+    } 
     if (Year == temp.Year)
     {
         return (dayInYear() - temp.dayInYear());
