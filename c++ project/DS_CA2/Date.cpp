@@ -215,13 +215,17 @@ int Date::dayInYear()
  */
 int Date::difference(const Date &d)
 {
-    return 0; // replace this line with your solution
+    Date temp(d.Month,d.Day,d.Year);
+    if (Year == temp.Year)
+    {
+        return (dayInYear() - temp.dayInYear());
+    }
 }
 
 int main()
 {
-    Date bo(12, 31, 2004);
-    Date bot("6/25/2006");
+    Date bo(3, 1, 2004);
+    Date bot("2/28/2006");
     string a = bot.isEqual(bo) ? "yes" : "no";
     cout << bo.dayInYear() << '\n';
 }
