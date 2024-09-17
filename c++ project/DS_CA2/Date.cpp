@@ -216,9 +216,16 @@ int Date::dayInYear()
 int Date::difference(const Date &d)
 {
     Date temp(d.Month,d.Day,d.Year);
+    int sum;
     if (isAfter(temp))
     {
-    }   return (dayInYear() - temp.dayInYear());
+        
+        (leap(temp.Year) - temp.dayInYear()) + dayInYear();
+    } 
+}
+
+int Date::leap(int year){
+    return isLeapYear(year) ? 366 : 365;
 }
 
 int main()
