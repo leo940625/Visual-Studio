@@ -241,7 +241,7 @@ int Date::leap(int year){
 int main()
 {
     Date bo(3, 1, 2006);
-    Date bot("2/28/2006");
+    Date bot("2/28/2005");
     string a = bot.isEqual(bo) ? "yes" : "no";
-    cout << bo.difference(bot) << '\n';
+    cout << bot.difference(bo) << '\n';
 }
