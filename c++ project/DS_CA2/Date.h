@@ -137,7 +137,7 @@ public:
      */
     int difference(const Date& d);
 
-    int Date::leap(int year);
+    int leap(int year);
 
 };
 #endif

@@ -217,11 +217,13 @@ int Date::difference(const Date &d)
 {
     Date temp(d.Month,d.Day,d.Year);
     int sum;
-    if (isAfter(temp))
-    {
-        
-        (leap(temp.Year) - temp.dayInYear()) + dayInYear();
+    if (isAfter(temp)){
+        sum = (leap(temp.Year) - temp.dayInYear()) + dayInYear();
+        for (int i = temp.Year + 1; i < Year; i++){
+            sum += leap(i);
+        }  
     } 
+    return sum;
 }
 
 int Date::leap(int year){
@@ -230,8 +232,8 @@ int Date::leap(int year){
 
 int main()
 {
-    Date bo(3, 1, 2004);
+    Date bo(3, 1, 2007);
     Date bot("2/28/2006");
     string a = bot.isEqual(bo) ? "yes" : "no";
-    cout << bo.dayInYear() << '\n';
+    cout << bo.difference(bot) << '\n';
 }
