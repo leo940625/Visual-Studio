@@ -57,6 +57,6 @@ def download_images_from_webpage(webpage_url, folder):
     except requests.exceptions.RequestException as e:
         print(f"An error occurred while retrieving the webpage: {e}")
 
-webpage_url = 'https://bingfong.com/forum.php?mod=viewthread&tid=1973036&highlight=%E6%9E%97%E5%B2%B1%E7%B8%88'
+webpage_url = 'https://sex.bingfong.com/thread-418066-1-1.html'
 folder = 'downloaded_images'
 download_images_from_webpage(webpage_url, folder)
