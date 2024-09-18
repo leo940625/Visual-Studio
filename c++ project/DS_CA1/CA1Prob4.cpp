@@ -43,11 +43,3 @@ class flower {
             return price;
         };
 };
-int main(){
-    flower bo("berry",3,75.0);
-    cout << bo.getName() <<'\n' << bo.getPrice() <<'\n' <<bo.getPetal() <<'\n'; 
-    bo.setName("duck");
-    bo.setPetal(5);
-    bo.setPrice(60);
-    cout << bo.getName() <<'\n' << bo.getPrice() <<'\n' <<bo.getPetal() <<'\n'; 
-}

@@ -13,7 +13,3 @@ using namespace std;
 bool isMultiple(long n,long m){ 
     return (n % m == 0 ? true : false);// if n%m == 0 return true else false
 }
-int main(){
-    int a = isMultiple(4,3) ? 2 : 3;
-    cout << a << '\n';
-}
