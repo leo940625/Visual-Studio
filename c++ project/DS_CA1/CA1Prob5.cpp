@@ -28,15 +28,11 @@ class rectangle {
         };
         // Set the width and automatically update the perimeter and area.
         void setWidth (double wd){
-            width = wd;
-            perimeter = 2*(width+length);
-            area = width*length;
+            setDimension(wd,length);
         };
         // Set the length and automatically update the perimeter and area.
         void setLength (double lg){
-            length = lg;
-            perimeter = 2*(width+length);
-            area = width*length;
+            setDimension(width,lg);
         };
         // Return the width of the rectangle.
         double getWidth (){
