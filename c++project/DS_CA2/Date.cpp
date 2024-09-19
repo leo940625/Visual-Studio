@@ -150,7 +150,7 @@ bool Date::isBefore(const Date &d)
         return true;
     }
     else
-    {
+    { 
         return false;
     }
 }
