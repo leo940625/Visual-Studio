@@ -1,12 +1,12 @@
 /**
  * Briefly explain the function of this class.
  *
- * @author 			Your name here
- * @ID 				Your student ID here
+ * @author 			аб?╔Э HSIEH WU CHAO
+ * @ID 				B12505023
  * @Department 		Engineering Science and Ocean Engineering
  * @Affiliation 	National Taiwan University
  *
- * Date.cpp
+ * Date.h
  * version 1.0
  */
 #include "Date.h"
