@@ -52,13 +52,13 @@ Date::Date(int month, int day, int year)
 Date::Date(const string &s)
 {
     string str = s;
-    vector<string> v;
+    string v[3];
     for (int i = 0; i < 2; i++)
     {
-        v.push_back(str.substr(0, str.find("/")));
+        v[i] = (str.substr(0, str.find("/")));
         str = str.substr(str.find("/") + 1, str.length());
     }
-    v.push_back(str);
+    v[2] = str;
     int month = stoi(v[0]);
     int day = stoi(v[1]);
     int year = stoi(v[2]);
