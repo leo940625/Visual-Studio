@@ -66,4 +66,14 @@ using namespace std;
     cout << "\n" << d3->toString() << " - " << d1->toString() << " should be 2: " << d3->difference(*d1);
     cout << "\n" << d3->toString() << " - " << d4->toString() << " should be -422: " << d3->difference(*d4);
     cout << "\n" << d5->toString() << " - " << d4->toString() << " should be 48762: " << d5->difference(*d4);
+    cout << "\n\nTesting isLeapYear->";
+    Date* c1 = new Date(1, 1, 1);
+    cout << "\nDate 1/1/1 should be false: " << c1->isLeapYear(1);
+    cout << "\nDate 1/1/4 should be true: " << c1->isLeapYear(4);
+    cout << "\nDate 1/1/1600 should be true: " << c1->isLeapYear(1600);
+    cout << "\nDate 1/1/1700 should be false: " << c1->isLeapYear(1700);
+    cout << "\nDate 1/1/2000 should be true: " << c1->isLeapYear(2000);
+    cout << "\nDate 1/1/2100 should be false: " << c1->isLeapYear(2100);
+    cout << "\nDate 1/1/2024 should be true: " << c1->isLeapYear(2024);
+    cout << "\nDate 1/1/2023 should be false: " << c1->isLeapYear(2023);
   }
