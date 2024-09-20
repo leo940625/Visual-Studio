@@ -40,7 +40,9 @@ DListNode<T>* DList<T>::newNode(const T& item,DListNode<T>* prev, DListNode<T>* 
  */
 template<typename T>
 DList<T>::DList() {
-	head = newNode(,nullptr,nullptr);   
+	head = newNode(0,nullptr,nullptr);
+    head->next = head;
+    head->prev = head;   
 }
 
 /**
