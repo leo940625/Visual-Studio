@@ -42,7 +42,8 @@ template<typename T>
 DList<T>::DList() {
 	head = newNode(0,nullptr,nullptr);
     head->next = head;
-    head->prev = head;   
+    head->prev = head;
+    size = 0;   
 }
 
 /**
