@@ -11,8 +11,7 @@
  *  @param n the node following this node.
  */
 template<typename T>
-DListNode<T>::DListNode(const T& i, DListNode<T>* p,
-		DListNode<T>* n) {
+DListNode<T>::DListNode(const T& i, DListNode<T>* p,DListNode<T>* n){
 	item = i;
 	prev = p;
 	next = n;

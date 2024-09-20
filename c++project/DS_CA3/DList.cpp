@@ -31,8 +31,7 @@ using namespace std;
  *  @param next the node following this node.
  */
 template<typename T>
-DListNode<T>* DList<T>::newNode(const T& item,
-		DListNode<T>* prev, DListNode<T>* next) {
+DListNode<T>* DList<T>::newNode(const T& item,DListNode<T>* prev, DListNode<T>* next) {
 	return new DListNode<T>(item, prev, next);
 }
 
@@ -41,7 +40,8 @@ DListNode<T>* DList<T>::newNode(const T& item,
  */
 template<typename T>
 DList<T>::DList() {
-	//  Your solution here.
+	head = newNode(,nullptr,nullptr);
+    
 }
 
 /**
