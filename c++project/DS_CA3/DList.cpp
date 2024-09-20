@@ -40,7 +40,7 @@ DListNode<T>* DList<T>::newNode(const T& item,DListNode<T>* prev, DListNode<T>* 
  */
 template<typename T>
 DList<T>::DList() {
-	head = newNode(0,nullptr,nullptr);
+	head = newNode(T(),nullptr,nullptr);
     head->next = head;
     head->prev = head;
     size = 0;   
@@ -73,7 +73,10 @@ int DList<T>::length() {
  */
 template<typename T>
 void DList<T>::insertFront(const T& item) {
-	// Your solution here.
+	DListNode<T>* current = newNode(item,head,head->next);
+    head->next = current;
+    current->next->prev = current;
+    size++;
 }
 
 /**
@@ -83,7 +86,10 @@ void DList<T>::insertFront(const T& item) {
  */
 template<typename T>
 void DList<T>::insertBack(const T& item) {
-	// Your solution here.
+	DListNode<T>* current = newNode(item,head->prev,head);
+    head->prev = current;
+    current->prev->next = current;
+    size++;
 }
 
 /**
@@ -97,7 +103,7 @@ void DList<T>::insertBack(const T& item) {
  */
 template<typename T>
 DListNode<T>* DList<T>::front() {
-	// Your solution here.
+	return head->next;
 }
 
 /**
@@ -111,7 +117,7 @@ DListNode<T>* DList<T>::front() {
  */
 template<typename T>
 DListNode<T>* DList<T>::back() {
-	// Your solution here.
+	return head->prev;
 }
 
 /**
@@ -126,7 +132,14 @@ DListNode<T>* DList<T>::back() {
  */
 template<typename T>
 DListNode<T>* DList<T>::next(DListNode<T>* node) {
-	// Your solution here.
+	/*if (node == nullptr || node->next == head)
+    {
+        return nullptr;
+    }
+    else{
+        return node-next;
+    }*/
+    return (node == nullptr || node->next == head) ? nullptr : node->next;
 }
 
 /**
@@ -141,7 +154,7 @@ DListNode<T>* DList<T>::next(DListNode<T>* node) {
  */
 template<typename T>
 DListNode<T>* DList<T>::prev(DListNode<T>* node) {
-	// Your solution here.
+    return (node == nullptr || node->prev == head) ? nullptr : node->prev;
 }
 
 /**
@@ -153,7 +166,14 @@ DListNode<T>* DList<T>::prev(DListNode<T>* node) {
  */
 template<typename T>
 void DList<T>::insertAfter(const T& item, DListNode<T>* node) {
-	// Your solution here.
+	if (node != nullptr)
+    {
+        DListNode<T>* current = newNode(item,node,node->next);
+        current->next->prev = current;
+        node->next = current;
+        size++;
+    }
+
 }
 
 /**
@@ -165,7 +185,13 @@ void DList<T>::insertAfter(const T& item, DListNode<T>* node) {
  */
 template<typename T>
 void DList<T>::insertBefore(const T& item, DListNode<T>* node) {
-	// Your solution here.
+	if (node != nullptr)
+    {
+        DListNode<T>* current = newNode(item,node->prev,node);
+        current->prev->next = current;
+        node->prev = current;
+        size++;
+    }
 }
 
 /**
@@ -174,7 +200,13 @@ void DList<T>::insertBefore(const T& item, DListNode<T>* node) {
  */
 template<typename T>
 void DList<T>::remove(DListNode<T>* node) {
-	// Your solution here.
+	if (node != nullptr)
+    {
+        node->prev->next = node->next;
+        node->next->prev = node->prev;
+        delete node;
+        size--;
+    }
 }
 
 /**
