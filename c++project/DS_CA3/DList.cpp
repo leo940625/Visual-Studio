@@ -103,7 +103,13 @@ void DList<T>::insertBack(const T& item) {
  */
 template<typename T>
 DListNode<T>* DList<T>::front() {
-	return head->next;
+    if (size == 0 )
+    {
+        return nullptr;
+    }
+    else{
+	    return head->next;
+    }
 }
 
 /**
@@ -117,7 +123,13 @@ DListNode<T>* DList<T>::front() {
  */
 template<typename T>
 DListNode<T>* DList<T>::back() {
-	return head->prev;
+	if (size == 0 )
+    {
+        return nullptr;
+    }
+    else{
+	    return head->prev;
+    }
 }
 
 /**
@@ -173,7 +185,6 @@ void DList<T>::insertAfter(const T& item, DListNode<T>* node) {
         node->next = current;
         size++;
     }
-
 }
 
 /**
