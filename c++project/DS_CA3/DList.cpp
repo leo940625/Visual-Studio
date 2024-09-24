@@ -211,7 +211,7 @@ void DList<T>::insertBefore(const T& item, DListNode<T>* node) {
  */
 template<typename T>
 void DList<T>::remove(DListNode<T>* node) {
-	if (node != nullptr)
+	if (node != nullptr && node != head)
     {
         node->prev->next = node->next;
         node->next->prev = node->prev;
