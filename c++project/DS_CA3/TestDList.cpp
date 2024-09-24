@@ -2,8 +2,8 @@
 #include <iostream>
 #include "DList.h"
 #include "DListNode.h"
-//#include "DListNode.cpp"
-//#include "DList.cpp"
+#include "DListNode.cpp"
+#include "DList.cpp"
 //#include "LockDList.h"
 //#include "LockDList.cpp"
 //#include "LockDListNode.h"
