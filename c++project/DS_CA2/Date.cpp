@@ -1,14 +1,16 @@
 /**
- * Briefly explain the function of this class.
+ * class Date contains month, day, and year. It can perform operations like checking if a year is a leap year or
+ * calculating the difference between two dates.
  *
- * @author 			аб?╔Э HSIEH WU CHAO
- * @ID 				B12505023
- * @Department 		Engineering Science and Ocean Engineering
- * @Affiliation 	National Taiwan University
+ * @author           Hsieh Wu Chao
+ * @ID               B12505023
+ * @Department       Engineering Science and Ocean Engineering
+ * @Affiliation      National Taiwan University
  *
  * Date.h
  * version 1.0
  */
+
 #include "Date.h"
 #include <cstdio>
 #include <cstdlib>
@@ -17,16 +19,17 @@
 using namespace std;
 
 /**
- *  Constructs a Date with the given month, day and year.   If the date is
- *  not valid, the entire program will halt with an error message.
- *  @param month is a month, numbered in the range 1...12.
- *  @param day is between 1 and the number of days in the given month.
- *  @param year is the year in question, with no digits omitted.
+ * Constructor that creates a Date object with the given month, day, and year.
+ * If the date is not valid, the program will exit with an error.
+ * @param month represents the month, in the range of 1...12.
+ * @param day represents the day, within the valid range for the given month.
+ * @param year represents the full year, with no digits omitted.
  *
- *  Grade: 15%
+ * Grade: 15%
  */
 Date::Date(int month, int day, int year)
 {
+    // Check if the date is valid
     if (isValidDate(month, day, year))
     {
         Month = month;
@@ -35,32 +38,34 @@ Date::Date(int month, int day, int year)
     }
     else
     {
-        exit(1);
+        // Exit the program if the date is invalid
+        exit(0);
     }
 }
 
 /**
- *  Constructs a Date object corresponding to the given string.
- *  @param s should be a string of the form "month/day/year" where month must
- *  be one or two digits, day must be one or two digits, and year must be
- *  between 1 and 4 digits.  If s does not match these requirements or is not
- *  a valid date, the program halts with an error message.
+ * Constructor that creates a Date object from a string in the format "month/day/year".
+ * If the string is not formatted correctly or represents an invalid date, the program will exit.
+ * @param s should be a string formatted as "month/day/year".
  *
- *  Grade: 30%
+ * Grade: 30%
  */
 Date::Date(const string &s)
 {
     string str = s;
     string v[3];
+    // Split the input string by "/" to extract month, day, and year
     for (int i = 0; i < 2; i++)
     {
         v[i] = (str.substr(0, str.find("/")));
         str = str.substr(str.find("/") + 1, str.length());
     }
     v[2] = str;
+    // Convert strings to integers
     int month = stoi(v[0]);
     int day = stoi(v[1]);
     int year = stoi(v[2]);
+    // Check if the date is valid
     if (isValidDate(month, day, year))
     {
         Month = month;
@@ -69,100 +74,103 @@ Date::Date(const string &s)
     }
     else
     {
-        exit(1);
+        // Exit the program if the date is invalid
+        exit(0);
     }
 }
 
 /**
- *  Checks whether the given year is a leap year.
- *  @return true if and only if the input year is a leap year.
+ * Checks whether the given year is a leap year.
+ * @param year represents the year to check.
+ * @return true if the year is a leap year, false otherwise.
  *
- *  Grade: 10%
+ * Grade: 10%
  */
 bool Date::isLeapYear(int year)
 {
+    // A year is a leap year if divisible by 4 but not 100, or divisible by 400
     return ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0 ? true : false);
 }
 
 /**
- *  Returns the number of days in a given month.
- *  @param month is a month, numbered in the range 1...12.
- *  @param year is the year in question, with no digits omitted.
- *  @return the number of days in the given month.
+ * Returns the number of days in a given month.
+ * @param month is the month (1-12).
+ * @param year is the year, which is used to check for leap years.
+ * @return the number of days in the given month.
  *
- *  Grade: 10%
+ * Grade: 10%
  */
 int Date::daysInMonth(int month, int year)
 {
+    // If not February, return the number of days from the data array
     if (month != 2)
     {
         return data[month - 1];
     }
-    else
-    {
-        int a = isLeapYear(year) ? 29 : 28;
-        return a;
-    }
+    // For February, return 29 if leap year, otherwise 28
+    return isLeapYear(year) ? 29 : 28;
 }
 
 /**
- *  Checks whether the given date is valid.
- *  @return true if and only if month/day/year constitute a valid date.
+ * Checks if the provided month/day/year constitutes a valid date.
+ * @param month, day, year represent the date to validate.
+ * @return true if the date is valid, false otherwise.
  *
- *  Years prior to A.D. 1 are NOT valid.
- *
- *  Grade: 20%
+ * Grade: 20%
  */
 bool Date::isValidDate(int month, int day, int year)
 {
+    // Check if the month is valid (1-12), year is positive, and the day is valid for the given month and year
     return ((month >= 1 && month <= 12) && year >= 1 && (day <= daysInMonth(month, year) && day > 0) ? true : false);
 }
 
 /**
- *  Returns a string representation of this Date in the form month/day/year.
- *  The month, day, and year are expressed in full as integers; for example,
- *  10/17/2010 or 5/11/258.
- *  @return a String representation of this Date.
+ * Returns the string representation of the Date in the form "month/day/year".
+ * @return a string representing the date.
  *
- *  Grade: 20%
+ * Grade: 20%
  */
 string Date::toString()
 {
     stringstream s;
-    s << Month; // put month at the end of the string
+    s << Month;  // Add month to string
     s << '/';
-    s << Day;
+    s << Day;    // Add day
     s << '/';
-    s << Year;
+    s << Year;   // Add year
     return s.str();
 }
 
 /**
- *  Determines whether this Date is before the Date d.
- *  @return true if and only if this Date is before d.
+ * Checks if this date is before another Date object.
+ * @param d represents the date to compare with.
+ * @return true if this date is before d, false otherwise.
  *
- *  Grade: 10%
+ * Grade: 10%
  */
 bool Date::isBefore(const Date &d)
 {
+    // Compare year, then month, then day to determine if this date is earlier
     if (Year < d.Year || (Year == d.Year && Month < d.Month) || (Year == d.Year && Month == d.Month && Day < d.Day))
     {
         return true;
     }
     else
-    { 
+    {
         return false;
     }
 }
 
 /**
- *  Determines whether this Date is after the Date d.
- *  @return true if and only if this Date is after d.
+ * Checks if this date is after another Date object.
+ * @param d represents the date to compare with.
+ * @return true if this date is after d, false otherwise.
  *
- *  Grade: 10%
+ * Grade: 10%
  */
 bool Date::isAfter(const Date &d)
 {
+    // Compare year, then month, then day to determine if this date is later
     if (Year > d.Year || (Year == d.Year && Month > d.Month) || (Year == d.Year && Month == d.Month && Day > d.Day))
     {
         return true;
@@ -174,67 +182,83 @@ bool Date::isAfter(const Date &d)
 }
 
 /**
- *  Determines whether this Date is equal to the Date d.
- *  @return true if and only if this Date is the same as d.
+ * Checks if this date is equal to another Date object.
+ * @param d represents the date to compare with.
+ * @return true if both dates are the same, false otherwise.
  *
- *  Grade: 10%
+ * Grade: 10%
  */
 bool Date::isEqual(const Date &d)
 {
+    // The date is equal if it's not before or after the given date
     return (!isBefore(d) && !isAfter(d)) ? true : false;
 }
 
 /**
- *  Returns the number of this Date in the year.
- *  @return a number n in the range 1...366, inclusive, such that this Date
- *  is the nth day of its year.  (366 is only used for December 31 in a leap
- *  year.)
+ * Returns the day number of this Date in the current year (1-366).
+ * @return the day number of this Date in the year.
  *
- *  Grade: 15%
+ * Grade: 15%
  */
 int Date::dayInYear()
 {
     int sum = 0;
+    // Sum up the days from all previous months
     for (int i = 0; i < Month - 1; i++)
     {
         sum += data[i];
     }
     sum += Day;
-    if (isLeapYear(Year) && Month > 2)
-        sum += 1;
-    return sum; // replace this line with your solution
+    // If it's a leap year and past February, add 1 extra day
+    if (isLeapYear(Year) && Month > 2) sum += 1;
+    return sum;
 }
 
-/** Determines the difference in days between d and this Date.  For example,
- *  if this Date is 6/16/2006 and d is 6/15/2006, the difference is 1.
- *  If this Date occurs before d, the result is negative.
- *  @return the difference in days between d and this Date.
+/**
+ * Determines the difference in days between this Date and another Date d.
+ * @param d represents the date to compare with.
+ * @return the difference in days between this Date and d.
  *
- *  Grade: 10%
+ * Grade: 10%
  */
-int Date::difference(const Date &d){
-    Date temp(d.Month,d.Day,d.Year);
+int Date::difference(const Date &d)
+{
+    Date temp(d.Month, d.Day, d.Year);
     int sum = 0;
-    if (Year == temp.Year){
+
+    // If the years are the same, return the difference in days within the year
+    if (Year == temp.Year)
+    {
         return (dayInYear() - temp.dayInYear());
     }
-    else if (isAfter(temp)){
+    // If this date is after the compared date, calculate the total days difference
+    else if (isAfter(temp))
+    {
         sum = (leap(temp.Year) - temp.dayInYear()) + dayInYear();
-        for (int i = temp.Year + 1; i < Year; i++){
+        for (int i = temp.Year + 1; i < Year; i++)
+        {
             sum += leap(i);
         }
-        return sum;  
+        return sum;
     }
-    else{
+    // If this date is before the compared date, return the negative difference
+    else
+    {
         sum = (leap(Year) - dayInYear()) + temp.dayInYear();
-        for (int i = Year + 1; i < temp.Year; i++){
+        for (int i = Year + 1; i < temp.Year; i++)
+        {
             sum += leap(i);
         }
-        return -(sum);  
-    } 
-    
+        return -(sum);
+    }
 }
 
-int Date::leap(int year){
+/**
+ * Returns the number of days in the year (365 or 366) depending on whether it's a leap year.
+ * @param year represents the year to check.
+ * @return 366 if leap year, otherwise 365.
+ */
+int Date::leap(int year)
+{
     return isLeapYear(year) ? 366 : 365;
 }

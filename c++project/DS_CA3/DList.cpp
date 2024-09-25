@@ -144,13 +144,6 @@ DListNode<T>* DList<T>::back() {
  */
 template<typename T>
 DListNode<T>* DList<T>::next(DListNode<T>* node) {
-	/*if (node == nullptr || node->next == head)
-    {
-        return nullptr;
-    }
-    else{
-        return node-next;
-    }*/
     return (node == nullptr || node->next == head) ? nullptr : node->next;
 }
 
