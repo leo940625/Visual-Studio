@@ -213,7 +213,6 @@ int Date::dayInYear()
     if (isLeapYear(Year) && Month > 2) sum += 1;
     return sum;
 }
-
 /**
  * Determines the difference in days between this Date and another Date d.
  * @param d represents the date to compare with.
