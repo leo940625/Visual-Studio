@@ -9,7 +9,7 @@
 #include <iostream>
 #include "DList.h"
 using namespace std;
-template class DList<int>;
+//template class DList<int>;
 
 /* DList invariants:
  *  1)  head != null.
