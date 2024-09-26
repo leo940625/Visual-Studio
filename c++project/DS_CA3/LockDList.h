@@ -1,6 +1,9 @@
 #ifndef LOCKDLIST_H
 #define LOCKDLIST_H
 template<typename T>
+#include<DListNode.h>
+#include<DList.h>
+
 
 class LockDList : public DList<T> {
 public:
@@ -12,7 +15,7 @@ public:
     // 鎖定節點的方法
     void lockNode(DListNode<T> * node) {
         // 將 DListNode* 類型轉換為 LockDListNode*
-        LockDListNode<T> * lockNode = dynamic_cast<LockDListNode*>(node);
+        LockDListNode<T> * lockNode = dynamic_cast<LockDListNode<T>*>(node);
         if (lockNode != nullptr) {
             lockNode->lock();
         }
@@ -20,7 +23,7 @@ public:
 
     // 覆寫 remove() 方法，防止鎖定節點被移除
     void remove(DListNode<T> * node) override {
-        LockDListNode<T> * lockNode = dynamic_cast<LockDListNode*>(node);
+        LockDListNode<T> * lockNode = dynamic_cast<LockDListNode<T>*>(node);
         if (lockNode == nullptr || !lockNode->isLocked) {
             DList::remove(node);  // 只有未鎖定節點才能被移除
         }
