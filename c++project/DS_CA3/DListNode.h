@@ -35,4 +35,6 @@ public:
 	DListNode(const T& i, DListNode<T>* p, DListNode<T>* n);
 };
 
+
 #endif
+
