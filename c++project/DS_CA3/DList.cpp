@@ -5,7 +5,6 @@
  *
  *  DO NOT CHANGE ANY METHOD PROTOTYPES IN THIS FILE.
  */
-
 #include <iostream>
 #include "DList.h"
 using namespace std;
