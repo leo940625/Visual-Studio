@@ -4,9 +4,9 @@
 #include "DListNode.h"
 //#include "DListNode.cpp"
 //#include "DList.cpp"
-//#include "LockDList.h"
-//#include "LockDList.cpp"
-//#include "LockDListNode.h"
+#include "LockDList.h"
+#include "LockDList.cpp"
+#include "LockDListNode.h"
 using namespace std;
 
 int main() {
@@ -106,7 +106,7 @@ int main() {
   d1.remove(d1.back());
   assert(d1.front()->item == 12345 && d1.back()->item == 1);
   cout << "->OK" << endl;
-/*
+
   cout << endl;
   cout << "========================" << endl;
   cout << "Part 2 Testing LockDList" << endl;
@@ -131,6 +131,6 @@ int main() {
   }
   assert(ld1.front()->item == 1 && ld1.back()->item == 5);
   ld1.toString();
-*/
+
   return 0;
 }

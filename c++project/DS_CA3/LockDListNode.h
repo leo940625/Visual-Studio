@@ -1,6 +1,6 @@
 #ifndef LOCKDLISTNODE_H
 #define LOCKDLISTNODE_H
-
+template class LockDListNode<int>;
 template<typename T>
 class LockDListNode : public DListNode<T> {
 public:
