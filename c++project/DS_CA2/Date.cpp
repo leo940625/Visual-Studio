@@ -66,7 +66,7 @@ Date::Date(const string &s)
     int day = stoi(v[1]);
     int year = stoi(v[2]);
     // Check if the date is valid
-    if (isValidDate(month, day, year))
+    if (v[0].length() < 3 && v[1].length() < 3 && v[2].length() < 5 && isValidDate(month, day, year))
     {
         Month = month;
         Day = day;
