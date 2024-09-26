@@ -1,16 +1,14 @@
 #ifndef LOCKDLIST_H
 #define LOCKDLIST_H
+#include "LockDListNode.h"
 template<typename T>
-#include<DListNode.h>
-#include<DList.h>
+class LockDListNode;
 
-
+template<typename T>
 class LockDList : public DList<T> {
 public:
     // 覆寫 newNode() 方法，確保創建的是 LockDListNode
-    DListNode<T> * newNode(int item, DListNode* prev, DListNode<T> * next) override {
-        return new LockDListNode(item, prev, next);
-    }
+    DListNode<T> * newNode(const T& item, DListNode<T>* prev, DListNode<T> * next);
 
     // 鎖定節點的方法
     void lockNode(DListNode<T> * node) {
