@@ -2,10 +2,8 @@
 #include <iostream>
 #include "DList.h"
 #include "DListNode.h"
-//#include "DListNode.cpp"
-//#include "DList.cpp"
 #include "LockDList.h"
-#include "LockDList.cpp"
+//#include "LockDList.cpp"
 #include "LockDListNode.h"
 using namespace std;
 
@@ -131,6 +129,5 @@ int main() {
   }
   assert(ld1.front()->item == 1 && ld1.back()->item == 5);
   ld1.toString();
-
   return 0;
 }

@@ -33,6 +33,7 @@ public:
 	 *  @param n the node following this node.
 	 */
 	DListNode(const T& i, DListNode<T>* p, DListNode<T>* n);
+    virtual ~DListNode() = default;
 };
 
 

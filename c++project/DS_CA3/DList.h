@@ -151,7 +151,7 @@ public:
 	 *  remove() removes "node" from this DList.  If "node" is null, do nothing.
 	 *  Performance:  runs in O(1) time.
 	 */
-	void remove(DListNode<T>* node);
+	virtual void remove(DListNode<T>* node);
 
 	/**
 	 *  toString() prints a string representation of this DList.
