@@ -1,8 +1,8 @@
 #ifndef LOCKDLIST_H
 #define LOCKDLIST_H
 template<typename T>
-#include<DListNode.cpp>
-#include<DList.cpp>
+#include<DListNode.h>
+#include<DList.h>
 
 
 class LockDList : public DList<T> {
