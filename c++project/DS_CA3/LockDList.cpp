@@ -4,8 +4,8 @@ using namespace std;
 #include "LockDList.h"
 #include "DList.h"
 
-template class DListNode<int>;
-template class DListNode<string>;
+template class LockDList<int>;
+template class LockDList<string>;
 
 template<typename T>
 class LockDListNode;
