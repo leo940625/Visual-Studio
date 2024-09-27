@@ -3,7 +3,7 @@
 #include"DListNode.h"
 #include"LockDList.h"
 
-template <class T>
+template <typename T>
 class LockDList;
 
 template<typename T>
@@ -18,6 +18,6 @@ class LockDListNode : public DListNode<T> {
         void lock() {
             isLocked = true;
         }
-};  
+};
 
 #endif
