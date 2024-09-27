@@ -5,7 +5,7 @@
 #include "DListNode.h"
 
 #include "LockDList.h"
-#include "LockDList.cpp"
+//#include "LockDList.cpp"
 #include "LockDListNode.h"
 
 using namespace std;
@@ -113,16 +113,16 @@ int main() {
     cout << endl;
     cout << "remove() Test ";
     
-    d1.remove(NULL); // 不執行任何操作
-    d1.remove(d1.next(d1.next(d1.front()))); // 移除 "banana"
-    d1.remove(d1.front()); // 移除 "kiwi"
-    d1.remove(d1.front()); // 移除 "cherry"
-    d1.remove(d1.back()); // 移除 "grape"
-    d1.remove(d1.back()); // 移除 "elderberry"
-    d1.remove(d1.back()); // 移除 "date"
-    d1.remove(d1.back()); // 移除 "apple"
+    d1.remove(NULL); // �???��??任�?????�?
+    d1.remove(d1.next(d1.next(d1.front()))); // 移�?? "banana"
+    d1.remove(d1.front()); // 移�?? "kiwi"
+    d1.remove(d1.front()); // 移�?? "cherry"
+    d1.remove(d1.back()); // 移�?? "grape"
+    d1.remove(d1.back()); // 移�?? "elderberry"
+    d1.remove(d1.back()); // 移�?? "date"
+    d1.remove(d1.back()); // 移�?? "apple"
     
-    // 最後應該剩下 "fig" 和 "mango"
+    // ???�????該�?��?? "fig" ??? "mango"
     assert(d1.front()->item == "fig" && d1.back()->item == "apple");
     cout << "->OK" << endl;
     
@@ -140,7 +140,7 @@ int main() {
     ld1.toString();
     
     cout << "Lock the node \"epsilon\" and the node \"gamma\"." << endl;
-    ld1.lockNode(ld1.back()); // 假設 "gamma" 是最後一個節點
+    ld1.lockNode(ld1.back()); // ???�? "gamma" ??��??�?�????�?�?
     ld1.lockNode(ld1.front()); // "epsilon"
     
     cout << "Remove all nodes." << endl;
@@ -152,7 +152,7 @@ int main() {
         temp = ld1backNode;
     }
     
-    // 應保留被鎖定的節點 "epsilon" 和 "gamma"
+    // ???�????被�??�????�?�? "epsilon" ??? "gamma"
     assert(ld1.front()->item == "epsilon" && ld1.back()->item == "gamma");
     ld1.toString();
 
