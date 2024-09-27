@@ -5,6 +5,9 @@
 #ifndef DLISTNODE_H
 #define DLISTNODE_H
 
+using namespace std;
+#include<string>
+
 template<typename T>
 class DList;
 
