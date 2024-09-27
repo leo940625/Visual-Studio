@@ -3,9 +3,8 @@
 #include <string>
 #include "DList.h"
 #include "DListNode.h"
-
 #include "LockDList.h"
-//#include "LockDList.cpp"
+#include "LockDList.cpp"
 #include "LockDListNode.h"
 
 using namespace std;
