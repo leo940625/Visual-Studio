@@ -8,7 +8,8 @@
 #include <iostream>
 #include "DList.h"
 using namespace std;
-//template class DList<int>;
+template class DList<int>;
+template class DList<string>;
 
 /* DList invariants:
  *  1)  head != null.
