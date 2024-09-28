@@ -22,10 +22,9 @@ void LockDList<T>::lockNode(DListNode<T>* node) {
     // 將 DListNode* 類型轉換為 LockDListNode*
     LockDListNode<T>* lockNode = dynamic_cast<LockDListNode<T>*>(node);
     if (lockNode != nullptr) {
-        lockNode->lock();
+        lockNode->isLocked = true;
     }
 }
-
 // 覆寫 remove() 方法，防止鎖定節點被移除
 template<typename T>
 void LockDList<T>::remove(DListNode<T>* node){

@@ -14,11 +14,6 @@ class LockDListNode : public DListNode<T> {
         // 建構子：呼叫父類別的建構子並初始化 isLocked
         LockDListNode(const T& i, DListNode<T>* prev, DListNode<T>* next) 
             : DListNode<T>(i, prev, next), isLocked(false) {}
-        
-        // 鎖定節點的方法
-        void lock() {
-            isLocked = true;
-        }
 };
 
 #endif
