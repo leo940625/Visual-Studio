@@ -10,6 +10,8 @@
 using namespace std;
 template class DList<int>;
 template class DList<string>;
+template class DList<float>;
+template class DList<double>;
 
 /* DList invariants:
  *  1)  head != null.

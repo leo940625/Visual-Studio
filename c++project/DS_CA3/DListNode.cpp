@@ -5,6 +5,9 @@ A DListNode is a node in a DList (doubly-linked list).
 #include "DListNode.h"
 template class DListNode<int>;
 template class DListNode<string>;
+template class DListNode<float>;
+template class DListNode<double>;
+
 
 /**
  *  DListNode() constructor.
