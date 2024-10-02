@@ -1,7 +1,6 @@
 #ifndef LOCKDLISTNODE_H
 #define LOCKDLISTNODE_H
 #include"DListNode.h"
-#include"LockDList.h"
 #include<string>
 
 template <typename T>

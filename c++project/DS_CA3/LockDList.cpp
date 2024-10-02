@@ -31,7 +31,7 @@ void LockDList<T>::lockNode(DListNode<T>* node) {
 template<typename T>
 void LockDList<T>::remove(DListNode<T>* node){
     LockDListNode<T>* lockNode = dynamic_cast<LockDListNode<T>*>(node);
-    if (lockNode == nullptr || !lockNode->Lock) {
+    if (lockNode != nullptr && !lockNode->Lock) {
         DList<T>::remove(node); //only unlock node can be remove
     }
 }
