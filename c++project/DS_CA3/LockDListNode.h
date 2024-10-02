@@ -10,10 +10,9 @@ class LockDList;
 template<typename T>
 class LockDListNode : public DListNode<T> {
     public:
-        bool isLocked;  // 用來表示節點是否被鎖定
-        // 建構子：呼叫父類別的建構子並初始化 isLocked
+        bool Lock; 
         LockDListNode(const T& i, DListNode<T>* prev, DListNode<T>* next) 
-            : DListNode<T>(i, prev, next), isLocked(false) {}
+            : DListNode<T>(i, prev, next), Lock(false) {}
 };
 
 #endif

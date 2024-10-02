@@ -21,17 +21,17 @@ DListNode<T>* LockDList<T>::newNode(const T& item, DListNode<T>* prev,DListNode<
 
 template<typename T>
 void LockDList<T>::lockNode(DListNode<T>* node) {
-    // 將 DListNode* 類型轉換為 LockDListNode*
+    // change DListNode* to LockDListNode*
     LockDListNode<T>* lockNode = dynamic_cast<LockDListNode<T>*>(node);
     if (lockNode != nullptr) {
-        lockNode->isLocked = true;
+        lockNode->Lock = true;
     }
 }
 //override remove
 template<typename T>
 void LockDList<T>::remove(DListNode<T>* node){
     LockDListNode<T>* lockNode = dynamic_cast<LockDListNode<T>*>(node);
-    if (lockNode == nullptr || !lockNode->isLocked) {
+    if (lockNode == nullptr || !lockNode->Lock) {
         DList<T>::remove(node); //only unlock node can be remove
     }
 }
