@@ -1,3 +1,13 @@
+/**
+ * @author HSIEH WU CHAO
+ * @ID B12505023
+ * @Department Engineering Science and Ocean Engineering
+ * @Affiliation National Taiwan University
+ *
+ * LockDList.h
+ * version 1.0
+ */
+
 #ifndef LOCKDLIST_H
 #define LOCKDLIST_H
 #include "LockDListNode.h"

@@ -1,3 +1,13 @@
+/**
+ * @author HSIEH WU CHAO
+ * @ID B12505023
+ * @Department Engineering Science and Ocean Engineering
+ * @Affiliation National Taiwan University
+ *
+ * DListNode.cpp
+ * version 1.0
+ */
+
 /*
 A DListNode is a node in a DList (doubly-linked list).
 */

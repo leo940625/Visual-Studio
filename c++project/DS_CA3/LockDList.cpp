@@ -1,3 +1,13 @@
+/**
+ * @author HSIEH WU CHAO
+ * @ID B12505023
+ * @Department Engineering Science and Ocean Engineering
+ * @Affiliation National Taiwan University
+ *
+ * LockDList.cpp
+ * version 1.0
+ */
+
 #include <iostream>
 using namespace std;
 
