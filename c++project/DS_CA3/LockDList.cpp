@@ -12,9 +12,8 @@ template class LockDList<double>;
 template<typename T>
 class LockDListNode;
 
-
 template<typename T>
-LockDListNode<T>* LockDList<T>::newNode(const T& item, DListNode<T>* prev,DListNode<T>* next){
+DListNode<T>* LockDList<T>::newNode(const T& item, DListNode<T>* prev,DListNode<T>* next){
     return new LockDListNode<T>(item, prev, next);
 }
 

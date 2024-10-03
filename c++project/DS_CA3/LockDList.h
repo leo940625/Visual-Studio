@@ -9,7 +9,7 @@ template<typename T>
 class LockDList : public DList<T> {
 public:
     // override newNode() 
-    LockDListNode<T>* newNode(const T& item, DListNode<T>* prev,DListNode<T>* next) override;
+    DListNode<T>* newNode(const T& item, DListNode<T>* prev,DListNode<T>* next) override;
 
     void lockNode(DListNode<T>* node);
    
