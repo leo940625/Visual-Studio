@@ -27,9 +27,6 @@ template class DListNode<double>;
  */
 //template class DListNode<int>;
 template<typename T>
-DListNode<T>::DListNode(const T& i, DListNode<T>* p,DListNode<T>* n){
-	item = i;
-	prev = p;
-	next = n;
-}
+DListNode<T>::DListNode(const T& i, DListNode<T>* p,DListNode<T>* n)
+        :item(i),prev(p),next(n){}
 
