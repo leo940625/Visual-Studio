@@ -13,8 +13,6 @@
 #include"DListNode.h"
 #include<string>
 
-template <typename T>
-class LockDList;
 
 template<typename T>
 class LockDListNode : public DListNode<T> {
