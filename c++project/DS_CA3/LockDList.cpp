@@ -9,10 +9,9 @@
  */
 
 #include <iostream>
-using namespace std;
-
 #include "LockDList.h"
 #include "DList.h"
+using namespace std;
 
 template class LockDList<int>;
 template class LockDList<string>;
