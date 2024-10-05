@@ -49,6 +49,5 @@ public:
     virtual ~DListNode() = default;
 };
 
-
 #endif
 
