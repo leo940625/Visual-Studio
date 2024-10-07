@@ -1,7 +1,7 @@
 /**
 * 
 *
-* @author ÁÂ?¥ü HSIEH WU-CHAO
+* @author è¬ç·å…† HSIEH WU-CHAO
 * @ID B12505023
 * @Department Engineering Science and Ocean Engineering
 * @Affiliation National Taiwan University
@@ -13,7 +13,7 @@ int dotProduct(int a[],int b[],int n){
     int sum = 0;
     for (int i = 0; i < n; i++)
     {
-        sum += a[i]*b[i];//±N¦U¶µ¬Û­¼¨Ã¥[Á`
+        sum += a[i]*b[i];//ï¿½Nï¿½Uï¿½ï¿½ï¿½Û­ï¿½ï¿½Ã¥[ï¿½`
     }
     return sum;
 }

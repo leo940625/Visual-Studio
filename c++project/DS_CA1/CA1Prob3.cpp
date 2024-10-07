@@ -1,7 +1,7 @@
 /**
 * 
 *
-* @author аб?╔Э HSIEH WU-CHAO
+* @author Х╛²Г▐╥Е┘├ HSIEH WU-CHAO
 * @ID B12505023
 * @Department Engineering Science and Ocean Engineering
 * @Affiliation National Taiwan University
