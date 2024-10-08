@@ -1,3 +1,13 @@
+/**
+ * @author HSIEH WU CHAO
+ * @ID B12505023
+ * @Department Engineering Science and Ocean Engineering
+ * @Affiliation National Taiwan University
+ *
+ * LockDList.h
+ * version 1.0
+ */
+
 #ifndef LOCKDLIST_H
 #define LOCKDLIST_H
 #include "LockDListNode.h"
@@ -8,11 +18,11 @@ class LockDListNode;
 template<typename T>
 class LockDList : public DList<T> {
 public:
-    // 覆寫 newNode() 方法，確保創建的是 LockDListNode
+    // override newNode() 
     DListNode<T>* newNode(const T& item, DListNode<T>* prev,DListNode<T>* next) override;
-    // 鎖定節點的方法
+
     void lockNode(DListNode<T>* node);
-    // 覆寫 remove() 方法，防止鎖定節點被移除
+   
     void remove(DListNode<T>* node) override;
 };
 

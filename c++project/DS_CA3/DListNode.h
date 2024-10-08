@@ -1,4 +1,14 @@
 /**
+ * @author HSIEH WU CHAO
+ * @ID B12505023
+ * @Department Engineering Science and Ocean Engineering
+ * @Affiliation National Taiwan University
+ *
+ * DListNode.h
+ * version 1.0
+ */
+
+/**
  *  A DListNode is a node in a DList (doubly-linked list).
  */
 
@@ -38,7 +48,6 @@ public:
 	DListNode(const T& i, DListNode<T>* p, DListNode<T>* n);
     virtual ~DListNode() = default;
 };
-
 
 #endif
 

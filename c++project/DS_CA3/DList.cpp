@@ -1,4 +1,14 @@
 /**
+ * @author HSIEH WU CHAO
+ * @ID B12505023
+ * @Department Engineering Science and Ocean Engineering
+ * @Affiliation National Taiwan University
+ *
+ * DList.cpp
+ * version 1.0
+ */
+
+/**
  *  A DList is a mutable doubly-linked list ADT.  Its implementation is
  *  circularly-linked and employs a sentinel (dummy) node at the head
  *  of the list.
@@ -10,6 +20,8 @@
 using namespace std;
 template class DList<int>;
 template class DList<string>;
+template class DList<float>;
+template class DList<double>;
 
 /* DList invariants:
  *  1)  head != null.
@@ -104,13 +116,7 @@ void DList<T>::insertBack(const T& item) {
  */
 template<typename T>
 DListNode<T>* DList<T>::front() {
-    if (size == 0 )
-    {
-        return nullptr;
-    }
-    else{
-	    return head->next;
-    }
+    return (size == 0 ? nullptr : head->next);
 }
 
 /**
@@ -124,13 +130,7 @@ DListNode<T>* DList<T>::front() {
  */
 template<typename T>
 DListNode<T>* DList<T>::back() {
-	if (size == 0 )
-    {
-        return nullptr;
-    }
-    else{
-	    return head->prev;
-    }
+    return (size == 0 ? nullptr : head->prev);
 }
 
 /**
