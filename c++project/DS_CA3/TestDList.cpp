@@ -5,7 +5,7 @@
 #include "DListNode.h"
 //#include "DListNode.cpp"
 #include "LockDList.h"
-//#include "LockDList.cpp"
+#include "LockDList.cpp"
 #include "LockDListNode.h"
 //#include "LockDListNode.cpp"
 using namespace std;
