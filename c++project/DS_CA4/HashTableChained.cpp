@@ -18,7 +18,7 @@
  **/
 template<typename K, typename V>
 HashTableChained<K, V>::HashTableChained(int sizeEstimate) {
-    // Your solution here.
+    table = new V[nextPrime(sizeEstimate)];
 }
 
 /**
@@ -27,7 +27,7 @@ HashTableChained<K, V>::HashTableChained(int sizeEstimate) {
  **/
 template<typename K, typename V>
 HashTableChained<K, V>::HashTableChained() {
-    // Your solution here.
+    table = new V[101];
 }
 
 /**
@@ -39,8 +39,7 @@ HashTableChained<K, V>::HashTableChained() {
  **/
 template<typename K, typename V>
 int HashTableChained<K, V>::compFunction(int code) {
-    // Replace the following line with your solution.
-    return 88;
+    
 }
 
 /**
@@ -119,4 +118,21 @@ void HashTableChained<K, V>::remove(const K&  key) {
 template<typename K, typename V>
 void HashTableChained<K, V>::makeEmpty() {
     // Your solution here.
+}
+
+bool isPrime(int a) // check whether a is a prime
+{
+    if (a <= 1) return false;
+    for (int i = 2; i < sqrt(a); i++)
+    {
+        if (a % i == 0)return false;
+    }
+    return true;
+}
+
+int nextPrime(int n) {
+    while (!isPrime(n)) {
+        n++;
+    }
+    return n;
 }

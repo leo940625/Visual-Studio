@@ -14,15 +14,14 @@
 #define HASHTABLECHAINED_H
 
 #include "Dictionary.h"
+#include<vector>
+#include<math.h>
 
 
 template<typename K, typename V>
 class HashTableChained : public Dictionary<K, V> {
 private:
-
-  /**
-   *  Place any data fields here.
-   **/
+    V* table;
 
 public:
 
@@ -103,6 +102,11 @@ public:
    *  Remove all entries from the dictionary.
    */
   virtual void makeEmpty();
+
+  bool isPrime(int a);
+
+  int nextPrime(int n);
+
 };
 
 #endif
