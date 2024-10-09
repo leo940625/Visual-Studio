@@ -17,18 +17,14 @@
  *  you use a prime number, and shoot for a load factor between 0.5 and 1.)
  **/
 template<typename K, typename V>
-HashTableChained<K, V>::HashTableChained(int sizeEstimate) {
-    table = new V[nextPrime(sizeEstimate)];
-}
+HashTableChained<K, V>::HashTableChained(int sizeEstimate) : Capacity(nextPrime(sizeEstimate)),Size(0){}
 
 /**
  *  Construct a new empty hash table with a default size.  Say, a prime in
  *  the neighborhood of 100.
  **/
 template<typename K, typename V>
-HashTableChained<K, V>::HashTableChained() {
-    table = new V[101];
-}
+HashTableChained<K, V>::HashTableChained():Capacity(101),Size(0){}
 
 /**
  *  Converts a hash code in the range Integer.MIN_VALUE...Integer.MAX_VALUE

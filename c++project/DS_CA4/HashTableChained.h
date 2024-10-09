@@ -21,7 +21,9 @@
 template<typename K, typename V>
 class HashTableChained : public Dictionary<K, V> {
 private:
-    V* table;
+    vector<Entry<K,V>> Table;
+    int capacity_;
+	int size_;
 
 public:
 
