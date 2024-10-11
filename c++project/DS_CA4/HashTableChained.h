@@ -28,7 +28,7 @@ private:
         Node(const K &key, const V &value) : entry(key, value), next(nullptr) {}
     };
     // buckets
-    vector<Node *> buckets;
+    vector<Node*> buckets;
 
 public:
     /**
