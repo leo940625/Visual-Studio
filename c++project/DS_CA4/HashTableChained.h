@@ -14,101 +14,104 @@
 #define HASHTABLECHAINED_H
 
 #include "Dictionary.h"
-#include<vector>
-#include<math.h>
+#include <vector>
+#include <math.h>
 
-
-template<typename K, typename V>
-class HashTableChained : public Dictionary<K, V> {
+template <typename K, typename V>
+class HashTableChained : public Dictionary<K, V>{
 private:
-    vector<Entry<K,V>> Table;
-    int capacity_;
-	int size_;
+    struct Node
+    {
+        Entry<K, V> entry; // 儲存鍵值對
+        Node *next;        // 指向下一個節點的指標
+        // Constructor 初始化節點
+        Node(const K &key, const V &value) : entry(key, value), next(nullptr) {}
+    };
+    // buckets
+    vector<Node *> buckets;
 
 public:
+    /**
+     *  Construct a new empty hash table intended to hold roughly sizeEstimate
+     *  entries.  (The precise number of buckets is up to you, but we recommend
+     *  you use a prime number, and shoot for a load factor between 0.5 and 1.)
+     **/
+    HashTableChained(int sizeEstimate);
 
-  /**
-   *  Construct a new empty hash table intended to hold roughly sizeEstimate
-   *  entries.  (The precise number of buckets is up to you, but we recommend
-   *  you use a prime number, and shoot for a load factor between 0.5 and 1.)
-   **/
-  HashTableChained(int sizeEstimate);
+    /**
+     *  Construct a new empty hash table with a default size.  Say, a prime in
+     *  the neighborhood of 100.
+     **/
+    HashTableChained();
 
-  /**
-   *  Construct a new empty hash table with a default size.  Say, a prime in
-   *  the neighborhood of 100.
-   **/
-  HashTableChained();
+    /**
+     *  Converts a hash code in the range Integer.MIN_VALUE...Integer.MAX_VALUE
+     *  to a value in the range 0...(size of hash table) - 1.
+     *
+     *  This function should be used by insert, find, and remove.
+     **/
+    int compFunction(int code);
 
-  /**
-   *  Converts a hash code in the range Integer.MIN_VALUE...Integer.MAX_VALUE
-   *  to a value in the range 0...(size of hash table) - 1.
-   *
-   *  This function should be used by insert, find, and remove.
-   **/
-  int compFunction(int code);
+    /**
+     *  Returns the number of entries stored in the dictionary.  Entries with
+     *  the same key (or even the same key and value) each still count as
+     *  a separate entry.
+     *  @return number of entries in the dictionary.
+     **/
+    virtual int size();
 
-  /**
-   *  Returns the number of entries stored in the dictionary.  Entries with
-   *  the same key (or even the same key and value) each still count as
-   *  a separate entry.
-   *  @return number of entries in the dictionary.
-   **/
-  virtual int size();
+    /**
+     *  Tests if the dictionary is empty.
+     *
+     *  @return true if the dictionary has no entries; false otherwise.
+     **/
+    virtual bool isEmpty();
 
-  /**
-   *  Tests if the dictionary is empty.
-   *
-   *  @return true if the dictionary has no entries; false otherwise.
-   **/
-  virtual bool isEmpty();
+    /**
+     *  Create a new Entry object referencing the input key and associated value,
+     *  and insert the entry into the dictionary.
+     *  Multiple entries with the same key (or even the same key and
+     *  value) can coexist in the dictionary.
+     *
+     *  This method should run in O(1) time if the number of collisions is small.
+     *
+     *  @param key the key by which the entry can be retrieved.
+     *  @param value an arbitrary object.
+     **/
+    virtual void insert(const K &key, const V &value);
 
-  /**
-   *  Create a new Entry object referencing the input key and associated value,
-   *  and insert the entry into the dictionary.
-   *  Multiple entries with the same key (or even the same key and
-   *  value) can coexist in the dictionary.
-   *
-   *  This method should run in O(1) time if the number of collisions is small.
-   *
-   *  @param key the key by which the entry can be retrieved.
-   *  @param value an arbitrary object.
-   **/
-  virtual void insert(const K& key, const V& value);
+    /**
+     *  Search for an entry with the specified key.  If such an entry is found,
+     *  return true; otherwise return false.
+     *
+     *  This method should run in O(1) time if the number of collisions is small.
+     *
+     *  @param key the search key.
+     *  @return true if an entry containing the key is found, or false if
+     *          no entry contains the specified key.
+     **/
+    virtual bool find(const K &key);
 
-  /**
-   *  Search for an entry with the specified key.  If such an entry is found,
-   *  return true; otherwise return false.
-   *
-   *  This method should run in O(1) time if the number of collisions is small.
-   *
-   *  @param key the search key.
-   *  @return true if an entry containing the key is found, or false if
-   *          no entry contains the specified key.
-   **/
-  virtual bool find(const K& key);
+    /**
+     *  Remove an entry with the specified key.  If such an entry is found,
+     *  remove it from the table.
+     *  If several entries have the specified key, choose one arbitrarily, then
+     *  remove it.
+     *
+     *  This method should run in O(1) time if the number of collisions is small.
+     *
+     *  @param key the search key.
+     */
+    virtual void remove(const K &key);
 
-  /**
-   *  Remove an entry with the specified key.  If such an entry is found,
-   *  remove it from the table.
-   *  If several entries have the specified key, choose one arbitrarily, then
-   *  remove it.
-   *
-   *  This method should run in O(1) time if the number of collisions is small.
-   *
-   *  @param key the search key.
-   */
-  virtual void remove(const K&  key);
+    /**
+     *  Remove all entries from the dictionary.
+     */
+    virtual void makeEmpty();
 
-  /**
-   *  Remove all entries from the dictionary.
-   */
-  virtual void makeEmpty();
+    bool isPrime(int a);
 
-  bool isPrime(int a);
-
-  int nextPrime(int n);
-
+    int nextPrime(int n);
 };
 
 #endif
