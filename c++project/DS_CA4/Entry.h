@@ -8,6 +8,8 @@
 #ifndef ENTRY_H
 #define ENTRY_H
 
+#include<vector>
+
 template<typename K, typename V>
 class Entry {
 protected:

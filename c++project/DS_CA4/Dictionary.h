@@ -8,6 +8,7 @@
 #define DICTIONARY_H
 
 #include "Entry.h"
+#include<vector>
 
 template<typename K, typename V>
 class Dictionary {
