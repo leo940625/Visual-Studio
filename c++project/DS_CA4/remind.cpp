@@ -1,1 +1,1 @@
-//需維修Board、Double的hashcode、compfunction、checkboard hashcode
+//需維修Board、Double的hashcode、compfunction
