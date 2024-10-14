@@ -5,6 +5,7 @@
 
 #include "Double.h"
 #include <functional>
+#include <math.h>
 
 /**
  *  Construct a new Double with the given variable.
@@ -37,7 +38,6 @@ bool Double::equals(const Double& db) {
  */
 int Double::hashCode() const{
     double value = d;
-    std::hash<double> double_hash;
-    int hash_code = double_hash(value);
-    return (int)d;
+    value *= ((1+sqrt(5))/2);
+    return (int)value;
 }
