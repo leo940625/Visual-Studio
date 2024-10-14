@@ -10,31 +10,31 @@
  **/
 
 #include "HashTableChained.h"
-#include<vector>
+#include <vector>
 
 /**
  *  Construct a new empty hash table intended to hold roughly sizeEstimate
  *  entries.  (The precise number of buckets is up to you, but we recommend
  *  you use a prime number, and shoot for a load factor between 0.5 and 1.)
  **/
-template<typename K, typename V>
+template <typename K, typename V>
 HashTableChained<K, V>::HashTableChained(int sizeEstimate){
     Size = 0;
     capacity = nextPrime(sizeEstimate);
-    buckets.resize(capacity,nullptr);
-    p = nextPrime(100*capacity);
+    buckets.resize(capacity, nullptr);
+    p = nextPrime(100 * capacity);
 }
 
 /**,
  *  Construct a new empty hash table with a default size.  Say, a prime in
  *  the neighborhood of 100.
  **/
-template<typename K, typename V>
+template <typename K, typename V>
 HashTableChained<K, V>::HashTableChained(){
     Size = 0;
     capacity = 101;
-    buckets.resize(capacity,nullptr);
-    p = nextPrime(100*capacity);
+    buckets.resize(capacity, nullptr);
+    p = nextPrime(100 * capacity);
 }
 
 /**
@@ -44,9 +44,9 @@ HashTableChained<K, V>::HashTableChained(){
  *  This function should have package protection (so we can test it), and
  *  should be used by insert, find, and remove.
  **/
-template<typename K, typename V>
-int HashTableChained<K, V>::compFunction(int code) {
-    return ((3*code+5)%p)%capacity;
+template <typename K, typename V>
+int HashTableChained<K, V>::compFunction(int code){
+    return ((3 * code + 5) % p) % capacity;
 }
 
 /**
@@ -55,9 +55,8 @@ int HashTableChained<K, V>::compFunction(int code) {
  *  a separate entry.
  *  @return number of entries in the dictionary.
  **/
-template<typename K, typename V>
-int HashTableChained<K, V>::size() {
-    // Replace the following line with your solution.
+template <typename K, typename V>
+int HashTableChained<K, V>::size(){
     return Size;
 }
 
@@ -66,9 +65,8 @@ int HashTableChained<K, V>::size() {
  *
  *  @return true if the dictionary has no entries; false otherwise.
  **/
-template<typename K, typename V>
-bool HashTableChained<K, V>::isEmpty() {
-    // Replace the following line with your solution.
+template <typename K, typename V>
+bool HashTableChained<K, V>::isEmpty(){
     return size == 0;
 }
 
@@ -83,16 +81,18 @@ bool HashTableChained<K, V>::isEmpty() {
  *  @param key the key by which the entry can be retrieved.
  *  @param value an arbitrary object.
  **/
-template<typename K, typename V>
-void HashTableChained<K, V>::insert(const K& key, const V& value) {
-    Node* new_node = new Node(ket,value);
-    if (buckets[key] == nullptr) {
+template <typename K, typename V>
+void HashTableChained<K, V>::insert(const K &key, const V &value){
+    Node *new_node = new Node(ket, value);
+    if (buckets[key] == nullptr)
+    {
         buckets[key] = new_node;
         Size++;
         return;
     }
-    Node* last = buckets[key];
-    while (last->next != nullptr) {
+    Node *last = buckets[key];
+    while (last->next != nullptr)
+    {
         last = last->next;
     }
     last->next = new_node;
@@ -109,10 +109,10 @@ void HashTableChained<K, V>::insert(const K& key, const V& value) {
  *  @return true if an entry containing the key is found, or false if
  *          no entry contains the specified key.
  **/
-template<typename K, typename V>
-bool HashTableChained<K, V>::find(const K& key) {
-    Node* current = buckets[key];
-    return false;
+template <typename K, typename V>
+bool HashTableChained<K, V>::find(const K &key){
+    Node *current = buckets[key];
+    return current == nullptr ? false : true;
 }
 
 /**
@@ -125,31 +125,45 @@ bool HashTableChained<K, V>::find(const K& key) {
  *
  *  @param key the search key.
  */
-template<typename K, typename V>
-void HashTableChained<K, V>::remove(const K&  key) {
-    // Replace the following line with your solution.
+template <typename K, typename V>
+void HashTableChained<K, V>::remove(const K &key){
+    if (buckets[key] != nullptr){
+        Node *last = buckets[key];
+        buckets[key] = last->next;
+        delete last;
+    }
 }
 
 /**
  *  Remove all entries from the dictionary.
  */
-template<typename K, typename V>
-void HashTableChained<K, V>::makeEmpty() {
-    // Your solution here.
+template <typename K, typename V>
+void HashTableChained<K, V>::makeEmpty(){
+    int i = 0 
+    while (i != capacity){
+        while (buckets[i] != nullptr){
+            remove(i);
+        }
+        i++;
+    }
 }
 
 bool isPrime(int a) // check whether a is a prime
 {
-    if (a <= 1) return false;
+    if (a <= 1)
+        return false;
     for (int i = 2; i < sqrt(a); i++)
     {
-        if (a % i == 0)return false;
+        if (a % i == 0)
+            return false;
     }
     return true;
 }
 
-int nextPrime(int n) {
-    while (!isPrime(n)) {
+int nextPrime(int n)
+{
+    while (!isPrime(n))
+    {
         n++;
     }
     return n;
