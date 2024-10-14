@@ -53,7 +53,6 @@ int main() {
     for (int i = 0; i < numBoards; i++) {
         CheckerBoard* board = randomBoard();
         table->insert(board, new Integer(i));
-
         if (!board->equals(*board)) {
             cout << "0";
             break;

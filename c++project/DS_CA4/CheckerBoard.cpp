@@ -72,10 +72,6 @@ bool CheckerBoard::equals(const CheckerBoard& board) {
  */
 int CheckerBoard::hashCode() {
     int hash_value;
-    for (int i = 0; i < DIMENSION; ++i) {
-        for (int j = 0; j < DIMENSION; ++j) {
-            hash_value ^= (grid[i][j] * 2654435761) + (hash_value << 6) + (hash_value >> 2);
-        }
-    }
+    hash_value = grid[1][3]*grid[3][1];
     return hash_value;
 }
