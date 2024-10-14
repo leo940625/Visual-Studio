@@ -19,9 +19,10 @@
  **/
 template<typename K, typename V>
 HashTableChained<K, V>::HashTableChained(int sizeEstimate){
-    size = 0;
+    Size = 0;
     capacity = nextPrime(sizeEstimate);
     buckets.resize(capacity);
+    p = nextPrime(100*capacity);
 }
 
 /**,
@@ -30,9 +31,10 @@ HashTableChained<K, V>::HashTableChained(int sizeEstimate){
  **/
 template<typename K, typename V>
 HashTableChained<K, V>::HashTableChained(){
-    size = 0;
+    Size = 0;
     capacity = 101;
     buckets.resize(capacity);
+    p = nextPrime(100*capacity);
 }
 
 /**
@@ -44,7 +46,7 @@ HashTableChained<K, V>::HashTableChained(){
  **/
 template<typename K, typename V>
 int HashTableChained<K, V>::compFunction(int code) {
-    return (3*code+5)%(nextPrime(100*capacity))%capacity;
+    return ((3*code+5)%p)%capacity;
 }
 
 /**
@@ -56,7 +58,7 @@ int HashTableChained<K, V>::compFunction(int code) {
 template<typename K, typename V>
 int HashTableChained<K, V>::size() {
     // Replace the following line with your solution.
-    return 0;
+    return Size;
 }
 
 /**
@@ -67,7 +69,7 @@ int HashTableChained<K, V>::size() {
 template<typename K, typename V>
 bool HashTableChained<K, V>::isEmpty() {
     // Replace the following line with your solution.
-    return true;
+    return size == 0;
 }
 
 /**

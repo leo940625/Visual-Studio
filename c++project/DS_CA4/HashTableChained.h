@@ -29,7 +29,7 @@ private:
     };
     // buckets
     vector<Node*> buckets;
-    int size,capacity;
+    int Size,capacity,p;
 
 public:
     /**
