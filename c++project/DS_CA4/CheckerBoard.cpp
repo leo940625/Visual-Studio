@@ -71,7 +71,9 @@ bool CheckerBoard::equals(const CheckerBoard& board) {
  *  @return a number between Integer.MIN_VALUE and Integer.MAX_VALUE.
  */
 int CheckerBoard::hashCode() {
-    int hash_value;
-    hash_value = grid[1][3]*grid[3][1];
-    return hash_value;
+    unsigned int h = 1487;
+	for (int i = 0; i < DIMENSION; i++)
+		for (int j = 0; j < DIMENSION; j++)
+			h = h * 3 + grid[i][j];
+	return h;
 }
