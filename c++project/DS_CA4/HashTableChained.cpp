@@ -85,7 +85,16 @@ bool HashTableChained<K, V>::isEmpty() {
  **/
 template<typename K, typename V>
 void HashTableChained<K, V>::insert(const K& key, const V& value) {
-    // Replace the following line with your solution.
+    Node* new_node = new Node(ket,value);
+        if (buckets[key] == nullptr) {
+            buckets[key] = new_node;
+            return;
+        }
+        Node* last = buckets[key];
+        while (last->next != nullptr) {
+            last = last->next;
+        }
+        last->next = new_node;
 }
 
 /**
