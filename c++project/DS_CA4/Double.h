@@ -7,6 +7,7 @@
 #ifndef DOUBLE_H
 #define DOUBLE_H
 
+#include <vector>
 
 class Double {
 private:

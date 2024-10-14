@@ -5,6 +5,7 @@
 
 #include "String.h"
 
+
 /**
  *  Construct a new String with the given variable.
  *  @param str the string by which the String stores.
@@ -27,10 +28,7 @@ string String::getvalue() const {
  *  @return true if the string values are equal, false otherwise.
  */
 bool String::equals(const String& strg) {
-    // Replace the following line with your solution.  Be sure to return false
-    //   (rather than throwing a ClassCastException) if "strg" is not
-    //   a String.
-    return false;
+    return str == strg.str ? true : false;
 }
 
 /**
@@ -38,6 +36,10 @@ bool String::equals(const String& strg) {
  *  @return a number between Integer.MIN_VALUE and Integer.MAX_VALUE.
  */
 int String::hashCode() const {
-    // Replace the following line with your solution.
-    return 66;
+    int hash_value = 0;
+    int prime = 31;
+    for (char c : str) {
+        hash_value = hash_value * prime + c;
+    }
+    return hash_value;
 }

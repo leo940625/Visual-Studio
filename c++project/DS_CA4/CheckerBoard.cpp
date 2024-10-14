@@ -63,7 +63,7 @@ bool CheckerBoard::equals(const CheckerBoard& board) {
             }
         }
     }
-    return true; // 全部元素相同，返回 true
+    return true;
 }
 
 /**

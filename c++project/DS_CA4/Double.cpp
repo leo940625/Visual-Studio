@@ -4,6 +4,7 @@
  **/
 
 #include "Double.h"
+#include <functional>
 
 /**
  *  Construct a new Double with the given variable.
@@ -27,10 +28,7 @@ double Double::getvalue() const {
  *  @return true if the double values are equal, false otherwise.
  */
 bool Double::equals(const Double& db) {
-    // Replace the following line with your solution.  Be sure to return false
-    //   (rather than throwing a ClassCastException) if "db" is not
-    //   a Double.
-    return false;
+    return d == db.d ? true : false;
 }
 
 /**
@@ -38,6 +36,8 @@ bool Double::equals(const Double& db) {
  *  @return a number between Integer.MIN_VALUE and Integer.MAX_VALUE.
  */
 int Double::hashCode() const{
-    // Replace the following line with your solution.
-    return 77;
+    double value = d;
+    std::hash<double> double_hash;
+    int hash_code = double_hash(value);
+    return hash_code;
 }
