@@ -10,7 +10,7 @@
 #include "CheckerBoard.h"
 //#include "CheckerBoard.cpp"
 #include "Entry.h"
-
+using namespace std;
 
 template<typename K, typename V>
 void initTable(HashTableChained<K, V>* table, int numBoards);
@@ -38,9 +38,13 @@ int main() {
 
     cout << "===============================Double Hash Table Test=====================================" << endl;
     HashTableChained<Double*, Integer*>* doubleTable = new HashTableChained<Double*, Integer*>(numBoards);
+    cout << "yes1" << endl;
     initTable(doubleTable, numBoards);
+    cout << "yes12" << endl;
     doubleTable->insert(new Double(10), new Integer(1));
+    cout << "yes123" << endl;
     doubleTable->insert(new Double(20), new Integer(2));
+    cout << "yes1234" << endl;
     cout << "Size should be 2 : " << doubleTable->size() << endl;
 
     cout << "===============================CheckerBoard Hash Table Test===============================" << endl;
@@ -86,5 +90,6 @@ void initTable(HashTableChained<K, V>* table, int numBoards) {
     table->makeEmpty();
     for (int i = 0; i < numBoards; i++) {
         table->insert(new Double(i), new Integer(i));
+        cout << "yes1" << endl;
     }
 }
