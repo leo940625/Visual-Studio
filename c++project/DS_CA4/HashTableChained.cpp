@@ -21,7 +21,7 @@ template<typename K, typename V>
 HashTableChained<K, V>::HashTableChained(int sizeEstimate){
     Size = 0;
     capacity = nextPrime(sizeEstimate);
-    buckets.resize(capacity);
+    buckets.resize(capacity,nullptr);
     p = nextPrime(100*capacity);
 }
 
@@ -33,7 +33,7 @@ template<typename K, typename V>
 HashTableChained<K, V>::HashTableChained(){
     Size = 0;
     capacity = 101;
-    buckets.resize(capacity);
+    buckets.resize(capacity,nullptr);
     p = nextPrime(100*capacity);
 }
 
