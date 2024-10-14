@@ -83,7 +83,7 @@ bool HashTableChained<K, V>::isEmpty(){
  **/
 template <typename K, typename V>
 void HashTableChained<K, V>::insert(const K &key, const V &value){
-    Node *new_node = new Node(ket, value);
+    Node *new_node = new Node(key, value);
     if (buckets[key] == nullptr)
     {
         buckets[key] = new_node;
@@ -139,7 +139,7 @@ void HashTableChained<K, V>::remove(const K &key){
  */
 template <typename K, typename V>
 void HashTableChained<K, V>::makeEmpty(){
-    int i = 0 
+    int i = 0;
     while (i != capacity){
         while (buckets[i] != nullptr){
             remove(i);
