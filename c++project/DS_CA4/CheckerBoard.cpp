@@ -56,10 +56,14 @@ int CheckerBoard::elementAt(int x, int y) {
  *  @return true if the boards are equal, false otherwise.
  */
 bool CheckerBoard::equals(const CheckerBoard& board) {
-    // Replace the following line with your solution.  Be sure to return false
-    //   (rather than throwing a ClassCastException) if "board" is not
-    //   a CheckerBoard.
-    return false;
+    for (int i = 0; i < DIMENSION;i++){
+        for (int j = 0; j < DIMENSION;j++) {
+            if (grid[i][j] != board.grid[i][j]) {
+                return false;
+            }
+        }
+    }
+    return true; // 全部元素相同，返回 true
 }
 
 /**
@@ -67,6 +71,11 @@ bool CheckerBoard::equals(const CheckerBoard& board) {
  *  @return a number between Integer.MIN_VALUE and Integer.MAX_VALUE.
  */
 int CheckerBoard::hashCode() {
-    // Replace the following line with your solution.
-    return 99;
+    int hash_value;
+    for (int i = 0; i < DIMENSION; ++i) {
+        for (int j = 0; j < DIMENSION; ++j) {
+            hash_value ^= (grid[i][j] * 2654435761) + (hash_value << 6) + (hash_value >> 2);
+        }
+    }
+    return hash_value;
 }
