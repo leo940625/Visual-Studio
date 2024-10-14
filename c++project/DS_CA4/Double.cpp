@@ -39,5 +39,5 @@ int Double::hashCode() const{
     double value = d;
     std::hash<double> double_hash;
     int hash_code = double_hash(value);
-    return hash_code;
+    return (int)d;
 }

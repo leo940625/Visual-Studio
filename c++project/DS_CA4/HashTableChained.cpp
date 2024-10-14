@@ -84,13 +84,13 @@ bool HashTableChained<K, V>::isEmpty(){
 template <typename K, typename V>
 void HashTableChained<K, V>::insert(const K &key, const V &value){
     Node *new_node = new Node(key, value);
-    if (buckets[this->compFunction(key->hashCode())] == nullptr)
+    if (buckets[compFunction(key->hashCode())] == nullptr)
     {
-        buckets[this->compFunction(key->hashCode())] = new_node;
+        buckets[compFunction(key->hashCode())] = new_node;
         Size++;
         return;
     }
-    Node *last = buckets[this->compFunction(key->hashCode())];
+    Node *last = buckets[compFunction(key->hashCode())];
     while (last->next != nullptr)
     {
         last = last->next;
@@ -111,7 +111,7 @@ void HashTableChained<K, V>::insert(const K &key, const V &value){
  **/
 template <typename K, typename V>
 bool HashTableChained<K, V>::find(const K &key){
-    Node *current = buckets[this->compFunction(key->hashCode())];
+    Node *current = buckets[compFunction(key->hashCode())];
     return current == nullptr ? false : true;
 }
 
@@ -128,7 +128,7 @@ bool HashTableChained<K, V>::find(const K &key){
 template <typename K, typename V>
 void HashTableChained<K, V>::remove(const K &key){
     if (buckets[this->compFunction(key->hashCode())] != nullptr){
-        Node *last = buckets[this->compFunction(key->hashCode())];
+        Node *last = buckets[compFunction(key->hashCode())];
         buckets[this->compFunction(key->hashCode())] = last->next;
         delete last;
         Size--;

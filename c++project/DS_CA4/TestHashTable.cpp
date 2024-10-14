@@ -90,6 +90,5 @@ void initTable(HashTableChained<K, V>* table, int numBoards) {
     table->makeEmpty();
     for (int i = 0; i < numBoards; i++) {
         table->insert(new Double(i), new Integer(i));
-        cout << "yes1" << endl;
     }
 }
