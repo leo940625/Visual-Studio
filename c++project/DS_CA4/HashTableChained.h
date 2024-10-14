@@ -16,6 +16,7 @@
 #include "Dictionary.h"
 #include <vector>
 #include <math.h>
+using namespace std;
 
 template <typename K, typename V>
 class HashTableChained : public Dictionary<K, V>{
