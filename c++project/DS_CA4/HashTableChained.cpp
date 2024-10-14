@@ -10,6 +10,7 @@
  **/
 
 #include "HashTableChained.h"
+#include<vector>
 
 /**
  *  Construct a new empty hash table intended to hold roughly sizeEstimate
@@ -17,14 +18,22 @@
  *  you use a prime number, and shoot for a load factor between 0.5 and 1.)
  **/
 template<typename K, typename V>
-HashTableChained<K, V>::HashTableChained(int sizeEstimate){}
+HashTableChained<K, V>::HashTableChained(int sizeEstimate){
+    size = 0;
+    capacity = nextPrime(sizeEstimate);
+    buckets.resize(capacity,Node*(K(),V()));
+}
 
-/**
+/**,
  *  Construct a new empty hash table with a default size.  Say, a prime in
  *  the neighborhood of 100.
  **/
 template<typename K, typename V>
-HashTableChained<K, V>::HashTableChained(){}
+HashTableChained<K, V>::HashTableChained(){
+    size = 0;
+    capacity = 101;
+    buckets.resize(capacity,Node*(K(),V()));
+}
 
 /**
  *  Converts a hash code in the range Integer.MIN_VALUE...Integer.MAX_VALUE
@@ -35,7 +44,7 @@ HashTableChained<K, V>::HashTableChained(){}
  **/
 template<typename K, typename V>
 int HashTableChained<K, V>::compFunction(int code) {
-    
+    return (3*code+5)%(nextPrime(100*capacity))%capacity;
 }
 
 /**
