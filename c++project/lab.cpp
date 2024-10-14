@@ -12,6 +12,5 @@ int main(){
     for (float i = 0; i <100; i++)
     {
         cout << i << ':' << ((3 * hashcode(i + 5) % 1331) % 101) << endl;
-    }
-    
+    }  
 }

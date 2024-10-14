@@ -49,7 +49,9 @@ int main() {
     //cout << "yes1234" << endl;
     for (int i = 0; i < numBoards; i++) {
         CheckerBoard* board = randomBoard();
+        cout << "123" << endl;
         table->insert(board, new Integer(i));
+        cout << i << endl;
         if (!board->equals(*board)) {
             cout << "0";
             break;
