@@ -8,7 +8,7 @@
 #include"String.h"
 #include"Double.h"
 #include "CheckerBoard.h"
-#include "CheckerBoard.cpp"
+//#include "CheckerBoard.cpp"
 #include "Entry.h"
 
 

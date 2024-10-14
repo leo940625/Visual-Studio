@@ -131,6 +131,7 @@ void HashTableChained<K, V>::remove(const K &key){
         Node *last = buckets[this->compFunction(key->hashCode())];
         buckets[this->compFunction(key->hashCode())] = last->next;
         delete last;
+        Size--;
     }
 }
 
@@ -142,14 +143,15 @@ void HashTableChained<K, V>::makeEmpty(){
     for (int i = 0; i != capacity; i++){
         while (buckets[i] != nullptr){
             Node* current = buckets[i];
+            buckets[i] = nullptr;    
             while (current != nullptr) {
                 Node* nextNode = current->next;
                 delete current;
                 current = nextNode;
-            }    
+            }
         }
     }
-    Size == 0;
+    Size = 0;
 }
 
 template <typename K, typename V>

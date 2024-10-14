@@ -30,7 +30,7 @@ CheckerBoard::CheckerBoard() {
  *  @exception ArrayIndexOutOfBoundsException is thrown if an invalid index
  *  is given.
  **/
-void CheckerBoard::setElementAt(int x, int y, int value) {
+void CheckerBoard::setElementAt(int x, int y, int value){
     grid[x][y] = value % 3;
     if (grid[x][y] < 0) {
         grid[x][y] += 3;
