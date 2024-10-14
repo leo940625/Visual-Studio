@@ -8,7 +8,7 @@
 #include"String.h"
 #include"Double.h"
 #include "CheckerBoard.h"
-//#include "CheckerBoard.cpp"
+#include "CheckerBoard.cpp"
 #include "Entry.h"
 using namespace std;
 
@@ -39,17 +39,14 @@ int main() {
     cout << "===============================Double Hash Table Test=====================================" << endl;
     HashTableChained<Double*, Integer*>* doubleTable = new HashTableChained<Double*, Integer*>(numBoards);
     initTable(doubleTable, numBoards);
-    //cout << "yes12" << endl;
     doubleTable->insert(new Double(10), new Integer(1));
-    //cout << "yes123" << endl;
     doubleTable->insert(new Double(20), new Integer(2));
-    //cout << "yes1234" << endl;
     cout << "Size should be 2 : " << doubleTable->size() << endl;
 
     cout << "===============================CheckerBoard Hash Table Test===============================" << endl;
     HashTableChained<CheckerBoard*, Integer*>* table = new HashTableChained<CheckerBoard*, Integer*>(numBoards);
     table->makeEmpty();
-    cout << "yes1234" << endl;
+    //cout << "yes1234" << endl;
     for (int i = 0; i < numBoards; i++) {
         CheckerBoard* board = randomBoard();
         table->insert(board, new Integer(i));
