@@ -67,7 +67,7 @@ int HashTableChained<K, V>::size(){
  **/
 template <typename K, typename V>
 bool HashTableChained<K, V>::isEmpty(){
-    return size == 0;
+    return Size == 0;
 }
 
 /**
@@ -139,16 +139,21 @@ void HashTableChained<K, V>::remove(const K &key){
  */
 template <typename K, typename V>
 void HashTableChained<K, V>::makeEmpty(){
-    int i = 0;
-    while (i != capacity){
+    for (int i = 0; i != capacity; i++){
         while (buckets[i] != nullptr){
-            remove(i);
+            Node* current = buckets[i];
+            while (current != nullptr) {
+                Node* nextNode = current->next;
+                delete current;
+                current = nextNode;
+            }    
         }
-        i++;
     }
+    Size == 0;
 }
 
-bool isPrime(int a) // check whether a is a prime
+template <typename K, typename V>
+bool HashTableChained<K, V>::isPrime(int a) // check whether a is a prime
 {
     if (a <= 1)return false;
     for (int i = 2; i < sqrt(a); i++){
@@ -158,7 +163,8 @@ bool isPrime(int a) // check whether a is a prime
     return true;
 }
 
-int nextPrime(int n){
+template <typename K, typename V>
+int HashTableChained<K, V>::nextPrime(int n){
     while (!isPrime(n)){
         n++;
     }
