@@ -1,14 +1,17 @@
 #include <iostream>
+#include <math.h>
 using namespace std;
 
-template<typename T, typename G>
-G add(T a, T b){
-	G res = a+b;// G到底是甚麼型態?
-    return res;
+int hashcode(float a){
+    double value = a;
+    value *= ((1+sqrt(5))/2);
+    return (int)value;
 }
+
 int main(){
-    double d_a = 0.1, d_b = 7.022;
-    cout << add<double, double>(d_a, d_b) << '\n';
-    cout << add<double, int>(d_a, d_b) << '\n';
-    cout << add<int, double>(d_a, d_b) << '\n';
+    for (float i = 0; i <100; i++)
+    {
+        cout << i << ':' << ((3 * hashcode(i + 5) % 1331) % 101) << endl;
+    }
+    
 }
