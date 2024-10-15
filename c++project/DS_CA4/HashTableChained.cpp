@@ -11,7 +11,8 @@
 
 #include "HashTableChained.h"
 #include <vector>
-
+#include<iostream>
+using namespace std;
 /**
  *  Construct a new empty hash table intended to hold roughly sizeEstimate
  *  entries.  (The precise number of buckets is up to you, but we recommend
@@ -168,4 +169,21 @@ int HashTableChained<K, V>::nextPrime(int n){
         n++;
     }
     return n;
+}
+
+template <typename K, typename V>
+void HashTableChained<K, V>::testHashCode(){
+    int disturb = 0;
+    for (int i = 0; i != capacity; i++){
+        int sum = 0;
+        while (buckets[i] != nullptr) {
+            buckets[i] = buckets[i]->next;
+            sum++;
+        }
+        if (sum != 0){
+            cout << i << ':' << sum << endl;
+            disturb++;
+        }    
+    }
+    cout << "Disturb:" << disturb << endl;
 }

@@ -46,17 +46,15 @@ int main() {
     cout << "===============================CheckerBoard Hash Table Test===============================" << endl;
     HashTableChained<CheckerBoard*, Integer*>* table = new HashTableChained<CheckerBoard*, Integer*>(numBoards);
     table->makeEmpty();
-    //cout << "yes1234" << endl;
     for (int i = 0; i < numBoards; i++) {
         CheckerBoard* board = randomBoard();
-        cout << "123" << endl;
         table->insert(board, new Integer(i));
-        cout << i << endl;
         if (!board->equals(*board)) {
             cout << "0";
             break;
         }
     }
+    table->testHashCode();
     cout << "yes12345" << endl;
     // To test your hash function, add a method to your HashTableChained class
     // that counts the number of collisions--or better yet, also prints
