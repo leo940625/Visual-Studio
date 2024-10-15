@@ -79,12 +79,6 @@ int CheckerBoard::hashCode(){
             sum * ((1+sqrt(5))/2);
         }
     }
-    /*for (int i = 0; i < DIMENSION;i++){
-        for (int j = 0; j < DIMENSION;j++) {
-            sum += grid[i][j];
-            pr = nextPrime_(pr+1);
-        }
-    }*/
     return sum;
 }
 
