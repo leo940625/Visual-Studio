@@ -5,10 +5,10 @@
 #include "HashTableChained.cpp"
 #include "HashTableChained.h"
 #include "Integer.h"
-#include"String.h"
-#include"Double.h"
+#include "String.h"
+#include "Double.h"
 #include "CheckerBoard.h"
-//#include "CheckerBoard.cpp"
+#include "CheckerBoard.cpp"
 #include "Entry.h"
 using namespace std;
 

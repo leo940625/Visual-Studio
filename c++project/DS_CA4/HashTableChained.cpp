@@ -180,14 +180,14 @@ void HashTableChained<K, V>::testHashCode(){
             buckets[i] = buckets[i]->next;
             sum++;
         }
-        if (sum != 0){
-            //cout << i << ':' << sum << endl;
+        if (sum > 1){
+            cout << "collision:" << i << ':' << sum << endl;
             disturb++;
         }
         if (sum >= max){
             max = sum;
         }
     }
-    cout << "Disturb:" << disturb << endl;
+    cout << "Collosion:" << disturb << endl;
     cout << "Max:" << max << endl;
 }
