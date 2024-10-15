@@ -110,12 +110,12 @@ public:
      *  Remove all entries from the dictionary.
      */
     virtual void makeEmpty();
-
-    bool isPrime(int a);
-
-    int nextPrime(int n);
     
     void testHashCode();
 };
+
+bool isPrime(int a);
+
+int nextPrime(int n);
 
 #endif

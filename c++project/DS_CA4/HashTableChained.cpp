@@ -153,8 +153,7 @@ void HashTableChained<K, V>::makeEmpty(){
     Size = 0;
 }
 
-template <typename K, typename V>
-bool HashTableChained<K, V>::isPrime(int a){ // check whether a is a prime
+bool isPrime(int a){ // check whether a is a prime
     if (a <= 1)return false;
     for (int i = 2; i < sqrt(a); i++){
         if (a % i == 0)
@@ -163,8 +162,7 @@ bool HashTableChained<K, V>::isPrime(int a){ // check whether a is a prime
     return true;
 }
 
-template <typename K, typename V>
-int HashTableChained<K, V>::nextPrime(int n){
+int nextPrime(int n){
     while (!isPrime(n)){
         n++;
     }

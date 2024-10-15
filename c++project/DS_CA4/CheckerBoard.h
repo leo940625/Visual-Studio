@@ -7,6 +7,7 @@
 
 #ifndef CHECKERBOARD_H
 #define CHECKERBOARD_H
+#include"HashTableChained.h"
 
 class CheckerBoard {
 private:

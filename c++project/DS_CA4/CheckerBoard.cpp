@@ -13,6 +13,7 @@
 
 #include "CheckerBoard.h"
 
+
 /**
  *  Construct a new board in which all cells are zero.
  */
