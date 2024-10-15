@@ -191,3 +191,44 @@ void HashTableChained<K, V>::testHashCode(){
     cout << "Collosion:" << disturb << endl;
     cout << "Max:" << max << endl;
 }
+
+template<typename K, typename V>
+void HashTableChained<K, V>::printHistogram() const {
+    vector<int> bucketCounts(capacity, 0);
+
+    // 計算每個 bucket 中的條目數量
+    for (int i = 0; i < capacity; i++) {
+        Node* current = buckets[i];
+        while (current != nullptr) {
+            bucketCounts[i]++;
+            current = current->next;
+        }
+    }
+
+    // 計算總的碰撞數和最大條目數
+    int totalCollisions = 0;
+    int maxEntries = 0;
+    int maxEntriesBucket = -1;
+
+    for (int i = 0; i < capacity; i++) {
+        if (bucketCounts[i] > 1) {
+            totalCollisions += (bucketCounts[i] - 1);  // 碰撞數量
+        }
+        if (bucketCounts[i] > maxEntries) {
+            maxEntries = bucketCounts[i];
+            maxEntriesBucket = i;  // 記錄條目最多的 bucket
+        }
+    }
+
+    // 簡化輸出，只顯示重點
+    cout << "Total collisions: " << totalCollisions << endl;
+    cout << "Bucket with the most entries: Bucket " << maxEntriesBucket << " with " << maxEntries << " entries" << endl;
+
+    // 顯示碰撞較多的 buckets
+    cout << "Buckets with more than 1 entry (indicating collisions):\n";
+    for (int i = 0; i < capacity; i++) {
+        if (bucketCounts[i] > 1) {
+            cout << "Bucket " << i << ": " << bucketCounts[i] << " entries\n";
+        }
+    }
+}

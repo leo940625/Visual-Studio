@@ -55,7 +55,7 @@ int main() {
             break;
         }
     }
-    table->testHashCode();
+    table->printHistogram();
     cout << "The end" << endl;
     // To test your hash function, add a method to your HashTableChained class
     // that counts the number of collisions--or better yet, also prints
