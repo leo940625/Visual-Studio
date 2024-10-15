@@ -173,7 +173,7 @@ int HashTableChained<K, V>::nextPrime(int n){
 
 template <typename K, typename V>
 void HashTableChained<K, V>::testHashCode(){
-    int disturb = 0;
+    int disturb = 0,max = 0;
     for (int i = 0; i != capacity; i++){
         int sum = 0;
         while (buckets[i] != nullptr) {
@@ -181,9 +181,13 @@ void HashTableChained<K, V>::testHashCode(){
             sum++;
         }
         if (sum != 0){
-            cout << i << ':' << sum << endl;
+            //cout << i << ':' << sum << endl;
             disturb++;
-        }    
+        }
+        if (sum >= max){
+            max = sum;
+        }
     }
     cout << "Disturb:" << disturb << endl;
+    cout << "Max:" << max << endl;
 }

@@ -42,6 +42,7 @@ int main() {
     doubleTable->insert(new Double(10), new Integer(1));
     doubleTable->insert(new Double(20), new Integer(2));
     cout << "Size should be 2 : " << doubleTable->size() << endl;
+    doubleTable->testHashCode();
 
     cout << "===============================CheckerBoard Hash Table Test===============================" << endl;
     HashTableChained<CheckerBoard*, Integer*>* table = new HashTableChained<CheckerBoard*, Integer*>(numBoards);
@@ -54,7 +55,7 @@ int main() {
             break;
         }
     }
-    table->testHashCode();
+    //table->testHashCode();
     cout << "yes12345" << endl;
     // To test your hash function, add a method to your HashTableChained class
     // that counts the number of collisions--or better yet, also prints
