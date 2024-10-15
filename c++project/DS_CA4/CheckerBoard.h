@@ -61,6 +61,10 @@ public:
    *  @return a number between Integer.MIN_VALUE and Integer.MAX_VALUE.
    */
   int hashCode();
+
+  bool isPrime_(int a);
+
+  int nextPrime_(int n);
 };
 
 #endif

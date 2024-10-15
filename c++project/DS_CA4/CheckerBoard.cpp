@@ -72,5 +72,28 @@ bool CheckerBoard::equals(const CheckerBoard& board) {
  *  @return a number between Integer.MIN_VALUE and Integer.MAX_VALUE.
  */
 int CheckerBoard::hashCode(){
-    return grid[3][1]*grid[1][3];
+    int pr =1487,sum = 0;
+    for (int i = 0; i < DIMENSION;i++){
+        for (int j = 0; j < DIMENSION;j++) {
+            sum += grid[i][j];
+            pr = nextPrime_(pr+1);
+        }
+    }
+    return sum;
+}
+
+bool CheckerBoard::isPrime_(int a){ // check whether a is a prime
+    if (a <= 1)return false;
+    for (int i = 2; i < sqrt(a); i++){
+        if (a % i == 0)
+            return false;
+    }
+    return true;
+}
+
+int CheckerBoard::nextPrime_(int n){
+    while (!isPrime_(n)){
+        n++;
+    }
+    return n;
 }

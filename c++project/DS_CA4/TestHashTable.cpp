@@ -55,8 +55,8 @@ int main() {
             break;
         }
     }
-    //table->testHashCode();
-    cout << "yes12345" << endl;
+    table->testHashCode();
+    cout << "The end" << endl;
     // To test your hash function, add a method to your HashTableChained class
     // that counts the number of collisions--or better yet, also prints
     // a histograph of the number of entries in each bucket.  Call this method
