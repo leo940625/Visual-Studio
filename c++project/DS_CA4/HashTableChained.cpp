@@ -127,9 +127,9 @@ bool HashTableChained<K, V>::find(const K &key){
  */
 template <typename K, typename V>
 void HashTableChained<K, V>::remove(const K &key){
-    if (buckets[this->compFunction(key->hashCode())] != nullptr){
+    if (buckets[compFunction(key->hashCode())] != nullptr){
         Node *last = buckets[compFunction(key->hashCode())];
-        buckets[this->compFunction(key->hashCode())] = last->next;
+        buckets[compFunction(key->hashCode())] = last->next;
         delete last;
         Size--;
     }
@@ -155,8 +155,7 @@ void HashTableChained<K, V>::makeEmpty(){
 }
 
 template <typename K, typename V>
-bool HashTableChained<K, V>::isPrime(int a) // check whether a is a prime
-{
+bool HashTableChained<K, V>::isPrime(int a){ // check whether a is a prime
     if (a <= 1)return false;
     for (int i = 2; i < sqrt(a); i++){
         if (a % i == 0)
