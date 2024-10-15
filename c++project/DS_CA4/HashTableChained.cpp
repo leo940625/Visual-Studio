@@ -26,7 +26,7 @@ HashTableChained<K, V>::HashTableChained(int sizeEstimate){
     p = nextPrime(100 * capacity);
 }
 
-/**,
+/**
  *  Construct a new empty hash table with a default size.  Say, a prime in
  *  the neighborhood of 100.
  **/
@@ -228,7 +228,7 @@ void HashTableChained<K, V>::printHistogram() const {
     cout << "Buckets with more than 1 entry (indicating collisions):\n";
     for (int i = 0; i < capacity; i++) {
         if (bucketCounts[i] > 1) {
-            cout << "Bucket " << i << ": " << bucketCounts[i] << " entries\n";
+            //cout << "Bucket " << i << ": " << bucketCounts[i] << " entries\n";
         }
     }
 }
