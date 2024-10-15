@@ -114,6 +114,8 @@ public:
     bool isPrime(int a);
 
     int nextPrime(int n);
+    
+    void testHashCode();
 };
 
 #endif
