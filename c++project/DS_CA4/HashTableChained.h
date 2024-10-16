@@ -115,8 +115,6 @@ public:
 
     int nextPrime(int n);
 
-    void testHashCode();
-
     void printHistogram()const;
 };
 #endif
