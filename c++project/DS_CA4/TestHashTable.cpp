@@ -42,7 +42,7 @@ int main() {
     doubleTable->insert(new Double(10), new Integer(1));
     doubleTable->insert(new Double(20), new Integer(2));
     cout << "Size should be 2 : " << doubleTable->size() << endl;
-    //doubleTable->testHashCode();
+    doubleTable->printHistogram();
 
     cout << "===============================CheckerBoard Hash Table Test===============================" << endl;
     HashTableChained<CheckerBoard*, Integer*>* table = new HashTableChained<CheckerBoard*, Integer*>(numBoards);
