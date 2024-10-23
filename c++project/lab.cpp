@@ -1,16 +1,11 @@
 #include <iostream>
 #include <math.h>
 using namespace std;
-
-int hashcode(float a){
-    double value = a;
-    value *= ((1+sqrt(5))/2);
-    return (int)value;
-}
-
 int main(){
-    for (float i = 0; i <100; i++)
+    float x = 20;
+    for (int i = 0; i < 100000; i++)
     {
-        cout << i << ':' << ((3 * hashcode(i + 5) % 1331) % 101) << endl;
-    }  
+        x = (x+20)*20/(x+40);
+    }
+    cout << x << endl;
 }
