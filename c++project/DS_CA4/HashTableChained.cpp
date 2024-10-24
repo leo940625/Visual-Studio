@@ -171,27 +171,6 @@ int HashTableChained<K, V>::nextPrime(int n){
     return n;
 }
 
-template <typename K, typename V>
-void HashTableChained<K, V>::testHashCode(){
-    int disturb = 0,max = 0;
-    for (int i = 0; i != capacity; i++){
-        int sum = 0;
-        while (buckets[i] != nullptr) {
-            buckets[i] = buckets[i]->next;
-            sum++;
-        }
-        if (sum > 1){
-            cout << "collision:" << i << ':' << sum << endl;
-            disturb++;
-        }
-        if (sum >= max){
-            max = sum;
-        }
-    }
-    cout << "Collosion:" << disturb << endl;
-    cout << "Max:" << max << endl;
-}
-
 template<typename K, typename V>
 void HashTableChained<K, V>::printHistogram() const {
     vector<int> bucketCounts(capacity, 0);
