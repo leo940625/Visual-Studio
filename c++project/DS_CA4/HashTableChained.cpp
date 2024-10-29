@@ -110,8 +110,14 @@ void HashTableChained<K, V>::insert(const K &key, const V &value){
  **/
 template <typename K, typename V>
 bool HashTableChained<K, V>::find(const K &key){
-    Node *current = buckets[compFunction(key->hashCode())];
-    return current == nullptr ? false : true;
+    Node *temp = bucket[compfunction(key->hashcode())];
+    while(temp != nullptr){ //point to nullptr means there is no value in the bucket
+        if ((temp->entry).getkey == key){
+            return true;
+        }
+        temp = temp->next;
+    }
+    return false;
 }
 
 /**
@@ -126,11 +132,18 @@ bool HashTableChained<K, V>::find(const K &key){
  */
 template <typename K, typename V>
 void HashTableChained<K, V>::remove(const K &key){
-    if (buckets[compFunction(key->hashCode())] != nullptr){
-        Node *last = buckets[compFunction(key->hashCode())];
-        buckets[compFunction(key->hashCode())] = last->next;
-        delete last;
-        Size--;
+    if (find(key)){
+        Node *temp = bucket[compfunction(key->hashcode())];
+        while(1){
+            if ((temp->next->entry).getkey == key){ // find the exact (key, value)
+                Node *current = temp->next;
+                temp->next = temp->next->next;
+                delete current;
+                Size--;
+                return;
+            }
+            temp = temp->next;
+        }
     }
 }
 
