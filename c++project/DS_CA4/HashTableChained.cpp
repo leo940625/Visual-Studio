@@ -110,9 +110,9 @@ void HashTableChained<K, V>::insert(const K &key, const V &value){
  **/
 template <typename K, typename V>
 bool HashTableChained<K, V>::find(const K &key){
-    Node *temp =  buckets[compFunction(key->hashCode())];
-    while(temp != nullptr){ //point to nullptr means there is no value in the  buckets
-        if (temp->entry.getkey() == key){
+    Node *temp = buckets[compFunction(key->hashCode())];
+    while(temp != nullptr){
+        if (temp->entry.getkey()->equals(*key)){
             return true;
         }
         temp = temp->next;
@@ -132,18 +132,25 @@ bool HashTableChained<K, V>::find(const K &key){
  */
 template <typename K, typename V>
 void HashTableChained<K, V>::remove(const K &key){
-    if (find(key)){
-        Node *temp =  buckets[compFunction(key->hashCode())];
-        while(1){
-            if (temp->next->entry.getkey() == key){ // find the exact (key, value)
-                Node *current = temp->next;
-                temp->next = temp->next->next;
-                delete current;
-                Size--;
-                return;
-            }
-            temp = temp->next;
+    Node *temp = buckets[compFunction(key->hashCode())];
+    if (temp == nullptr){
+        return;
+    }
+    if (temp->entry.getkey()->equals(*key)){
+        buckets[compFunction(key->hashCode())] = temp->next;
+        delete temp;
+        Size--;
+        return;
+    }
+    while (temp != nullptr && temp->next != nullptr) {
+        if (temp->next->entry.getkey()->equals(*key)){ // 找到對應的 (key, value)
+            Node *current = temp->next;
+            temp->next = temp->next->next;
+            delete current;
+            Size--;
+            return;
         }
+        temp = temp->next;
     }
 }
 
@@ -151,16 +158,14 @@ void HashTableChained<K, V>::remove(const K &key){
  *  Remove all entries from the dictionary.
  */
 template <typename K, typename V>
-void HashTableChained<K, V>::makeEmpty(){
-    for (int i = 0; i != capacity; i++){
-        while (buckets[i] != nullptr){
-            Node* current = buckets[i];
-            buckets[i] = nullptr;    
-            while (current != nullptr) {
-                Node* nextNode = current->next;
-                delete current;
-                current = nextNode;
-            }
+void HashTableChained<K, V>::makeEmpty() {
+    for (int i = 0; i < capacity; i++) {
+        Node* current = buckets[i];
+        while (current != nullptr) {
+            Node* nextNode = current->next; 
+            delete current;                
+            current = nextNode;     
+            buckets[i] = nullptr;     
         }
     }
     Size = 0;
