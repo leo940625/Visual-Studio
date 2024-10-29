@@ -143,7 +143,7 @@ void HashTableChained<K, V>::remove(const K &key){
         return;
     }
     while (temp != nullptr && temp->next != nullptr) {
-        if (temp->next->entry.getkey()->equals(*key)){ // 找到對應的 (key, value)
+        if (temp->next->entry.getkey()->equals(*key)){
             Node *current = temp->next;
             temp->next = temp->next->next;
             delete current;
