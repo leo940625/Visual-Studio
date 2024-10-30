@@ -8,6 +8,7 @@
 #ifndef CHECKERBOARD_H
 #define CHECKERBOARD_H
 #include"HashTableChained.h"
+#include<cmath>
 
 class CheckerBoard {
 private:

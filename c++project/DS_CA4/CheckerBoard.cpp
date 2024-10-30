@@ -12,6 +12,7 @@
  **/
 
 #include "CheckerBoard.h"
+#include <iostream>
 
 
 /**
@@ -72,9 +73,10 @@ bool CheckerBoard::equals(const CheckerBoard& board) {
  *  @return a number between Integer.MIN_VALUE and Integer.MAX_VALUE.
  */
 int CheckerBoard::hashCode(){
+
     int pr =1487,sum = 0;
     for (int i = 0; i < DIMENSION;i++){
-        for (int j = 0; j < DIMENSION;j++) {
+        for (int j = 0; j < DIMENSION;j++){
             sum += grid[i][j]*(8*i+j);
             sum == pr + (sum << 3) + (sum >> 2);
         }

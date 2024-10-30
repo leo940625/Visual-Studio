@@ -192,28 +192,25 @@ int HashTableChained<K, V>::nextPrime(int n){
 template<typename K, typename V>
 void HashTableChained<K, V>::printHistogram() const {
     vector<int> bucketCounts(capacity, 0);
-
-    // 計算每個 bucket 中的條目數量
-    for (int i = 0; i < capacity; i++) {
+    for (int i = 0; i < capacity; i++){
         Node* current = buckets[i];
-        while (current != nullptr) {
+        while (current != nullptr){
             bucketCounts[i]++;
             current = current->next;
         }
     }
 
-    // 計算總的碰撞數和最大條目數
     int totalCollisions = 0;
     int maxEntries = 0;
     int maxEntriesBucket = -1;
 
     for (int i = 0; i < capacity; i++) {
         if (bucketCounts[i] > 1) {
-            totalCollisions += (bucketCounts[i] - 1);  // 碰撞數量
+            totalCollisions += (bucketCounts[i] - 1);
         }
         if (bucketCounts[i] > maxEntries) {
             maxEntries = bucketCounts[i];
-            maxEntriesBucket = i;  // 記錄條目最多的 bucket
+            maxEntriesBucket = i;
         }
     }
 
