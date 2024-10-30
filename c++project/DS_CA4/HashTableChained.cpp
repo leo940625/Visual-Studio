@@ -175,17 +175,14 @@ template <typename K, typename V>
 bool HashTableChained<K, V>::isPrime(int a){ // check whether a is a prime
     if (a <= 1)return false;
     for (int i = 2; i < sqrt(a); i++){
-        if (a % i == 0)
-            return false;
+        if (a % i == 0)return false;
     }
     return true;
 }
 
 template <typename K, typename V>
 int HashTableChained<K, V>::nextPrime(int n){
-    while (!isPrime(n)){
-        n++;
-    }
+    while (!isPrime(n++));
     return n;
 }
 
