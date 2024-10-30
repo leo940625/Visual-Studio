@@ -161,7 +161,7 @@ template <typename K, typename V>
 void HashTableChained<K, V>::makeEmpty() {
     for (int i = 0; i < capacity; i++) {
         Node* current = buckets[i];
-        while (current != nullptr) {
+        while (current != nullptr){ 
             Node* nextNode = current->next; 
             delete current;                
             current = nextNode;     
