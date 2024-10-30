@@ -213,16 +213,12 @@ void HashTableChained<K, V>::printHistogram() const {
             maxEntriesBucket = i;
         }
     }
-
-    // 簡化輸出，只顯示重點
     cout << "Total collisions: " << totalCollisions << endl;
     cout << "Bucket with the most entries: Bucket " << maxEntriesBucket << " with " << maxEntries << " entries" << endl;
-
-    // 顯示碰撞較多的 buckets
     cout << "Buckets with more than 1 entry (indicating collisions):\n";
     for (int i = 0; i < capacity; i++) {
         if (bucketCounts[i] > 1) {
-            //cout << "Bucket " << i << ": " << bucketCounts[i] << " entries\n";
+            cout << "Bucket " << i << ": " << bucketCounts[i] << " entries\n";
         }
     }
 }
