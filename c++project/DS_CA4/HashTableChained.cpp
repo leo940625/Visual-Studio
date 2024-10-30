@@ -112,9 +112,7 @@ template <typename K, typename V>
 bool HashTableChained<K, V>::find(const K &key){
     Node *temp = buckets[compFunction(key->hashCode())];
     while(temp != nullptr){
-        if (temp->entry.getkey()->equals(*key)){
-            return true;
-        }
+        if (temp->entry.getkey()->equals(*key))return true;
         temp = temp->next;
     }
     return false;
@@ -133,9 +131,7 @@ bool HashTableChained<K, V>::find(const K &key){
 template <typename K, typename V>
 void HashTableChained<K, V>::remove(const K &key){
     Node *temp = buckets[compFunction(key->hashCode())];
-    if (temp == nullptr){
-        return;
-    }
+    if (temp == nullptr)return;
     if (temp->entry.getkey()->equals(*key)){
         buckets[compFunction(key->hashCode())] = temp->next;
         delete temp;
@@ -214,8 +210,8 @@ void HashTableChained<K, V>::printHistogram() const {
     cout << "Bucket with the most entries: Bucket " << maxEntriesBucket << " with " << maxEntries << " entries" << endl;
     cout << "Buckets with more than 1 entry (indicating collisions):\n";
     for (int i = 0; i < capacity; i++) {
-        if (bucketCounts[i] > 1) {
-            cout << "Bucket " << i << ": " << bucketCounts[i] << " entries\n";
+        if (bucketCounts[i] > 1){
+            //cout << "Bucket " << i << ": " << bucketCounts[i] << " entries\n";
         }
     }
 }
