@@ -12,6 +12,7 @@
  **/
 
 #include "CheckerBoard.h"
+#include <iostream>
 
 
 /**
@@ -59,9 +60,7 @@ int CheckerBoard::elementAt(int x, int y) {
 bool CheckerBoard::equals(const CheckerBoard& board) {
     for (int i = 0; i < DIMENSION;i++){
         for (int j = 0; j < DIMENSION;j++) {
-            if (grid[i][j] != board.grid[i][j]) {
-                return false;
-            }
+            if (grid[i][j] != board.grid[i][j])return false;
         }
     }
     return true;
@@ -74,7 +73,7 @@ bool CheckerBoard::equals(const CheckerBoard& board) {
 int CheckerBoard::hashCode(){
     int pr =1487,sum = 0;
     for (int i = 0; i < DIMENSION;i++){
-        for (int j = 0; j < DIMENSION;j++) {
+        for (int j = 0; j < DIMENSION;j++){
             sum += grid[i][j]*(8*i+j);
             sum == pr + (sum << 3) + (sum >> 2);
         }
@@ -82,18 +81,15 @@ int CheckerBoard::hashCode(){
     return sum;
 }
 
-bool CheckerBoard::isPrime_(int a){ // check whether a is a prime
+bool CheckerBoard::isPrime_(int a){
     if (a <= 1)return false;
     for (int i = 2; i < sqrt(a); i++){
-        if (a % i == 0)
-            return false;
+        if (a % i == 0)return false;
     }
     return true;
 }
 
 int CheckerBoard::nextPrime_(int n){
-    while (!isPrime_(n)){
-        n++;
-    }
+    while (!isPrime_(n++));
     return n;
 }

@@ -110,8 +110,12 @@ void HashTableChained<K, V>::insert(const K &key, const V &value){
  **/
 template <typename K, typename V>
 bool HashTableChained<K, V>::find(const K &key){
-    Node *current = buckets[compFunction(key->hashCode())];
-    return current == nullptr ? false : true;
+    Node *temp = buckets[compFunction(key->hashCode())];
+    while(temp != nullptr){
+        if (temp->entry.getkey()->equals(*key))return true;
+        temp = temp->next;
+    }
+    return false;
 }
 
 /**
@@ -126,11 +130,23 @@ bool HashTableChained<K, V>::find(const K &key){
  */
 template <typename K, typename V>
 void HashTableChained<K, V>::remove(const K &key){
-    if (buckets[compFunction(key->hashCode())] != nullptr){
-        Node *last = buckets[compFunction(key->hashCode())];
-        buckets[compFunction(key->hashCode())] = last->next;
-        delete last;
+    Node *temp = buckets[compFunction(key->hashCode())];
+    if (temp == nullptr)return;
+    if (temp->entry.getkey()->equals(*key)){
+        buckets[compFunction(key->hashCode())] = temp->next;
+        delete temp;
         Size--;
+        return;
+    }
+    while (temp != nullptr && temp->next != nullptr) {
+        if (temp->next->entry.getkey()->equals(*key)){
+            Node *current = temp->next;
+            temp->next = temp->next->next;
+            delete current;
+            Size--;
+            return;
+        }
+        temp = temp->next;
     }
 }
 
@@ -138,16 +154,14 @@ void HashTableChained<K, V>::remove(const K &key){
  *  Remove all entries from the dictionary.
  */
 template <typename K, typename V>
-void HashTableChained<K, V>::makeEmpty(){
-    for (int i = 0; i != capacity; i++){
-        while (buckets[i] != nullptr){
-            Node* current = buckets[i];
-            buckets[i] = nullptr;    
-            while (current != nullptr) {
-                Node* nextNode = current->next;
-                delete current;
-                current = nextNode;
-            }
+void HashTableChained<K, V>::makeEmpty() {
+    for (int i = 0; i < capacity; i++) {
+        Node* current = buckets[i];
+        while (current != nullptr){ 
+            Node* nextNode = current->next; 
+            delete current;                
+            current = nextNode;     
+            buckets[i] = nullptr;     
         }
     }
     Size = 0;
@@ -157,56 +171,46 @@ template <typename K, typename V>
 bool HashTableChained<K, V>::isPrime(int a){ // check whether a is a prime
     if (a <= 1)return false;
     for (int i = 2; i < sqrt(a); i++){
-        if (a % i == 0)
-            return false;
+        if (a % i == 0)return false;
     }
     return true;
 }
 
 template <typename K, typename V>
 int HashTableChained<K, V>::nextPrime(int n){
-    while (!isPrime(n)){
-        n++;
-    }
+    while (!isPrime(n++));
     return n;
 }
 
 template<typename K, typename V>
 void HashTableChained<K, V>::printHistogram() const {
     vector<int> bucketCounts(capacity, 0);
-
-    // 計算每個 bucket 中的條目數量
-    for (int i = 0; i < capacity; i++) {
+    for (int i = 0; i < capacity; i++){
         Node* current = buckets[i];
-        while (current != nullptr) {
+        while (current != nullptr){
             bucketCounts[i]++;
             current = current->next;
         }
     }
 
-    // 計算總的碰撞數和最大條目數
     int totalCollisions = 0;
     int maxEntries = 0;
     int maxEntriesBucket = -1;
 
     for (int i = 0; i < capacity; i++) {
         if (bucketCounts[i] > 1) {
-            totalCollisions += (bucketCounts[i] - 1);  // 碰撞數量
+            totalCollisions += (bucketCounts[i] - 1);
         }
         if (bucketCounts[i] > maxEntries) {
             maxEntries = bucketCounts[i];
-            maxEntriesBucket = i;  // 記錄條目最多的 bucket
+            maxEntriesBucket = i;
         }
     }
-
-    // 簡化輸出，只顯示重點
     cout << "Total collisions: " << totalCollisions << endl;
     cout << "Bucket with the most entries: Bucket " << maxEntriesBucket << " with " << maxEntries << " entries" << endl;
-
-    // 顯示碰撞較多的 buckets
     cout << "Buckets with more than 1 entry (indicating collisions):\n";
     for (int i = 0; i < capacity; i++) {
-        if (bucketCounts[i] > 1) {
+        if (bucketCounts[i] > 1){
             //cout << "Bucket " << i << ": " << bucketCounts[i] << " entries\n";
         }
     }
