@@ -28,7 +28,6 @@ private:
         // Constructor 初始化節點
         Node(const K &key, const V &value) : entry(key, value), next(nullptr) {}
     };
-    // buckets
     vector<Node*> buckets;
     int Size,capacity,p;
 
