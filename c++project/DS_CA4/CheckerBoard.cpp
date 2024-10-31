@@ -75,7 +75,6 @@ int CheckerBoard::hashCode(){
     for (int i = 0; i < DIMENSION;i++){
         for (int j = 0; j < DIMENSION;j++){
             sum += grid[i][j]*(8*i+j);
-            sum == pr + (sum << 3) + (sum >> 2);
         }
     }
     return sum;
