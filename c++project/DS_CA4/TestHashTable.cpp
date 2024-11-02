@@ -17,7 +17,7 @@ void initTable(HashTableChained<K, V>* table, int numBoards);
 CheckerBoard* randomBoard();
 
 
-int main() {
+int main(){
 
     // initialize random seed:
     srand(time(NULL));
@@ -42,7 +42,7 @@ int main() {
     doubleTable->insert(new Double(10), new Integer(1));
     doubleTable->insert(new Double(20), new Integer(2));
     cout << "Size should be 2 : " << doubleTable->size() << endl;
-    doubleTable->printHistogram();
+    //doubleTable->printHistogram();
 
     cout << "===============================CheckerBoard Hash Table Test===============================" << endl;
     HashTableChained<CheckerBoard*, Integer*>* table = new HashTableChained<CheckerBoard*, Integer*>(numBoards);
@@ -55,7 +55,7 @@ int main() {
             break;
         }
     }
-    table->printHistogram();
+    //table->printHistogram();
     // To test your hash function, add a method to your HashTableChained class
     // that counts the number of collisions--or better yet, also prints
     // a histograph of the number of entries in each bucket.  Call this method
