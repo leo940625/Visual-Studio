@@ -161,8 +161,8 @@ void HashTableChained<K, V>::makeEmpty() {
             Node* nextNode = current->next; 
             delete current;                
             current = nextNode;     
-            buckets[i] = nullptr;     
         }
+        buckets[i] = nullptr;
     }
     Size = 0;
 }
