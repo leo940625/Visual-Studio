@@ -82,6 +82,16 @@ private:
         }
     }
 
+    void intsert(TreeNode* node,int value){
+        if (node == nullptr){
+            node = new TreeNode(value);
+        }else if (value > node->value){
+            return intsert(node->right,value);
+        }else if (value < node->value){
+            return intsert(node->left,value);
+        }
+    }
+
 public:
     BinarySearchTree() : root(nullptr) {}
 
