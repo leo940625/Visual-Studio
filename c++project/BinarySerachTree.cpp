@@ -1,118 +1,119 @@
 #include <iostream>
 using namespace std;
 
-// Node structure
+// 節點結構
 struct TreeNode {
-    int value;
-    TreeNode* left;
-    TreeNode* right;
-    TreeNode(int v) : value(v), left(nullptr), right(nullptr) {}
+    int value; // 節點的值
+    TreeNode* left; // 左子節點
+    TreeNode* right; // 右子節點
+    TreeNode(int v) : value(v), left(nullptr), right(nullptr) {} // 節點的構造函數
 };
 
-// Binary Search Tree class
+// 二元搜尋樹類別
 class BinarySearchTree {
 private:
-    TreeNode* root;
+    TreeNode* root; // 樹的根節點
 
-    // Private helper function - insert node
+    // 私有輔助函數 - 插入節點
     TreeNode* insertNode(TreeNode* node, int value) {
         if (node == nullptr) {
-            return new TreeNode(value);
+            return new TreeNode(value); // 如果節點為空，創建新節點
         }
         if (value < node->value) {
-            node->left = insertNode(node->left, value);
+            node->left = insertNode(node->left, value); // 插入左子樹
         } else if (value > node->value) {
-            node->right = insertNode(node->right, value);
+            node->right = insertNode(node->right, value); // 插入右子樹
         }
         return node;
     }
 
-    // Private helper function - search node
+    // 私有輔助函數 - 搜尋節點
     TreeNode* searchNode(TreeNode* node, int value) {
         if (node == nullptr || node->value == value) {
-            return node;
+            return node; // 如果節點為空或找到目標節點，返回節點
         }
         if (value < node->value) {
-            return searchNode(node->left, value);
+            return searchNode(node->left, value); // 在左子樹中搜尋
         }
-        return searchNode(node->right, value);
+        return searchNode(node->right, value); // 在右子樹中搜尋
     }
 
-    // Private helper function - delete node
+    // 私有輔助函數 - 刪除節點
     TreeNode* deleteNode(TreeNode* node, int value) {
-        if (node == nullptr) return node;
+        if (node == nullptr) return node; // 如果節點為空，返回節點
 
         if (value < node->value) {
-            node->left = deleteNode(node->left, value);
+            node->left = deleteNode(node->left, value); // 在左子樹中刪除
         } else if (value > node->value) {
-            node->right = deleteNode(node->right, value);
+            node->right = deleteNode(node->right, value); // 在右子樹中刪除
         } else {
-            // Current node is the target node
+            // 當前節點是目標節點
             if (node->left == nullptr) {
-                TreeNode* temp = node->right;
+                TreeNode* temp = node->right; // 如果左子節點為空，返回右子節點
                 delete node;
                 return temp;
             } else if (node->right == nullptr) {
-                TreeNode* temp = node->left;
+                TreeNode* temp = node->left; // 如果右子節點為空，返回左子節點
                 delete node;
                 return temp;
             }
-            // Find the minimum node in the right subtree
+            // 在右子樹中找到最小節點
             TreeNode* minNode = findMin(node->right);
-            node->value = minNode->value;
-            node->right = deleteNode(node->right, minNode->value);
+            node->value = minNode->value; // 用最小節點的值替換當前節點的值
+            node->right = deleteNode(node->right, minNode->value); // 刪除右子樹中的最小節點
         }
         return node;
     }
 
-    // Private helper function - find minimum node
+    // 私有輔助函數 - 找到最小節點
     TreeNode* findMin(TreeNode* node) {
         while (node && node->left != nullptr) {
-            node = node->left;
+            node = node->left; // 一直向左找到最小節點
         }
         return node;
     }
 
-    // Inorder traversal helper function
+    // 中序遍歷輔助函數
     void inorderTraversal(TreeNode* node) {
         if (node != nullptr) {
-            inorderTraversal(node->left);
-            cout << node->value << " ";
-            inorderTraversal(node->right);
+            inorderTraversal(node->left); // 遍歷左子樹
+            cout << node->value << " "; // 輸出節點值
+            inorderTraversal(node->right); // 遍歷右子樹
         }
     }
 
+    // 插入節點輔助函數
     void intsert(TreeNode* node,int value){
         if (node == nullptr){
-            node = new TreeNode(value);
+            node = new TreeNode(value); // 如果節點為空，創建新節點
         }else if (value > node->value){
-            return intsert(node->right,value);
+            return intsert(node->right,value); // 插入右子樹
         }else if (value < node->value){
-            return intsert(node->left,value);
+            return intsert(node->left,value); // 插入左子樹
         }
     }
 
 public:
-    BinarySearchTree() : root(nullptr) {}
+    BinarySearchTree() : root(nullptr) {} // 二元搜尋樹的構造函數
 
-    // Insert node
+    // 插入節點
     void insert(int value) {
-        root = insertNode(root, value);
+        root = insertNode(root, value); // 調用插入節點輔助函數
     }
 
-    // Search node
+    // 搜尋節點
     bool search(int value) {
-        return searchNode(root, value) != nullptr;
+        return searchNode(root, value) != nullptr; // 調用搜尋節點輔助函數
     }
 
-    // Delete node
+    // 刪除節點
     void remove(int value) {
-        root = deleteNode(root, value);
+        root = deleteNode(root, value); // 調用刪除節點輔助函數
     }
 
-    // Inorder traversal
+    // 中序遍歷
     void inorder() {
-        inorderTraversal(root);
+        inorderTraversal(root); // 調用中序遍歷輔助函數
         cout << endl;
     }
 };
