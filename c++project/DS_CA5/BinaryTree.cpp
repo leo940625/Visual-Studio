@@ -76,7 +76,17 @@ BinaryTreeNode<K, V>* BinaryTree<K, V>::findHelper(const K& key, BinaryTreeNode<
     if (node == nullptr){
         return nullptr;
     }
-    
+    BinaryTreeNode<K, V>* current = node;
+    while (current != nullptr){
+        if (current->entryentry.getkey()->compareTo(*key) == 0){
+            return current;
+        }else if(current->entry.getkey()->compareTo(*key) > 0){
+            current = current->rightChild;
+        }else{
+            current = current->leftChild;
+        }
+    }
+    return nullptr;
 }
 
 /**
@@ -107,17 +117,54 @@ Entry<K, V>* BinaryTree<K, V>::find(const K& key) {
  */
 template<typename K, typename V>
 void BinaryTree<K, V>::remove(const K& key) {
-  // Your solution here.
+    BinaryTreeNode<K, V>* current = findHelper(key);
+    if (current == nullptr){
+        return;
+    }
+    if (current->leftChild == nullptr && current->rightChild == nullptr) {//external node
+        if (current->parent->leftChild == current){
+            current->parent->leftChild == nullptr;
+        }else{
+            current->parent->rightChild == nullptr;
+        }
+        delete current;
+        return;
+    }
+    if (current->leftChild == nullptr) {
+        if (current->parent->leftChild == current){
+            current->parent->leftChild == current->rightChild;
+            current->rightChild->parent = current->parent;
+        }else{
+            current->parent->rightChild == current->rightChild;
+            current->rightChild->parent = current->parent;
+        }
+        delete current;
+        return;
+    }else if(current->rightChild == nullptr){
+        if (current->parent->leftChild == current){
+            current->parent->leftChild == current->leftChild;
+            current->leftChild->parent = current->parent;
+        }else{
+            current->parent->rightChild == current->leftChild;
+            current->leftChild->parent = current->parent;
+        }
+        delete current;
+        return;
+    }
+    BinaryTreeNode<K, V>* temp = current->rightChild;
+    while (temp->leftChild != nullptr){
+       temp = temp->leftChild;
+    }
+    
 }
 
 /**
  *  Remove all entries from the dictionary.
  */
 template<typename K, typename V>
-void BinaryTree<K, V>::makeEmpty() {
-  // Your solution here.
-}
+void BinaryTree<K, V>::makeEmpty(){
 
+}
 /**
  *  Convert the tree into a string.
  **/
