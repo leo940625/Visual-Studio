@@ -71,9 +71,9 @@ int main() {
   cout << "\nTesting remove() (for nodes with 2 children) ..." << endl;
   testRemove(tree, 6, "(2Z)7S((8X)9L(10B))");
   testRemove(tree, 9, "(2Z)7S((8X)10B)");
-  cout << "Size:  " << tree->size() << endl;
   if(tree->size() != 4)
     cout << "  SHOULD BE 6." << endl;
 
+  cout << "the end" << endl;
   return 0;
 }

@@ -1,8 +1,9 @@
 #include "BinaryTree.h"
 using namespace std;
 
-template<typename K, typename V>
-BinaryTree<K, V>::BinaryTree(){
+template <typename K, typename V>
+BinaryTree<K, V>::BinaryTree()
+{
     makeEmpty();
 }
 
@@ -12,9 +13,10 @@ BinaryTree<K, V>::BinaryTree(){
  *  a separate entry.
  *  @return number of entries in the dictionary.
  **/
-template<typename K, typename V>
-int BinaryTree<K, V>::size() {
-  return tsize;
+template <typename K, typename V>
+int BinaryTree<K, V>::size()
+{
+    return tsize;
 }
 
 /**
@@ -22,26 +24,31 @@ int BinaryTree<K, V>::size() {
  *
  *  @return true if the dictionary has no entries; false otherwise.
  **/
-template<typename K, typename V>
-bool BinaryTree<K, V>::isEmpty() {
-  return size() == 0;
+template <typename K, typename V>
+bool BinaryTree<K, V>::isEmpty()
+{
+    return size() == 0;
 }
 
-template<typename K, typename V>
-void BinaryTree<K, V>::insertHelper(Entry<K, V>* entry, const K& key, BinaryTreeNode<K, V>* node) {
-  if (key.compareTo(node->entry->getkey()) <= 0) {
-    if (node->leftChild == nullptr) {
-      node->leftChild = new BinaryTreeNode<K, V>(entry, node);
-    } else {
-      insertHelper(entry, key, node->leftChild);
+template <typename K, typename V>
+void BinaryTree<K, V>::insertHelper(Entry<K, V> *entry, const K &key, BinaryTreeNode<K, V> *node)
+{
+    if (key.compareTo(node->entry->getkey()) <= 0){
+        if (node->leftChild == nullptr){
+            node->leftChild = new BinaryTreeNode<K, V>(entry, node);
+        }
+        else{
+            insertHelper(entry, key, node->leftChild);
+        }
     }
-  } else {
-    if (node->rightChild == nullptr) {
-      node->rightChild = new BinaryTreeNode<K, V>(entry, node);
-    } else {
-      insertHelper(entry, key, node->rightChild);
+    else{
+        if (node->rightChild == nullptr){
+            node->rightChild = new BinaryTreeNode<K, V>(entry, node);
+        }
+        else{
+            insertHelper(entry, key, node->rightChild);
+        }
     }
-  }
 }
 
 /**
@@ -53,15 +60,19 @@ void BinaryTree<K, V>::insertHelper(Entry<K, V>* entry, const K& key, BinaryTree
  *  @param key the key by which the entry can be retrieved.
  *  @param value an arbitrary object.
  **/
-template<typename K, typename V>
-void BinaryTree<K, V>::insert(const K& key, const V& value) {
-  Entry<K, V>* entry = new Entry<K, V>(key, value);
-  if (root == nullptr) {
-    root = new BinaryTreeNode<K, V>(entry);
-  } else {
-    insertHelper(entry, key, root);
-  }
-  tsize++;
+template <typename K, typename V>
+void BinaryTree<K, V>::insert(const K &key, const V &value)
+{
+    Entry<K, V> *entry = new Entry<K, V>(key, value);
+    if (root == nullptr)
+    {
+        root = new BinaryTreeNode<K, V>(entry);
+    }
+    else
+    {
+        insertHelper(entry, key, root);
+    }
+    tsize++;
 }
 
 /**
@@ -71,19 +82,22 @@ void BinaryTree<K, V>::insert(const K& key, const V& value) {
  *
  *  Be sure this method returns nullptr if node == nullptr.
  **/
-template<typename K, typename V>
-BinaryTreeNode<K, V>* BinaryTree<K, V>::findHelper(const K& key, BinaryTreeNode<K, V>* node) {
+template <typename K, typename V>
+BinaryTreeNode<K, V> *BinaryTree<K, V>::findHelper(const K &key, BinaryTreeNode<K, V> *node)
+{
     if (node == nullptr){
         return nullptr;
     }
-    BinaryTreeNode<K, V>* current = node;
+    BinaryTreeNode<K, V> *current = node;
     while (current != nullptr){
-        if (current->entryentry.getkey()->compareTo(*key) == 0){
+        if (current->entry->getkey().compareTo(key) == 0){
             return current;
-        }else if(current->entry.getkey()->compareTo(*key) > 0){
-            current = current->rightChild;
-        }else{
+        }
+        else if (current->entry->getkey().compareTo(key) > 0) {
             current = current->leftChild;
+        }
+        else{
+            current = current->rightChild;
         }
     }
     return nullptr;
@@ -97,14 +111,16 @@ BinaryTreeNode<K, V>* BinaryTree<K, V>::findHelper(const K& key, BinaryTreeNode<
  *  @return an entry containing the key and an associated value, or nullptr if
  *          no entry contains the specified key.
  **/
-template<typename K, typename V>
-Entry<K, V>* BinaryTree<K, V>::find(const K& key) {
-  BinaryTreeNode<K, V>* node = findHelper(key, root);
-  if (node != nullptr) {
-    return node->entry;
-  } else {
-    return nullptr;
-  }
+template <typename K, typename V>
+Entry<K, V> *BinaryTree<K, V>::find(const K &key)
+{
+    BinaryTreeNode<K, V> *node = findHelper(key, root);
+    if (node != nullptr){
+        return node->entry;
+    }
+    else{
+        return nullptr;
+    }
 }
 
 /**
@@ -115,64 +131,100 @@ Entry<K, V>* BinaryTree<K, V>::find(const K& key) {
  *
  *  @param key the search key.
  */
-template<typename K, typename V>
-void BinaryTree<K, V>::remove(const K& key) {
-    BinaryTreeNode<K, V>* current = findHelper(key);
+template <typename K, typename V>
+void BinaryTree<K, V>::remove(const K &key)
+{
+    BinaryTreeNode<K, V> *current = findHelper(key, root);
     if (current == nullptr){
         return;
     }
-    if (current->leftChild == nullptr && current->rightChild == nullptr) {//external node
-        if (current->parent->leftChild == current){
-            current->parent->leftChild == nullptr;
-        }else{
-            current->parent->rightChild == nullptr;
+    // No child
+    if (current->leftChild == nullptr && current->rightChild == nullptr) { // external node
+        if (current == root) {
+            root = nullptr;
+        } else if (current->parent->leftChild == current) {
+            current->parent->leftChild = nullptr;
+        } else {
+            current->parent->rightChild = nullptr;
         }
         delete current;
+        tsize--;
         return;
     }
+    // One child
     if (current->leftChild == nullptr) {
-        if (current->parent->leftChild == current){
-            current->parent->leftChild == current->rightChild;
+        if (current == root) {
+            root = current->rightChild;
+            root->parent = nullptr;
+        } else if (current->parent->leftChild == current) {
+            current->parent->leftChild = current->rightChild;
             current->rightChild->parent = current->parent;
-        }else{
-            current->parent->rightChild == current->rightChild;
+        } else {
+            current->parent->rightChild = current->rightChild;
             current->rightChild->parent = current->parent;
         }
         delete current;
+        tsize--;
         return;
-    }else if(current->rightChild == nullptr){
-        if (current->parent->leftChild == current){
-            current->parent->leftChild == current->leftChild;
+    } else if (current->rightChild == nullptr) {
+        if (current == root) {
+            root = current->leftChild;
+            root->parent = nullptr;
+        } else if (current->parent->leftChild == current) {
+            current->parent->leftChild = current->leftChild;
             current->leftChild->parent = current->parent;
-        }else{
-            current->parent->rightChild == current->leftChild;
+        } else {
+            current->parent->rightChild = current->leftChild;
             current->leftChild->parent = current->parent;
         }
         delete current;
+        tsize--;
         return;
     }
-    BinaryTreeNode<K, V>* temp = current->rightChild;
+    //two child
+    BinaryTreeNode<K, V> *temp = current->rightChild;
     while (temp->leftChild != nullptr){
-       temp = temp->leftChild;
+        temp = temp->leftChild;
     }
-    
+    BinaryTreeNode<K, V> *buffer = new BinaryTreeNode(temp->entry,current->parent,current->leftChild,current->rightChild);
+    buffer->leftChild->parent = buffer;
+    buffer->rightChild->parent = buffer;
+    if (current->parent->leftChild == current){
+        current->parent->leftChild = buffer;
+    }else{
+        current->parent->rightChild = buffer;
+    }
+    delete current;
+    if (temp->parent->leftChild == temp){
+        temp->parent->leftChild = temp->rightChild;
+    }
+    else{
+        temp->parent->rightChild = temp->rightChild;
+    }
+    if (temp->rightChild != nullptr){
+        temp->rightChild->parent = temp->parent;
+    }
+    delete temp;
+    tsize--;   
 }
 
 /**
  *  Remove all entries from the dictionary.
  */
-template<typename K, typename V>
+template <typename K, typename V>
 void BinaryTree<K, V>::makeEmpty(){
-
+    root = nullptr;
+    tsize = 0;
 }
 /**
  *  Convert the tree into a string.
  **/
-template<typename K, typename V>
-std::string BinaryTree<K, V>::toString() {
-  if (root == nullptr) {
-    return "";
-  } else {
-    return root->toString();
-  }
+template <typename K, typename V>
+std::string BinaryTree<K, V>::toString(){
+    if (root == nullptr){
+        return "";
+    }
+    else{
+        return root->toString();
+    }
 }
