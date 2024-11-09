@@ -2,8 +2,8 @@
 using namespace std;
 
 template<typename K, typename V>
-BinaryTree<K, V>::BinaryTree() {
-  makeEmpty();
+BinaryTree<K, V>::BinaryTree(){
+    makeEmpty();
 }
 
 /**
@@ -30,13 +30,13 @@ bool BinaryTree<K, V>::isEmpty() {
 template<typename K, typename V>
 void BinaryTree<K, V>::insertHelper(Entry<K, V>* entry, const K& key, BinaryTreeNode<K, V>* node) {
   if (key.compareTo(node->entry->getkey()) <= 0) {
-    if (node->leftChild == NULL) {
+    if (node->leftChild == nullptr) {
       node->leftChild = new BinaryTreeNode<K, V>(entry, node);
     } else {
       insertHelper(entry, key, node->leftChild);
     }
   } else {
-    if (node->rightChild == NULL) {
+    if (node->rightChild == nullptr) {
       node->rightChild = new BinaryTreeNode<K, V>(entry, node);
     } else {
       insertHelper(entry, key, node->rightChild);
@@ -56,7 +56,7 @@ void BinaryTree<K, V>::insertHelper(Entry<K, V>* entry, const K& key, BinaryTree
 template<typename K, typename V>
 void BinaryTree<K, V>::insert(const K& key, const V& value) {
   Entry<K, V>* entry = new Entry<K, V>(key, value);
-  if (root == NULL) {
+  if (root == nullptr) {
     root = new BinaryTreeNode<K, V>(entry);
   } else {
     insertHelper(entry, key, root);
@@ -67,14 +67,16 @@ void BinaryTree<K, V>::insert(const K& key, const V& value) {
 /**
  *  Search for a node with the specified key, starting from "node".  If a
  *  matching key is found (meaning that key1.compareTo(key2) == 0), return
- *  a node containing that key.  Otherwise, return null.
+ *  a node containing that key.  Otherwise, return nullptr.
  *
- *  Be sure this method returns null if node == null.
+ *  Be sure this method returns nullptr if node == nullptr.
  **/
 template<typename K, typename V>
 BinaryTreeNode<K, V>* BinaryTree<K, V>::findHelper(const K& key, BinaryTreeNode<K, V>* node) {
-  // Replace the following line with your solution.
-  return NULL;
+    if (node == nullptr){
+        return nullptr;
+    }
+    
 }
 
 /**
@@ -82,16 +84,16 @@ BinaryTreeNode<K, V>* BinaryTree<K, V>::findHelper(const K& key, BinaryTreeNode<
  *  return true; otherwise return false.
  *
  *  @param key the search key.
- *  @return an entry containing the key and an associated value, or null if
+ *  @return an entry containing the key and an associated value, or nullptr if
  *          no entry contains the specified key.
  **/
 template<typename K, typename V>
 Entry<K, V>* BinaryTree<K, V>::find(const K& key) {
   BinaryTreeNode<K, V>* node = findHelper(key, root);
-  if (node != NULL) {
+  if (node != nullptr) {
     return node->entry;
   } else {
-    return NULL;
+    return nullptr;
   }
 }
 
@@ -121,7 +123,7 @@ void BinaryTree<K, V>::makeEmpty() {
  **/
 template<typename K, typename V>
 std::string BinaryTree<K, V>::toString() {
-  if (root == NULL) {
+  if (root == nullptr) {
     return "";
   } else {
     return root->toString();

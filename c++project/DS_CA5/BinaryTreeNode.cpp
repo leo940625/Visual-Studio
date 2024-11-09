@@ -6,13 +6,13 @@ using namespace std;
 /** Simple constructor that sets the entry.
  *  The rest of the fields are set to null. */
 template<typename K, typename V>
-BinaryTreeNode<K, V>::BinaryTreeNode(Entry<K, V>* e):entry(e), parent(NULL), leftChild(NULL), rightChild(NULL){
+BinaryTreeNode<K, V>::BinaryTreeNode(Entry<K, V>* e):entry(e), parent(nullptr), leftChild(nullptr), rightChild(nullptr){
 }
 
 /** Simple constructor that sets the entry and parent.
  *  The rest of the fields are set to null. */
 template<typename K, typename V>
-BinaryTreeNode<K, V>::BinaryTreeNode(Entry<K, V>* e, BinaryTreeNode<K, V>* p):entry(e), parent(p), leftChild(NULL), rightChild(NULL){
+BinaryTreeNode<K, V>::BinaryTreeNode(Entry<K, V>* e, BinaryTreeNode<K, V>* p):entry(e), parent(p), leftChild(nullptr), rightChild(nullptr){
 }
 
 /** Simple constructor that sets all of the node's fields. */
