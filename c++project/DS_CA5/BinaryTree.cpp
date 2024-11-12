@@ -182,18 +182,23 @@ void BinaryTree<K, V>::remove(const K &key)
         return;
     }
     //two child
-    /*BinaryTreeNode<K, V> *temp = current->rightChild;
+    BinaryTreeNode<K, V> *temp = current->rightChild;
     while (temp->leftChild != nullptr){
         temp = temp->leftChild;
     }
+    cout << 1 << endl;
     BinaryTreeNode<K, V> *buffer = new BinaryTreeNode<K, V>(temp->entry,current->parent,current->leftChild,current->rightChild);
     buffer->leftChild->parent = buffer;
     buffer->rightChild->parent = buffer;
-    if (current->parent->leftChild == current){
-        current->parent->leftChild = buffer;
-    }else{
-        current->parent->rightChild = buffer;
+    cout << 2 << endl;
+    if (current->parent != nullptr){
+        if (current->parent->leftChild == current){
+            current->parent->leftChild = buffer;
+        }else{
+            current->parent->rightChild = buffer;
+        }
     }
+    cout << 3 << endl;
     delete current;
     if (temp->parent->leftChild == temp){
         temp->parent->leftChild = temp->rightChild;
@@ -205,7 +210,7 @@ void BinaryTree<K, V>::remove(const K &key)
         temp->rightChild->parent = temp->parent;
     }
     delete temp;
-    tsize--;*/
+    tsize--;
 }
 
 /**
