@@ -187,7 +187,7 @@ void BinaryTree<K, V>::remove(const K &key)
     while (temp->leftChild != nullptr){
         temp = temp->leftChild;
     }
-   target->entry = new Entry<K, V>(temp->entry->getkey(), temp->entry->getvalue());
+    target->entry = new Entry<K, V>(temp->entry->getkey(), temp->entry->getvalue());
     //刪除temp
     if (temp->parent->leftChild == temp){
         temp->parent->leftChild = temp->rightChild;
