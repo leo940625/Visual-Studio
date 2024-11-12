@@ -1,4 +1,5 @@
 #include "BinaryTree.h"
+#include<iostream>
 using namespace std;
 
 template <typename K, typename V>
@@ -134,78 +135,86 @@ Entry<K, V> *BinaryTree<K, V>::find(const K &key)
 template <typename K, typename V>
 void BinaryTree<K, V>::remove(const K &key)
 {
-    BinaryTreeNode<K, V> *current = findHelper(key, root);
-    if (current == nullptr){
+    BinaryTreeNode<K, V> *target = findHelper(key, root);
+    if (target == nullptr){
         return;
     }
     // No child
-    if (current->leftChild == nullptr && current->rightChild == nullptr) { // external node
-        if (current == root) {
+    if (target->leftChild == nullptr && target->rightChild == nullptr) { // external node
+        if (target == root) {
             root = nullptr;
-        } else if (current->parent->leftChild == current) {
-            current->parent->leftChild = nullptr;
+        } else if (target->parent->leftChild == target) {
+            target->parent->leftChild = nullptr;
         } else {
-            current->parent->rightChild = nullptr;
+            target->parent->rightChild = nullptr;
         }
-        delete current;
+        delete target;
         tsize--;
         return;
     }
     // One child
-    if (current->leftChild == nullptr) {
-        if (current == root) {
-            root = current->rightChild;
+    if (target->leftChild == nullptr) {
+        if (target == root) {
+            root = target->rightChild;
             root->parent = nullptr;
-        } else if (current->parent->leftChild == current) {
-            current->parent->leftChild = current->rightChild;
-            current->rightChild->parent = current->parent;
+        } else if (target->parent->leftChild == target) {
+            target->parent->leftChild = target->rightChild;
+            target->rightChild->parent = target->parent;
         } else {
-            current->parent->rightChild = current->rightChild;
-            current->rightChild->parent = current->parent;
+            target->parent->rightChild = target->rightChild;
+            target->rightChild->parent = target->parent;
         }
-        delete current;
+        delete target;
         tsize--;
         return;
-    } else if (current->rightChild == nullptr) {
-        if (current == root) {
-            root = current->leftChild;
+    } else if (target->rightChild == nullptr) {
+        if (target == root) {
+            root = target->leftChild;
             root->parent = nullptr;
-        } else if (current->parent->leftChild == current) {
-            current->parent->leftChild = current->leftChild;
-            current->leftChild->parent = current->parent;
+        } else if (target->parent->leftChild == target) {
+            target->parent->leftChild = target->leftChild;
+            target->leftChild->parent = target->parent;
         } else {
-            current->parent->rightChild = current->leftChild;
-            current->leftChild->parent = current->parent;
+            target->parent->rightChild = target->leftChild;
+            target->leftChild->parent = target->parent;
         }
-        delete current;
+        delete target;
         tsize--;
         return;
     }
     //two child
-    /*BinaryTreeNode<K, V> *temp = current->rightChild;
+    BinaryTreeNode<K, V> *temp = target->rightChild;
     while (temp->leftChild != nullptr){
         temp = temp->leftChild;
     }
-    BinaryTreeNode<K, V> *buffer = new BinaryTreeNode<K, V>(temp->entry,current->parent,current->leftChild,current->rightChild);
+    cout << 1 << endl;
+    BinaryTreeNode<K, V> *buffer = new BinaryTreeNode<K, V>(target->entry,target->parent,target->leftChild,target->rightChild);
     buffer->leftChild->parent = buffer;
     buffer->rightChild->parent = buffer;
-    if (current->parent->leftChild == current){
-        current->parent->leftChild = buffer;
-    }else{
-        current->parent->rightChild = buffer;
+    cout << 2 << endl;
+    if (target->parent != nullptr){
+        if (target->parent->leftChild == target){
+        target->parent->leftChild = buffer;
+        }else{
+        target->parent->rightChild = buffer;
+        }
     }
-    delete current;
+    cout << 3 << endl;
+    delete target;
+    cout << 4 << endl;
+    //刪除temp
     if (temp->parent->leftChild == temp){
         temp->parent->leftChild = temp->rightChild;
     }
     else{
         temp->parent->rightChild = temp->rightChild;
     }
+    cout << 5 << endl;
     if (temp->rightChild != nullptr){
         temp->rightChild->parent = temp->parent;
     }
     delete temp;
-    tsize--;*/
+    tsize--;
 }
 
 /**
