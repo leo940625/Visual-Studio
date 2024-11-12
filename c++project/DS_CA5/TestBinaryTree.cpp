@@ -31,13 +31,9 @@ void testRemove(BinaryTree<Integer, String>* tree, int n, string shouldBe) {
   Integer key(n);
   cout << "After remove(" << n << "):  " << endl;
   tree->remove(key);
-  cout << "A" << endl;
   cout << tree->toString() << endl;
-  cout << "B" << endl;
   if (shouldBe.compare(tree->toString()) != 0)
   cout << "  SHOULD BE " << shouldBe << endl;
-  cout << "C" << endl;
-
 }
 
 int main() {
