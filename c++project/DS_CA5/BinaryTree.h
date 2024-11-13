@@ -75,6 +75,8 @@ public:
    */
   virtual void makeEmpty();
 
+  virtual void connect(BinaryTreeNode<K, V>* node,BinaryTreeNode<K, V>* node1);
+
   /**
    *  Convert the tree into a string.
    **/
