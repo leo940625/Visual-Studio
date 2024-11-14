@@ -139,19 +139,13 @@ void BinaryTree<K, V>::remove(const K &key)
     if (target == nullptr){
         return;
     }
-    // No child
-    if (target->leftChild == nullptr && target->rightChild == nullptr) {
+    if (target->leftChild == nullptr && target->rightChild == nullptr) {// No child
         if (target == root) {
             root = nullptr;
         } else {
             connect(target,nullptr);
         }
-        delete target;
-        tsize--;
-        return;
-    }
-    // One child
-    if (target->leftChild == nullptr || target->rightChild == nullptr){
+    }else if (target->leftChild == nullptr || target->rightChild == nullptr){// One child
         BinaryTreeNode<K, V> * child = (target->leftChild != nullptr) ? target->leftChild : target->rightChild;
         if (target == root) {
             root = child;
@@ -160,22 +154,20 @@ void BinaryTree<K, V>::remove(const K &key)
             connect(target,child);
             child->parent = target->parent;
         }
-        delete target;
-        tsize--;
-        return;
+    }else{//two child
+        BinaryTreeNode<K, V> *temp = target->rightChild;
+        while (temp->leftChild != nullptr){
+            temp = temp->leftChild;
+        }
+        target->entry = new Entry<K, V>(temp->entry->getkey(), temp->entry->getvalue());
+        //刪除temp
+        connect(temp,temp->rightChild);
+        if (temp->rightChild != nullptr){
+           temp->rightChild->parent = temp->parent;
+        }
+        target = temp;
     }
-    //two child
-    BinaryTreeNode<K, V> *temp = target->rightChild;
-    while (temp->leftChild != nullptr){
-        temp = temp->leftChild;
-    }
-    target->entry = new Entry<K, V>(temp->entry->getkey(), temp->entry->getvalue());
-    //刪除temp
-    connect(temp,temp->rightChild);
-    if (temp->rightChild != nullptr){
-        temp->rightChild->parent = temp->parent;
-    }
-    delete temp;
+    delete target;
     tsize--;
 }
 
