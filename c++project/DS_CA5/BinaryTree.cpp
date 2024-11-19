@@ -51,7 +51,6 @@ void BinaryTree<K, V>::insertHelper(Entry<K, V> *entry, const K &key, BinaryTree
         }
     }
 }
-
 /**
  *  Create a new Entry object referencing the input key and associated value,
  *  and insert the entry into the dictionary.
@@ -116,12 +115,7 @@ template <typename K, typename V>
 Entry<K, V> *BinaryTree<K, V>::find(const K &key)
 {
     BinaryTreeNode<K, V> *node = findHelper(key, root);
-    if (node != nullptr){
-        return node->entry;
-    }
-    else{
-        return nullptr;
-    }
+    return node != nullptr ? node->entry : nullptr;
 }
 
 /**
