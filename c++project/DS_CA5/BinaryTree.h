@@ -18,8 +18,8 @@ class BinaryTree : public Dictionary<K, V> {
    *  are no items (size is zero), root is null.
    **/
 protected:
-  int tsize = 0
-  BinaryTreeNode<K, V>* root = nullptr;
+  int tsize;
+  BinaryTreeNode<K, V>* root;
 
 public:
   BinaryTree();
