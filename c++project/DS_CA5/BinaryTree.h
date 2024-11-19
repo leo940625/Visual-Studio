@@ -18,8 +18,8 @@ class BinaryTree : public Dictionary<K, V> {
    *  are no items (size is zero), root is null.
    **/
 protected:
-  int tsize;
-  BinaryTreeNode<K, V>* root;
+  int tsize = 0
+  BinaryTreeNode<K, V>* root = nullptr;
 
 public:
   BinaryTree();
@@ -74,7 +74,7 @@ public:
    *  Remove all entries from the dictionary.
    */
   virtual void makeEmpty();
-  
+
   virtual void postOrderDelete(BinaryTreeNode<K, V>* node);
 
   virtual void connect(BinaryTreeNode<K, V>* node,BinaryTreeNode<K, V>* node1);
