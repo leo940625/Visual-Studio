@@ -85,22 +85,14 @@ void BinaryTree<K, V>::insert(const K &key, const V &value)
 template <typename K, typename V>
 BinaryTreeNode<K, V> *BinaryTree<K, V>::findHelper(const K &key, BinaryTreeNode<K, V> *node)
 {
-    if (node == nullptr){
-        return nullptr;
+    if (node == nullptr || node->entry->getkey().compareTo(key) == 0){
+        return node;
     }
-    BinaryTreeNode<K, V> *current = node;
-    while (current != nullptr){
-        if (current->entry->getkey().compareTo(key) == 0){
-            return current;
-        }
-        else if (current->entry->getkey().compareTo(key) > 0) {
-            current = current->leftChild;
-        }
-        else{
-            current = current->rightChild;
-        }
+    if (node->entry->getkey().compareTo(key) > 0){
+        return findHelper(key,node->leftChild);
+    }else{
+        return findHelper(key,node->rightChild);
     }
-    return nullptr;
 }
 
 /**
