@@ -64,12 +64,10 @@ template <typename K, typename V>
 void BinaryTree<K, V>::insert(const K &key, const V &value)
 {
     Entry<K, V> *entry = new Entry<K, V>(key, value);
-    if (root == nullptr)
-    {
+    if (root == nullptr){
         root = new BinaryTreeNode<K, V>(entry);
     }
-    else
-    {
+    else{
         insertHelper(entry, key, root);
     }
     tsize++;
