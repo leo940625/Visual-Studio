@@ -74,6 +74,8 @@ public:
    *  Remove all entries from the dictionary.
    */
   virtual void makeEmpty();
+  
+  virtual void postOrderDelete(BinaryTreeNode<K, V>* node);
 
   virtual void connect(BinaryTreeNode<K, V>* node,BinaryTreeNode<K, V>* node1);
 

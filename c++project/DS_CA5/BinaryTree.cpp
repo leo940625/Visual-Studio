@@ -160,10 +160,17 @@ void BinaryTree<K, V>::remove(const K &key)
  */
 template <typename K, typename V>
 void BinaryTree<K, V>::makeEmpty(){
-    root = nullptr;
+    postOrderDelete(root);
     tsize = 0;
 }
 
+template <typename K, typename V>
+void BinaryTree<K, V>::postOrderDelete(BinaryTreeNode<K, V>* node){
+    if (node == nullptr) return;
+    postOrderDelete(node->leftChild);
+    postOrderDelete(node->rightChild);
+    delete node;
+}
 
 template <typename K, typename V>
 void BinaryTree<K, V>::connect(BinaryTreeNode<K, V>* node,BinaryTreeNode<K, V>* node1){
