@@ -1,5 +1,7 @@
 import os
 import time
+import psutil
+from PIL import Image
 
 def get_idle_files(directory, days_idle):
     """
@@ -41,8 +43,28 @@ def main():
         print("Files idle for more than {} days:".format(days_idle))
         for file in idle_files:
             print(file)
-            answer = input("Do you wants delete all files(1/0)?")
-            os.remove(file)
+        answer = input("Do you want to delete all files? (1 for Yes, 0 for No): ")
+        if answer == "1":
+            for file in idle_files:
+                os.remove(file)
+        elif answer == "0":
+            for file in idle_files:
+                '''
+                with open(file, 'r') as data:
+                    content = data.read()
+                    print(content)
+                '''
+                img = Image.open(file)
+                img.show()
+                time.sleep(1)
+                for proc in psutil.process_iter():
+                    if proc.name() == "display":
+                        proc.kill()
+                ans = input("Do you want to delete this file? (1 for Yes, 0 for No): ")
+                if ans == "1":
+                    os.remove(file)
+        else:
+            print("Invalid input. No files were deleted.")
     else:
         print("No files found that are idle for more than {} days.".format(days_idle))
 
