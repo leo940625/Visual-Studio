@@ -118,7 +118,6 @@ void BinaryTree<K, V>::remove(const K &key)
 {
     BinaryTreeNode<K, V> *target = findHelper(key, root);
     if (target == nullptr){
-        tsize--;
         return;
     }
     if (target->leftChild == nullptr && target->rightChild == nullptr) {// No child
