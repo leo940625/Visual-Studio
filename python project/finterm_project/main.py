@@ -40,8 +40,6 @@ def get_idle_files(directory, days_idle):
 def show_image(image_path):
     top = tk.Toplevel()
     top.title("Image Viewer")
-    top.width = 600
-    top.height = 400
     # 加載圖片並顯示
     img = Image.open(image_path)
     tk_image = ImageTk.PhotoImage(img)
@@ -50,7 +48,7 @@ def show_image(image_path):
     label.pack()
 
     # 設置延遲關閉
-    top.after(5000, top.destroy)  # 5秒後自動關閉
+    top.after(2000, top.destroy)  # 2秒後自動關閉
 
 def main():
     root = tk.Tk()
