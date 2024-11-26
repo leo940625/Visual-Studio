@@ -1,7 +1,10 @@
 import os
 import time
 import psutil
-from PIL import Image
+from PIL import Image, ImageTk
+import tkinter as tk
+from tkinter import filedialog
+
 
 def get_idle_files(directory, days_idle):
     """
@@ -32,41 +35,48 @@ def get_idle_files(directory, days_idle):
             if file_idle_time > days_idle:
                 # 將該檔案的完整路徑加入閒置檔案清單
                 idle_files.append(file_path)
-
     return idle_files
 
+def show_image(image_path):
+    top = tk.Toplevel()
+    top.title("Image Viewer")
+    top.width = 600
+    top.height = 400
+    # 加載圖片並顯示
+    img = Image.open(image_path)
+    tk_image = ImageTk.PhotoImage(img)
+    label = tk.Label(top, image=tk_image)
+    label.image = tk_image  # 保持對圖片的引用
+    label.pack()
+
+    # 設置延遲關閉
+    top.after(5000, top.destroy)  # 5秒後自動關閉
+
 def main():
-    directory = input("Enter the directory to scan: ")
-    days_idle = int(input("Enter the number of idle days: "))
+    root = tk.Tk()
+    root.title('Auto file system')
+    root.withdraw()  # 隱藏主視窗
+
+    directory = filedialog.askdirectory()
+    days_idle = tk.simpledialog.askinteger("Input", "Enter the number of idle days:")
     idle_files = get_idle_files(directory, days_idle)
     if idle_files:
         print("Files idle for more than {} days:".format(days_idle))
         for file in idle_files:
             print(file)
-        answer = input("Do you want to delete all files? (1 for Yes, 0 for No): ")
-        if answer == "1":
+        answer = tk.messagebox.askyesno("Confirmation", "Do you want to delete all files?")
+        if answer:
             for file in idle_files:
                 os.remove(file)
-        elif answer == "0":
-            for file in idle_files:
-                '''
-                with open(file, 'r') as data:
-                    content = data.read()
-                    print(content)
-                '''
-                img = Image.open(file)
-                img.show()
-                time.sleep(1)
-                for proc in psutil.process_iter():
-                    if proc.name() == "display":
-                        proc.kill()
-                ans = input("Do you want to delete this file? (1 for Yes, 0 for No): ")
-                if ans == "1":
-                    os.remove(file)
         else:
-            print("Invalid input. No files were deleted.")
+            for file in idle_files:
+                show_image(file)
+                ans = tk.messagebox.askyesno("Confirmation", "Do you want to delete this file?")
+                if ans:
+                    os.remove(file)
     else:
         print("No files found that are idle for more than {} days.".format(days_idle))
+    root.mainloop()
 
 if __name__ == "__main__":
     main()
