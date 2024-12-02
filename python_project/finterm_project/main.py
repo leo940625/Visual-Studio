@@ -99,7 +99,7 @@ def main():
         else:
             for file in idle_files:
                 kind = filetype.guess(file) #抽出File類型
-                if kind.mime == 'image/jpeg ':
+                if kind.mime == 'image/jpeg':
                     show_image(file)
                 ans = tk.messagebox.askyesno("Confirmation", "Do you want to delete this file?")
                 if ans:
