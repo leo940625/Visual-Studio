@@ -85,7 +85,6 @@ def main():
     root = tk.Tk()
     root.title('Auto file system')
     root.withdraw()  # 隱藏主視窗
-
     directory = filedialog.askdirectory()
     days_idle = tk.simpledialog.askinteger("Input", "Enter the number of idle days:")
     idle_files = get_idle_files(directory, days_idle)
