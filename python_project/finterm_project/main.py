@@ -23,14 +23,11 @@ def get_idle_files(directory, days_idle):
         for file in files:
             # 取得檔案的完整路徑
             file_path = os.path.join(root, file)
-            
             # 獲取檔案的最後修改時間（以秒為單位的時間戳）
             file_mtime = os.path.getmtime(file_path)
-            
             # 計算檔案的閒置時間（單位為天數）
             # current_time 是當前的時間戳（需事先定義）
             file_idle_time = (current_time - file_mtime) / (24 * 3600)  # 24 * 3600 將秒數轉換為天數
-            
             # 如果檔案的閒置時間超過了指定的天數
             if file_idle_time > days_idle:
                 # 將該檔案的完整路徑加入閒置檔案清單
