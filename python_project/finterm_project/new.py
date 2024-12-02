@@ -2,7 +2,20 @@ import os
 import time
 import tkinter as tk
 from tkinter import filedialog, messagebox
+from PIL import Image, ImageTk
+def display_image(image_path):
+    try:
+        img = Image.open(image_path)
+        img = img.resize((200, 200), Image.LANCZOS)
+        img_tk = ImageTk.PhotoImage(img)
+        image_label.config(image=img_tk)
+        image_label.image = img_tk
+    except Exception as e:
+        messagebox.showerror("Error", f"Failed to display image: {e}")
 
+def on_file_select(event):
+    selected_file = files_listbox.get(files_listbox.curselection())
+    display_image(selected_file)
 
 def get_idle_files(directory, days_idle):
     current_time = time.time()
@@ -85,6 +98,9 @@ tk.Button(root, text="Scan Files", command=scan_files).pack(pady=10)
 tk.Label(root, text="Idle Files:").pack(anchor="w", padx=10, pady=5)
 files_listbox = tk.Listbox(root, width=80, height=10)
 files_listbox.pack(padx=10, pady=5)
+
+image_label = tk.Label(root)
+image_label.pack()
 
 # 刪除按鈕
 tk.Button(root, text="Delete Files", command=delete_files).pack(pady=10)
