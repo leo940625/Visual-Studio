@@ -4,7 +4,7 @@ import psutil
 from PIL import Image, ImageTk
 import tkinter as tk
 from tkinter import filedialog
-
+import filetype
 
 def get_idle_files(directory, days_idle):
     """
@@ -37,18 +37,49 @@ def get_idle_files(directory, days_idle):
                 idle_files.append(file_path)
     return idle_files
 
+import tkinter as tk
+from PIL import Image, ImageTk
+
 def show_image(image_path):
+    # 創建新的窗口
     top = tk.Toplevel()
     top.title("Image Viewer")
-    # 加載圖片並顯示
+
+    # 加載圖片
     img = Image.open(image_path)
+
+    # 獲取螢幕的大小
+    screen_width = top.winfo_screenwidth()
+    screen_height = top.winfo_screenheight()
+
+    # 獲取圖片的原始尺寸
+    img_width, img_height = img.size
+
+    # 計算縮放比例，使圖片不超過螢幕
+    scale_factor = min(screen_width / img_width, screen_height / img_height)
+
+    # 計算縮放後的圖片尺寸
+    new_width = int(img_width * scale_factor)
+    new_height = int(img_height * scale_factor)
+
+    # 重新調整圖片大小
+    img = img.resize((new_width, new_height), Image.Resampling.LANCZOS)
+
+    # 將圖片轉換為 tkinter 可以顯示的格式
     tk_image = ImageTk.PhotoImage(img)
+
+    # 顯示圖片
     label = tk.Label(top, image=tk_image)
     label.image = tk_image  # 保持對圖片的引用
     label.pack()
 
-    # 設置延遲關閉
-    top.after(2000, top.destroy)  # 2秒後自動關閉
+    # 設置窗口位置為螢幕中心
+    x_offset = (screen_width - new_width) // 2
+    y_offset = (screen_height - new_height) // 2
+    top.geometry(f"+{x_offset}+{y_offset}")
+
+    # 設置延遲關閉，5秒後自動關閉
+    top.after(5000, top.destroy)
 
 def main():
     root = tk.Tk()
@@ -68,7 +99,9 @@ def main():
                 os.remove(file)
         else:
             for file in idle_files:
-                show_image(file)
+                kind = filetype.guess(file) #抽出File類型
+                if kind.mime == 'image/jpeg ':
+                    show_image(file)
                 ans = tk.messagebox.askyesno("Confirmation", "Do you want to delete this file?")
                 if ans:
                     os.remove(file)
