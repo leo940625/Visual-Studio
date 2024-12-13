@@ -41,7 +41,7 @@
 
 ## 系統需求
 - Python 3.7 或以上版本
-- 安裝以下第三方庫：
+- 安裝以下Library：
   - `tkinter`（內建於 Python 標準庫）
   - `Pillow`
   - `psutil`
