@@ -56,6 +56,6 @@
 ```bash
 pip install Pillow psutil filetype
 ```
-## 參考資料
+## 使用AI的內容
 - Chatgpt:使用於調整Thinker的UI介面與超越我們程度太多的內容(hash value等)
 - Github copilot:用於分析報錯代碼與分析程式碼執行流程
