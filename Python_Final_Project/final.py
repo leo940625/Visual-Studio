@@ -11,7 +11,7 @@ from collections import defaultdict
 
 ##以下為比較重複檔案部分
 def calculate_file_hash(file_path, hash_algo=hashlib.sha256):
-    """計算檔案之hash value"""
+    """計算檔案的hash value"""
     hashfunction = hash_algo()
     try:
         with open(file_path, 'rb') as f:
@@ -101,7 +101,7 @@ def show_image(image_path):
     label.image = tk_image  # 保持對圖片的引用
     label.pack()
 
-    # 設置窗口位置為螢幕中心
+    # 設置位置為螢幕中心
     x_offset = (screen_width - new_width) // 2
     y_offset = (screen_height - new_height) // 2
     top.geometry(f"+{x_offset}+{y_offset}")
@@ -164,7 +164,7 @@ def compare_duplicate_files():
         duplicates = find_duplicates(folder)
         print_duplicates(duplicates)
     else:
-        print("無效的目錄路徑。")
+        print("無效的路徑。")
 
 # 建立按鈕
 btn_find_files = tk.Button(root, text="尋找檔案", width=20, command=find_files)
