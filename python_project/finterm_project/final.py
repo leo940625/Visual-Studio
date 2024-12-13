@@ -11,18 +11,18 @@ from collections import defaultdict
 
 ##以下為比較重複檔案部分
 def calculate_file_hash(file_path, hash_algo=hashlib.sha256):
-    """計算檔案的哈希值"""
-    hash_func = hash_algo()
+    """計算檔案之hash value"""
+    hashfunction = hash_algo()
     try:
         with open(file_path, 'rb') as f:
             while chunk := f.read(8192):
-                hash_func.update(chunk)
-        return hash_func.hexdigest()
+                hashfunction.update(chunk)
+        return hashfunction.hexdigest()
     except (FileNotFoundError, PermissionError):
         return None
 
 def find_duplicates(directory):
-    """找到指定目錄中的重複檔案"""
+    """找到指定資料夾中的重複檔案"""
     hashes = defaultdict(list)
     for root, _, files in os.walk(directory):
         for file_name in files:
@@ -30,7 +30,6 @@ def find_duplicates(directory):
             file_hash = calculate_file_hash(file_path)
             if file_hash:
                 hashes[file_hash].append(file_path)
-
     duplicates = {hash_val: paths for hash_val, paths in hashes.items() if len(paths) > 1}
     return duplicates
 
@@ -41,7 +40,7 @@ def print_duplicates(duplicates):
     else:
         print("發現以下重複的檔案:")
         for hash_val, files in duplicates.items():
-            print(f"\n哈希值: {hash_val}")
+            print(f"\nHash value: {hash_val}")
             for file in files:
                 print(f"  {file}")
 ##以上為比較重複檔案部分
@@ -60,16 +59,15 @@ def find_files_with_string(directory, target_string):
 def get_idle_files(directory, days_idle):
     current_time = time.time()#取得現在的時間
     idle_files = []
-    # 遍歷目錄樹並找出閒置時間超過指定天數的檔案
+    # 遍歷資料夾並找出閒置時間超過指定天數的檔案
     for root, dirs, files in os.walk(directory):
-        # 遍歷當前目錄中的所有檔案
+        # 遍歷當前資料夾中的所有檔案
         for file in files:
             # 取得檔案的完整路徑
             file_path = os.path.join(root, file)
             # 獲取檔案的最後修改時間（以秒為單位的時間戳）
             file_mtime = os.path.getmtime(file_path)
             # 計算檔案的閒置時間（單位為天數）
-            # current_time 是當前的時間戳（需事先定義）
             file_idle_time = (current_time - file_mtime) / (24 * 3600)  # 24 * 3600 將秒數轉換為天數
             # 如果檔案的閒置時間超過了指定的天數
             if file_idle_time > days_idle:
@@ -151,7 +149,7 @@ def handle_idle_files():
         else:
             for file in idle_files:
                 kind = filetype.guess(file) #抽出File類型
-                if kind.mime == 'image/jpeg':
+                if kind.mime == 'image/jpeg':##如果檔案是jpg則可以預覽
                     show_image(file)
                 ans = tk.messagebox.askyesno("Confirmation", "你要刪除此檔案嗎?")
                 if ans:
@@ -161,9 +159,9 @@ def handle_idle_files():
     root.mainloop()
 
 def compare_duplicate_files():
-    directory = filedialog.askdirectory()
-    if os.path.isdir(directory):
-        duplicates = find_duplicates(directory)
+    folder = filedialog.askfolder()
+    if os.path.isdir(folder):
+        duplicates = find_duplicates(folder)
         print_duplicates(duplicates)
     else:
         print("無效的目錄路徑。")
