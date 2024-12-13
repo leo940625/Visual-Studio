@@ -51,12 +51,17 @@
 
 ## 安裝與執行
 
-### 1. 安裝依賴
+### 1.下載所需Library
 使用以下指令安裝所需依賴：
 ```bash
 pip install Pillow psutil filetype
 ```
 
+### 2.執行程式本體
+執行final.py：
+```bash
+python final.py
+```
 ---
 
 ## 使用AI的內容
