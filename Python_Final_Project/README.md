@@ -55,6 +55,6 @@
 使用以下指令安裝所需依賴：
 ```bash
 pip install Pillow psutil filetype
-
+```
 ## 參考資料
 - Chatgpt:使用於調整Thinker的UI介面與超越我們程度太多的內容(hash value等)
