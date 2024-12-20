@@ -98,7 +98,7 @@ def show_image(image_path):
 
     # 顯示圖片
     label = tk.Label(top, image=tk_image)
-    label.image = tk_image  # 保持對圖片的引用
+    label.image = tk_image
     label.pack()
 
     # 設置位置為螢幕中心
