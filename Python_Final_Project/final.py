@@ -61,11 +61,11 @@ def get_idle_files(directory, days_idle):
     idle_files = []
     # 遍歷資料夾並找出閒置時間超過指定天數的檔案
     for root, dirs, files in os.walk(directory):
-        # 遍歷當前資料夾中的所有檔案
+        # 遍歷目前資料夾中的所有檔案
         for file in files:
             # 取得檔案的完整路徑
             file_path = os.path.join(root, file)
-            # 獲取檔案的最後修改時間（以秒為單位的時間戳）
+            # 獲取檔案的最後修改時間（秒）
             file_mtime = os.path.getmtime(file_path)
             # 計算檔案的閒置時間（單位為天數）
             file_idle_time = (current_time - file_mtime) / (24 * 3600)  # 24 * 3600 將秒數轉換為天數
@@ -121,9 +121,9 @@ label.pack(pady=10)
 
 # 按鈕功能
 def find_files():
-    search_directory = filedialog.askdirectory()
-    search_string = tk.simpledialog.askstring("Input", "請輸入要搜尋的字串: ")
-    result = find_files_with_string(search_directory, search_string)
+    directory = filedialog.askdirectory()
+    string = tk.simpledialog.askstring("Input", "請輸入要搜尋的字串: ")
+    result = find_files_with_string(directory, string)
     if result:
         print("找到以下檔案:")
         for file_path in result:
@@ -161,8 +161,8 @@ def handle_idle_files():
 def compare_duplicate_files():
     folder = filedialog.askfolder()
     if os.path.isdir(folder):
-        duplicates = find_duplicates(folder)
-        print_duplicates(duplicates)
+        dup = find_duplicates(folder)
+        print_duplicates(dup)
     else:
         print("無效的路徑。")
 
