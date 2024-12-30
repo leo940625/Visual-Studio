@@ -3,7 +3,7 @@ using namespace std;
 
 int main()
 {
-    long long int x, i, q, r; // q������r������
+    long long int x, i, q, r;
     cin >> x;
     r = 0;
     q = 0;
@@ -28,6 +28,6 @@ int main()
             i++;
         }
     }
-    r < 2 ? cout << q : cout << q << "^" << r; // �]x�̫�|����1�A�ҥH�̫�A��X�@��
+    r < 2 ? cout << q : cout << q << "^" << r;
     return 0;
 }
