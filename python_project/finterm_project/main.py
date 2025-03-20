@@ -7,14 +7,6 @@ from tkinter import filedialog
 import filetype
 
 def get_idle_files(directory, days_idle):
-    """
-    獲取指定目錄中閒置時間超過指定天數的文件。
-    參數:
-    directory (str): 要搜索的目錄路徑。
-    days_idle (int): 文件閒置的天數閾值。
-    返回:
-    list: 閒置時間超過指定天數的文件路徑列表。
-    """
     current_time = time.time()#取得現在的時間
     idle_files = []
     # 遍歷目錄樹並找出閒置時間超過指定天數的檔案
@@ -78,7 +70,7 @@ def show_image(image_path):
 def main():
     root = tk.Tk()
     root.title('Auto file system')
-    root.withdraw()  # 隱藏主視窗
+    root.withdraw()#隱藏主視窗
     directory = filedialog.askdirectory()
     days_idle = tk.simpledialog.askinteger("Input", "Enter the number of idle days:")
     idle_files = get_idle_files(directory, days_idle)
