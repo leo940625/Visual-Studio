@@ -34,9 +34,6 @@ def get_idle_files(directory, days_idle):
                 idle_files.append(file_path)
     return idle_files
 
-import tkinter as tk
-from PIL import Image, ImageTk
-
 def show_image(image_path):
     # 創建新的窗口
     top = tk.Toplevel()
