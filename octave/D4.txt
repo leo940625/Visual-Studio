@@ -1,0 +1,38 @@
+clc;
+clear;
+close all;
+
+% 定義參數
+L = 2; % 週期為 4，因此 L = 2
+x = linspace(-2, 4, 1000); % 在範圍 -2 到 4 內定義 x 值（比 0 < x < 2 更寬）
+
+% 定義要計算的項數
+N_terms = 6;
+S = zeros(N_terms, length(x)); % 存儲部分和
+colors = lines(N_terms); % 定義不同顏色以區分不同曲線
+
+% 計算傅立葉正弦級數的部分和
+figure;
+hold on;
+for n = 1:N_terms
+    S_n = zeros(size(x)); % 初始化 S_n
+    for k = 1:n
+        b_k = (4 / (k * pi)) * sin(k * pi / 2); % 傅立葉正弦係數
+        S_n = S_n + b_k * sin(k * pi * x / L);
+    end
+    S(n, :) = S_n; % 存儲計算結果
+    plot(x, S(n, :), 'Color', colors(n, :), 'LineWidth', 1.5, 'DisplayName', ['S_', num2str(n)]);
+end
+
+% 原始函數（奇延拓）
+f_x = (x .* (x >= 0 & x < 1)) + ((2 - x) .* (x >= 1 & x < 2));
+f_x = f_x .* sign(x); % 奇延拓
+plot(x, f_x, 'k--', 'LineWidth', 2, 'DisplayName', '原始函數 f(x)');
+
+% 圖表標題與標籤
+title('函數 f(x) 的傅立葉正弦級數部分和');
+xlabel('x');
+ylabel('S_n(x)');
+grid on;
+legend;
+hold off;

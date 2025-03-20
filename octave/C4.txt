@@ -1,0 +1,29 @@
+clc;
+clear;
+close all;
+
+% 定義參數
+L = pi; % 週期為 2π，因此 L = π
+N_values = [5, 10, 20, 40, 200, 1000]; % 需要計算的 N 值
+E_N = zeros(size(N_values)); % 存儲 E*_N
+
+% 計算 E*_N
+for i = 1:length(N_values)
+    N = N_values(i);
+    a0 = pi; % a0 由積分計算得 pi
+    sum_an_bn = 0;
+    
+    for n = 1:N
+        b_n = (2 / n) * (-1)^(n+1); % 傅立葉係數 b_n
+        sum_an_bn = sum_an_bn + b_n^2;
+    end
+    
+    E_N(i) = (8 * pi^3)/3 - pi * (2 * pi^2 + sum_an_bn);
+end
+
+% 文字輸出結果
+disp('傅立葉級數的最小平方誤差 E*_N 結果:');
+disp('--------------------------------');
+for i = 1:length(N_values)
+    fprintf('當 N = %d 時，E*_N = %.6f\n', N_values(i), E_N(i));
+end
