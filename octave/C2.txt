@@ -1,0 +1,37 @@
+clc;
+clear;
+close all;
+
+% 定義參數
+L = pi; % 給定函數定義在 -pi < x < pi
+x = linspace(-L, L, 1000); % 定義 x 值
+
+% 定義要計算的項數
+N_terms = [5, 10, 20, 40, 200]; % 要繪製的項數
+colors = lines(length(N_terms)); % 定義不同曲線的顏色
+
+% 計算傅立葉級數的部分和
+figure;
+hold on;
+for i = 1:length(N_terms)
+    S_n = zeros(size(x));
+    for k = 1:N_terms(i)
+        b_k = (2 / k) * (-1)^(k+1); % f(x) = x + pi 的傅立葉正弦係數
+        S_n = S_n + b_k * sin(k * x);
+    end
+    S_n = S_n + pi; % 加上常數項
+    plot(x, S_n, 'Color', colors(i, :), 'LineWidth', 1.5, 'DisplayName', ['S_', num2str(N_terms(i))]);
+end
+
+% 原始函數
+f_x = x + pi;
+plot(x, f_x, 'k--', 'LineWidth', 2, 'DisplayName', 'Original f(x)');
+
+title('f(x) = x + \pi 的傅立葉級數部分和');
+xlabel('x');
+ylabel('S_n(x)');
+grid on;
+legend;
+hold off;
+% 設定圖例位置
+legend('Location', 'best');

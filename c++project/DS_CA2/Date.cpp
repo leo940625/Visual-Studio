@@ -2,7 +2,7 @@
  * class Date contains month, day, and year. It can perform operations like checking if a year is a leap year or
  * calculating the difference between two dates.
  *
- * @author           аб?╔Э Hsieh Wu Chao
+ * @author           О©╫О©╫?О©╫О©╫ Hsieh Wu Chao
  * @ID               B12505023
  * @Department       Engineering Science and Ocean Engineering
  * @Affiliation      National Taiwan University

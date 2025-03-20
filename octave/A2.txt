@@ -1,0 +1,38 @@
+clc;
+clear;
+close all;
+
+% 定義參數
+L = pi; % 週期是 2*pi，所以 L = pi
+x = linspace(-L, L, 1000); % 定義 x 值
+
+% 定義計算的項數
+N_terms = 6;
+S = zeros(N_terms, length(x)); % 儲存部分和
+colors = lines(N_terms); % 定義不同曲線的顏色
+
+% 計算傅立葉級數的部分和
+figure;
+hold on;
+for n = 1:N_terms
+    S_n = zeros(size(x));
+    for k = 1:2:2*n-1
+        if mod(k, 2) == 1 % 只有奇數項貢獻
+            b_k = 4 / (k * pi);
+            S_n = S_n + b_k * sin(k * x);
+        end
+    end
+    S(n, :) = S_n; % 儲存結果
+    plot(x, S(n, :), 'Color', colors(n, :), 'LineWidth', 1.5, 'DisplayName', ['S_', num2str(n)]);
+end
+
+% 原始函數
+f_x = sign(x);
+plot(x, f_x, 'k--', 'LineWidth', 2, 'DisplayName', 'Original f(x)');
+
+title('傅立葉級數的部分和');
+xlabel('x');
+ylabel('S_n(x)');
+grid on;
+legend;
+hold off;
